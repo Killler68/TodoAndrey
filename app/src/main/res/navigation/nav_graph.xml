@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentAuthorization">
+
+    <fragment
+        android:id="@+id/fragmentAuthorization"
+        android:name="com.example.myapplication.authorization.FragmentAuthorization"
+        android:label="FragmentAuthorization" >
+        <action
+            android:id="@+id/action_fragmentAuthorization_to_fragmentNotes"
+            app:destination="@id/fragmentNotes" />
+    </fragment>
+    <dialog
+        android:id="@+id/fragmentNoteAdd"
+        android:name="com.example.myapplication.noteadd.FragmentNoteAdd"
+        android:label="fragment_notes_add"
+        tools:layout="@layout/fragment_notes_add" >
+        <action
+            android:id="@+id/action_fragmentNoteAdd_to_fragmentNotes"
+            app:destination="@id/fragmentNotes" />
+    </dialog>
+    <fragment
+        android:id="@+id/fragmentNotes"
+        android:name="com.example.myapplication.notes.FragmentNotes"
+        android:label="FragmentNotes" >
+        <action
+            android:id="@+id/action_fragmentNotes_to_fragmentNoteAdd"
+            app:destination="@id/fragmentNoteAdd" />
+    </fragment>
+</navigation>

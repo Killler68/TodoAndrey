@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
-import com.example.myapplication.authorization.FragmentAuthorization
 
 
 private const val WAITING_TIME = 2000
@@ -18,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        navigateToFragmentActivity(FragmentAuthorization())
     }
 
     override fun onBackPressed() {
