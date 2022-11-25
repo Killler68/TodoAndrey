@@ -3,15 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="250dp"
     tools:context=".noteadd.FragmentNoteAdd">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/goldblack"
-        tools:ignore="ContentDescription" />
 
     <EditText
         android:id="@+id/edit_note_title"
@@ -19,7 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/style_note_add"
         android:hint="@string/enter_title"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/style_note_add"
         android:hint="@string/enter_description"
         android:textAllCaps="false"
         android:textSize="35sp"
