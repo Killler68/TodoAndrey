@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.myapplication.common.fragment.getViewModelFactory
-import com.example.myapplication.common.fragment.navigateToFragment
+import com.example.myapplication.common.navigation.NavCommand
 import com.example.myapplication.databinding.FragmentNotesAddBinding
 import com.example.myapplication.model.NotesData
-import com.example.myapplication.notes.FragmentNotes
-import com.example.myapplication.noteadd.viewmodel.NotesAddViewModel
+import com.example.myapplication.noteadd.viewmodel.NoteAddViewModel
 
 
 class FragmentNoteAdd : DialogFragment() {
@@ -19,7 +19,7 @@ class FragmentNoteAdd : DialogFragment() {
     private var _binding: FragmentNotesAddBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: NotesAddViewModel by viewModels { getViewModelFactory() }
+    private val viewModel: NoteAddViewModel by viewModels { getViewModelFactory() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,8 +30,11 @@ class FragmentNoteAdd : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         createNote()
+        setupObservables()
         setupListeners()
+
     }
 
     private fun createNote() {
@@ -41,17 +44,22 @@ class FragmentNoteAdd : DialogFragment() {
                 description = binding.editNoteDescription.text.toString(),
             )
             viewModel.createNotesData(note)
-            onClickTransition()
+            viewModel.navigateToNotes()
         }
     }
+
+    private fun setupObservables() {
+        viewModel.navCommand.observe(viewLifecycleOwner, ::onDataLoadedNavigate)
+    }
+
+    private fun onDataLoadedNavigate(navCommand: NavCommand) =
+        findNavController().navigate(navCommand.action, navCommand.command)
 
     private fun setupListeners() {
         binding.buttonBack.setOnClickListener {
-            onClickTransition()
+            viewModel.navigateToNotes()
         }
     }
-
-    private fun onClickTransition() = navigateToFragment(FragmentNotes())
 
     override fun onDestroyView() {
         super.onDestroyView()

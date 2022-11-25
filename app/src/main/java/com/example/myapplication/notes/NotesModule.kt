@@ -1,7 +1,6 @@
 package com.example.myapplication.notes
 
 import androidx.lifecycle.ViewModel
-import com.example.myapplication.noteadd.viewmodel.NotesAddViewModel
 import com.example.myapplication.notes.repository.NotesRepository
 import com.example.myapplication.notes.repository.NotesRepositoryImpl
 import com.example.myapplication.notes.router.NotesRouterImpl
@@ -41,12 +40,4 @@ class NotesModule {
         notesRepository,
         navigateToNoteAddUseCase
     )
-
-
-    @Provides
-    @IntoMap
-    @ClassKey(NotesAddViewModel::class)
-    fun getViewModelNotesAdd(notesRepository: NotesRepository): ViewModel {
-        return NotesAddViewModel(notesRepository)
-    }
 }
