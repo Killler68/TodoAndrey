@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.myapplication.noteadd.FragmentNoteAdd
+import androidx.navigation.fragment.findNavController
 import com.example.myapplication.common.fragment.getViewModelFactory
-import com.example.myapplication.common.fragment.navigateToFragment
+import com.example.myapplication.common.navigation.NavCommand
 import com.example.myapplication.databinding.FragmentRecyclerBinding
-import com.example.myapplication.notes.viewholder.NotesItem
 import com.example.myapplication.model.NotesData
+import com.example.myapplication.notes.viewholder.NotesItem
 import com.example.myapplication.notes.viewmodel.NotesViewModel
 import com.mikepenz.fastadapter.GenericFastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
@@ -42,15 +42,16 @@ class FragmentNotes : Fragment() {
             itemAnimator = null
         }
         setupObservables()
-        viewModel.loadNoteData()
         setupListeners()
+        viewModel.loadNoteData()
     }
 
     private fun setupObservables() {
-        viewModel.model.observe(viewLifecycleOwner, ::onDataLoaded)
+        viewModel.model.observe(viewLifecycleOwner, ::onDataLoadedNote)
+        viewModel.navCommand.observe(viewLifecycleOwner, ::onDataLoadedNavigate)
     }
 
-    private fun onDataLoaded(notesData: List<NotesData>) {
+    private fun onDataLoadedNote(notesData: List<NotesData>) {
         FastAdapterDiffUtil[notesItemAdapter] =
             notesData.map {
                 NotesItem(
@@ -60,9 +61,13 @@ class FragmentNotes : Fragment() {
             }
     }
 
+    private fun onDataLoadedNavigate(navCommand: NavCommand) {
+        findNavController().navigate(navCommand.action, navCommand.command)
+    }
+
     private fun setupListeners() {
         binding.addNotes.setOnClickListener {
-            navigateToFragment(FragmentNoteAdd())
+            viewModel.navigateToNotesAdd()
         }
     }
 
