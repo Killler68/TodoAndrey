@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.notes
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.myapplication.noteadd.FragmentNoteAdd
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.fragment.navigateToFragment
 import com.example.myapplication.databinding.FragmentRecyclerBinding
-import com.example.myapplication.item.NotesItem
-import com.example.myapplication.viewmodel.NotesViewModel
+import com.example.myapplication.notes.viewholder.NotesItem
+import com.example.myapplication.model.NotesData
+import com.example.myapplication.notes.viewmodel.NotesViewModel
 import com.mikepenz.fastadapter.GenericFastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
@@ -39,26 +41,28 @@ class FragmentNotes : Fragment() {
             adapter = fastAdapter
             itemAnimator = null
         }
-        addingNoteAndDeleting()
+        setupObservables()
         viewModel.loadNoteData()
-        navigateCreateNote()
+        setupListeners()
     }
 
-    private fun addingNoteAndDeleting() {
-        viewModel.model.observe(viewLifecycleOwner) { it ->
-            FastAdapterDiffUtil[notesItemAdapter] =
-                it.map {
-                    NotesItem(
-                        it,
-                        viewModel::deleteNoteData
-                    )
-                }
-        }
+    private fun setupObservables() {
+        viewModel.model.observe(viewLifecycleOwner, ::onDataLoaded)
     }
 
-    private fun navigateCreateNote() {
+    private fun onDataLoaded(notesData: List<NotesData>) {
+        FastAdapterDiffUtil[notesItemAdapter] =
+            notesData.map {
+                NotesItem(
+                    it,
+                    viewModel::deleteNoteData
+                )
+            }
+    }
+
+    private fun setupListeners() {
         binding.addNotes.setOnClickListener {
-            navigateToFragment(FragmentNotesAdd())
+            navigateToFragment(FragmentNoteAdd())
         }
     }
 

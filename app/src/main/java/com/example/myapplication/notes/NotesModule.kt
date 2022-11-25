@@ -1,10 +1,10 @@
-package com.example.myapplication
+package com.example.myapplication.notes
 
 import androidx.lifecycle.ViewModel
-import com.example.myapplication.repository.NotesRepository
-import com.example.myapplication.repository.NotesRepositoryImpl
-import com.example.myapplication.viewmodel.NotesAddViewModel
-import com.example.myapplication.viewmodel.NotesViewModel
+import com.example.myapplication.notes.repository.NotesRepository
+import com.example.myapplication.notes.repository.NotesRepositoryImpl
+import com.example.myapplication.noteadd.viewmodel.NotesAddViewModel
+import com.example.myapplication.notes.viewmodel.NotesViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.ClassKey

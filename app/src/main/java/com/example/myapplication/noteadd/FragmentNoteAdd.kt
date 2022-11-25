@@ -1,19 +1,20 @@
-package com.example.myapplication
+package com.example.myapplication.noteadd
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.fragment.navigateToFragment
 import com.example.myapplication.databinding.FragmentNotesAddBinding
 import com.example.myapplication.model.NotesData
-import com.example.myapplication.viewmodel.NotesAddViewModel
+import com.example.myapplication.notes.FragmentNotes
+import com.example.myapplication.noteadd.viewmodel.NotesAddViewModel
 
 
-class FragmentNotesAdd : Fragment() {
+class FragmentNoteAdd : DialogFragment() {
 
     private var _binding: FragmentNotesAddBinding? = null
     private val binding get() = _binding!!
@@ -30,21 +31,21 @@ class FragmentNotesAdd : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         createNote()
-        onClickBack()
+        setupListeners()
     }
 
     private fun createNote() {
         binding.buttonAdd.setOnClickListener {
-            val data = NotesData(
+            val note = NotesData(
                 title = binding.editNoteTitle.text.toString(),
                 description = binding.editNoteDescription.text.toString(),
             )
-            viewModel.createNotesData(data)
+            viewModel.createNotesData(note)
             onClickTransition()
         }
     }
 
-    private fun onClickBack() {
+    private fun setupListeners() {
         binding.buttonBack.setOnClickListener {
             onClickTransition()
         }

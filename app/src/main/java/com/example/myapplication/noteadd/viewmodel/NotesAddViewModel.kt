@@ -1,9 +1,9 @@
-package com.example.myapplication.viewmodel
+package com.example.myapplication.noteadd.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.model.NotesData
-import com.example.myapplication.repository.NotesRepository
+import com.example.myapplication.notes.repository.NotesRepository
 
 class NotesAddViewModel(private val notesRepository: NotesRepository) : ViewModel() {
 

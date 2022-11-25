@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.authorization
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.myapplication.common.fragment.navigateToFragment
 import com.example.myapplication.databinding.FragmentAuthorizationBinding
+import com.example.myapplication.notes.FragmentNotes
 
 private const val INPUT_ERROR = "Неверные данные"
 

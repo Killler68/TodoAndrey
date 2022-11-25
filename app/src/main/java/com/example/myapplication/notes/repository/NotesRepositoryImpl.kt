@@ -1,4 +1,4 @@
-package com.example.myapplication.repository
+package com.example.myapplication.notes.repository
 
 import com.example.myapplication.model.NotesData
 
