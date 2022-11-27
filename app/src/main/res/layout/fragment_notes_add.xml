@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="250dp"
-    tools:context=".noteadd.FragmentNoteAdd">
+    tools:context=".notes.noteadd.FragmentNoteAdd">
 
     <EditText
         android:id="@+id/edit_note_title"

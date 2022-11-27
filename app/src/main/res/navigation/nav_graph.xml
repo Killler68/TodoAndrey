@@ -15,7 +15,7 @@
     </fragment>
     <dialog
         android:id="@+id/fragmentNoteAdd"
-        android:name="com.example.myapplication.noteadd.FragmentNoteAdd"
+        android:name="com.example.myapplication.notes.noteadd.FragmentNoteAdd"
         android:label="fragment_notes_add"
         tools:layout="@layout/fragment_notes_add" >
         <action
@@ -24,7 +24,7 @@
     </dialog>
     <fragment
         android:id="@+id/fragmentNotes"
-        android:name="com.example.myapplication.notes.FragmentNotes"
+        android:name="com.example.myapplication.notes.note.FragmentNotes"
         android:label="FragmentNotes" >
         <action
             android:id="@+id/action_fragmentNotes_to_fragmentNoteAdd"
