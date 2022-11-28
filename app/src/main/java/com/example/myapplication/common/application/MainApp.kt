@@ -4,11 +4,8 @@ import android.app.Application
 
 class MainApp : Application() {
 
-    lateinit var appComponent: AppComponent
-
-    override fun onCreate() {
-        super.onCreate()
-        appComponent = DaggerAppComponent
+    val appComponent: AppComponent by lazy {
+        DaggerAppComponent
             .builder()
             .applicationModule(ApplicationModule(this))
             .build()

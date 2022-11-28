@@ -7,8 +7,8 @@ import javax.inject.Provider
 
 class CommonViewModelFactory (
     private val viewModelProviders: Map<Class<*>, Provider<ViewModel>>
-        ) : ViewModelProvider.Factory {
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T =
         viewModelProviders[modelClass]?.get() as? T
             ?: throw ClassNotFoundException("Зависимость ${modelClass.simpleName} не зарегистрирована")
-        }
+}
