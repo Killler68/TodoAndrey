@@ -1,8 +1,8 @@
 package com.example.myapplication.notes.noteadd.viewmodel
 
-import com.example.myapplication.notes.common.model.NotesData
+import com.example.myapplication.notes.common.model.Notes
 
 interface AddNoteUseCase {
 
-    operator fun invoke(notesData: NotesData)
+    suspend operator fun invoke(notes: Notes)
 }

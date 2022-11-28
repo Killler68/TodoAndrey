@@ -1,8 +1,9 @@
 package com.example.myapplication.notes.noteadd.usecase
 
-import com.example.myapplication.notes.common.model.NotesData
+import com.example.myapplication.common.database.models.NoteData
+import com.example.myapplication.notes.common.model.Notes
 
 interface AddNoteRepository {
 
-    fun addNotes(notesData: NotesData)
+    suspend fun addNotes(noteData: NoteData): Notes
 }

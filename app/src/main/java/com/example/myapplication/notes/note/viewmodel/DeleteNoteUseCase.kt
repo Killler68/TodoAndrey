@@ -1,9 +1,8 @@
 package com.example.myapplication.notes.note.viewmodel
 
-import com.example.myapplication.notes.common.model.NotesData
-import com.example.myapplication.notes.note.usecase.DeleteNoteRepository
+import com.example.myapplication.notes.common.model.Notes
 
 interface DeleteNoteUseCase {
 
-    operator fun invoke(notesData: NotesData)
+    suspend operator fun invoke(id: Int): List<Notes>?
 }

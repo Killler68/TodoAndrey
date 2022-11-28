@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.navigation.NavCommand
 import com.example.myapplication.databinding.FragmentNotesAddBinding
-import com.example.myapplication.notes.common.model.NotesData
+import com.example.myapplication.notes.common.model.Notes
 import com.example.myapplication.notes.noteadd.viewmodel.NoteAddViewModel
 
 
@@ -39,9 +39,10 @@ class FragmentNoteAdd : DialogFragment() {
 
     private fun createNote() {
         binding.buttonAdd.setOnClickListener {
-            val note = NotesData(
+            val note = Notes(
                 title = binding.editNoteTitle.text.toString(),
                 description = binding.editNoteDescription.text.toString(),
+                id = it.id
             )
             viewModel.createNotesData(note)
             viewModel.navigateToNotes()

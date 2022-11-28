@@ -1,6 +1,7 @@
 package com.example.myapplication.notes.noteadd
 
 import androidx.lifecycle.ViewModel
+import com.example.myapplication.notes.common.repository.NotesRepository
 import com.example.myapplication.notes.common.repository.NotesRepositoryImpl
 import com.example.myapplication.notes.noteadd.router.NoteAddRouterImpl
 import com.example.myapplication.notes.noteadd.usecase.AddNoteRepository
@@ -22,10 +23,7 @@ class NoteAddModule {
     fun provideNoteAddRouter(): NoteAddRouter = NoteAddRouterImpl()
 
     @Provides
-    fun provideAddNoteRepository(repository: NotesRepositoryImpl): AddNoteRepository = repository
-
-    @Provides
-    fun provideAddNoteUseCase(repository: AddNoteRepository): AddNoteUseCase =
+    fun provideAddNoteUseCase(repository: NotesRepository): AddNoteUseCase =
         AddNoteUseCaseImpl(repository)
 
     @Provides

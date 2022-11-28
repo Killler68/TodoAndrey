@@ -1,24 +1,50 @@
 package com.example.myapplication.notes.common.repository
 
-import com.example.myapplication.notes.common.model.NotesData
-import com.example.myapplication.notes.note.usecase.DeleteNoteRepository
-import com.example.myapplication.notes.note.usecase.EditingNoteRepository
-import com.example.myapplication.notes.note.usecase.GetNotesRepository
-import com.example.myapplication.notes.noteadd.usecase.AddNoteRepository
+import com.example.myapplication.common.database.NoteDao
+import com.example.myapplication.common.database.tuples.CreateNoteTuple
+import com.example.myapplication.common.database.tuples.DeleteNoteTuple
+import com.example.myapplication.notes.common.model.Notes
+import com.example.myapplication.notes.common.model.toNote
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import timber.log.Timber
 
-class NotesRepositoryImpl : GetNotesRepository,AddNoteRepository, DeleteNoteRepository,
-    EditingNoteRepository {
+class NotesRepositoryImpl(
+    private val noteDao: NoteDao
+) : NotesRepository {
 
-    private val notes: MutableList<NotesData> = mutableListOf()
 
-    override fun getNotes(): List<NotesData> = notes
-    override fun addNotes(notesData: NotesData) {
-        notes.add(notesData)
-    }
+    override suspend fun getNote(id: Int): Notes =
+        withContext(Dispatchers.IO) {
+            val notes = noteDao.getNoteById(id)?.toNote()
+            Timber.i("requested note №$id: $notes")
+            notes ?: throw Exception("Notes $id not found")
+        }
 
-    override fun deleteNote(notesData: NotesData) {
-        notes.remove(notesData)
-    }
+    override suspend fun getNotes(): List<Notes> =
+        withContext(Dispatchers.IO) {
+            val notes = noteDao.getNotes()
+            Timber.i("notes: №${notes.toList()}")
+            noteDao.getNotes().map { it.toNote() }.toList()
+        }
 
-    override fun editingNote(): List<NotesData> = notes
+    override suspend fun addNotes(noteData: Notes): Notes =
+        withContext(Dispatchers.IO) {
+            noteDao.createNote(
+                CreateNoteTuple(
+                    title = noteData.title,
+                    description = noteData.description
+                )
+            )
+            val createdNote = noteDao.getNotes().last().toNote()
+            Timber.i("Created note: $createdNote")
+            createdNote
+        }
+
+    override suspend fun deleteNote(id: Int) =
+        withContext(Dispatchers.IO) {
+            Timber.i("note №$id deleted")
+            noteDao.deleteNote(DeleteNoteTuple(id))
+        }
+
 }

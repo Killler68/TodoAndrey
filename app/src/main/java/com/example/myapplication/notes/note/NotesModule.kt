@@ -1,7 +1,7 @@
 package com.example.myapplication.notes.note
 
 import androidx.lifecycle.ViewModel
-import com.example.myapplication.notes.common.repository.NotesRepositoryImpl
+import com.example.myapplication.notes.common.repository.NotesRepository
 import com.example.myapplication.notes.note.router.NotesRouterImpl
 import com.example.myapplication.notes.note.usecase.*
 import com.example.myapplication.notes.note.viewmodel.*
@@ -9,7 +9,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
-import javax.inject.Singleton
 
 
 @Module
@@ -24,25 +23,12 @@ class NotesModule {
         NotesNoteAddNavigatorUseCaseImpl(router)
 
     @Provides
-    fun provideGetNotesRepository(repository: NotesRepositoryImpl): GetNotesRepository = repository
-
-    @Provides
-    fun provideDeleteNoteRepository(repository: NotesRepositoryImpl): DeleteNoteRepository = repository
-
-    @Provides
-    fun provideEditingNoteRepository(repository: NotesRepositoryImpl): EditingNoteRepository = repository
-
-    @Provides
-    fun provideGetNotesUseCase(repository: GetNotesRepository): GetNotesUseCase =
+    fun provideGetNotesUseCase(repository: NotesRepository): GetNotesUseCase =
         GetNotesUseCaseImpl(repository)
 
     @Provides
-    fun provideDeleteNoteUseCase(repository: DeleteNoteRepository): DeleteNoteUseCase =
+    fun provideDeleteNoteUseCase(repository: NotesRepository): DeleteNoteUseCase =
         DeleteNoteUseCaseImpl(repository)
-
-    @Provides
-    fun provideEditingNoteUseCase(repository: EditingNoteRepository): EditingNoteUseCase =
-        EditingNoteUseCaseImpl(repository)
 
     @Provides
     @IntoMap
@@ -50,12 +36,10 @@ class NotesModule {
     fun getViewModelNotes(
         getNotesUseCase: GetNotesUseCase,
         deleteNoteUseCase: DeleteNoteUseCase,
-        editingNoteUseCase: EditingNoteUseCase,
         navigateToNoteAddUseCase: NotesNoteAddNavigatorUseCase
     ): ViewModel = NotesViewModel(
         getNotesUseCase,
         deleteNoteUseCase,
-        editingNoteUseCase,
         navigateToNoteAddUseCase
     )
 }

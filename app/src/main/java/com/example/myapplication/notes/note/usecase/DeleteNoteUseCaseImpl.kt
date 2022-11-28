@@ -1,9 +1,14 @@
 package com.example.myapplication.notes.note.usecase
 
-import com.example.myapplication.notes.common.model.NotesData
+import com.example.myapplication.notes.common.repository.NotesRepository
 import com.example.myapplication.notes.note.viewmodel.DeleteNoteUseCase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
-class DeleteNoteUseCaseImpl(private val repository: DeleteNoteRepository) : DeleteNoteUseCase {
+class DeleteNoteUseCaseImpl(private val repository: NotesRepository) : DeleteNoteUseCase {
 
-    override fun invoke(notesData: NotesData) = repository.deleteNote(notesData)
+    override suspend fun invoke(id: Int) = withContext(Dispatchers.Default) {
+        repository.deleteNote(id)
+        repository.getNotes()
+    }
 }

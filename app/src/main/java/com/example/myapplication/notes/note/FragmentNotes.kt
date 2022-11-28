@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.navigation.NavCommand
 import com.example.myapplication.databinding.FragmentRecyclerBinding
-import com.example.myapplication.notes.common.model.NotesData
+import com.example.myapplication.notes.common.model.Notes
 import com.example.myapplication.notes.note.viewholder.NotesItem
 import com.example.myapplication.notes.note.viewmodel.NotesViewModel
 import com.mikepenz.fastadapter.GenericFastAdapter
@@ -47,18 +47,12 @@ class FragmentNotes : Fragment() {
     }
 
     private fun setupObservables() {
-        viewModel.model.observe(viewLifecycleOwner, ::onDataLoadedNote)
+        viewModel.models.observe(viewLifecycleOwner, ::onDataLoadedNote)
         viewModel.navCommand.observe(viewLifecycleOwner, ::onDataLoadedNavigate)
     }
 
-    private fun onDataLoadedNote(notesData: List<NotesData>) {
-        FastAdapterDiffUtil[notesItemAdapter] =
-            notesData.map {
-                NotesItem(
-                    it,
-                    viewModel::deleteNoteData
-                )
-            }
+    private fun onDataLoadedNote(notesData: List<NotesItem>) {
+        FastAdapterDiffUtil[notesItemAdapter] = notesData
     }
 
     private fun onDataLoadedNavigate(navCommand: NavCommand) {

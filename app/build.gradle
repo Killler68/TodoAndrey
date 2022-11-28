@@ -76,6 +76,16 @@ dependencies {
     implementation "com.mikepenz:fastadapter-extensions-utils:$fast_adapter_version"
     implementation "com.mikepenz:fastadapter-extensions-diff:$fast_adapter_version"
     implementation "androidx.core:core-ktx:1.8.0"
+    // Room
+    def room_version = "2.4.3"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    // Timber
+    implementation 'com.jakewharton.timber:timber:5.0.1'
 }
 
 
