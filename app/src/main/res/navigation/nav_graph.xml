@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentAuthorization">
+    app:startDestination="@id/fragmentRegistration">
 
     <fragment
         android:id="@+id/fragmentAuthorization"
@@ -29,5 +29,14 @@
         <action
             android:id="@+id/action_fragmentNotes_to_fragmentNoteAdd"
             app:destination="@id/fragmentNoteAdd" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentRegistration"
+        android:name="com.example.myapplication.registration.FragmentRegistration"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_fragmentRegistration_to_fragmentNotes"
+            app:destination="@id/fragmentNotes" />
     </fragment>
 </navigation>

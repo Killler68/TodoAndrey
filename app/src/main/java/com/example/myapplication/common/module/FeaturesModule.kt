@@ -7,6 +7,7 @@ import com.example.myapplication.common.database.DataBaseModule
 import com.example.myapplication.notes.common.NoteModule
 import com.example.myapplication.notes.common.repository.NotesRepositoryImpl
 import com.example.myapplication.notes.noteadd.NoteAddModule
+import com.example.myapplication.registration.RegistrationModule
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -19,7 +20,8 @@ import javax.inject.Singleton
         AuthorizationModule::class,
         NoteAddModule::class,
         NoteModule::class,
-        DataBaseModule::class
+        DataBaseModule::class,
+        RegistrationModule::class
     ]
 )
 class FeaturesModule
