@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.common.navigation.NavCommand
-import com.example.myapplication.notes.common.model.Notes
 import com.example.myapplication.notes.note.viewholder.NotesItem
 import kotlinx.coroutines.launch
 
@@ -15,11 +14,8 @@ class NotesViewModel(
     private val navigatorToNotesAdd: NotesNoteAddNavigatorUseCase
 ) : ViewModel() {
 
-    private val _model: MutableLiveData<List<Notes>> = MutableLiveData()
-    val model: LiveData<List<Notes>> get() = _model
-
-    private val _models: MutableLiveData<List<NotesItem>> = MutableLiveData()
-    val models: LiveData<List<NotesItem>> get() = _models
+    private val _notes: MutableLiveData<List<NotesItem>> = MutableLiveData()
+    val notes: LiveData<List<NotesItem>> get() = _notes
 
     private val _navCommand: MutableLiveData<NavCommand> = MutableLiveData()
     val navCommand: LiveData<NavCommand> get() = _navCommand
@@ -33,14 +29,19 @@ class NotesViewModel(
                     ::deleteNoteData
                 )
             }
-            _models.postValue(items)
+            _notes.postValue(items)
         }
     }
 
     private fun deleteNoteData(id: Int) {
         viewModelScope.launch {
             deleteNote(id)
-            _model.postValue(getNotes())
+            _notes.postValue(getNotes().map {
+                NotesItem(
+                    it,
+                    ::deleteNoteData
+                )
+            })
         }
     }
 

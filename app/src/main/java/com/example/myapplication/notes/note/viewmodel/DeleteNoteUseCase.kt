@@ -4,5 +4,5 @@ import com.example.myapplication.notes.common.model.Notes
 
 interface DeleteNoteUseCase {
 
-    suspend operator fun invoke(id: Int): List<Notes>?
+    suspend operator fun invoke(id: Int): List<Notes>
 }
