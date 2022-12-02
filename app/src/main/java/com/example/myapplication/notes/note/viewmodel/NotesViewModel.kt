@@ -11,7 +11,8 @@ import kotlinx.coroutines.launch
 class NotesViewModel(
     private val getNotes: GetNotesUseCase,
     private val deleteNote: DeleteNoteUseCase,
-    private val navigatorToNotesAdd: NotesNoteAddNavigatorUseCase
+    private val navigatorToNotesAdd: NotesNoteAddNavigatorUseCase,
+    private val navigatorToUser: NotesUserNavigatorUseCase
 ) : ViewModel() {
 
     private val _notes: MutableLiveData<List<NotesItem>> = MutableLiveData()
@@ -47,5 +48,9 @@ class NotesViewModel(
 
     fun navigateToNotesAdd() {
         _navCommand.postValue(navigatorToNotesAdd())
+    }
+
+    fun navigateToUser() {
+        _navCommand.postValue(navigatorToUser())
     }
 }

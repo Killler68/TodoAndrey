@@ -8,4 +8,7 @@ class NotesRouterImpl : NotesRouter {
 
     override fun toNoteAdd(): NavCommand =
         NavCommand(R.id.action_fragmentNotes_to_fragmentNoteAdd)
+
+    override fun toUser(): NavCommand =
+        NavCommand(R.id.action_fragmentNotes_to_fragmentUser)
 }

@@ -36,7 +36,7 @@ class FragmentNotes : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(binding.recycler) {
+        with(binding.recyclerAddNote) {
             adapter = fastAdapter
             itemAnimator = null
         }
@@ -61,6 +61,9 @@ class FragmentNotes : Fragment() {
     private fun setupListeners() {
         binding.addNotes.setOnClickListener {
             viewModel.navigateToNotesAdd()
+        }
+        binding.imageUser.setOnClickListener {
+            viewModel.navigateToUser()
         }
     }
 

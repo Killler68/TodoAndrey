@@ -23,6 +23,10 @@ class NotesModule {
         NotesNoteAddNavigatorUseCaseImpl(router)
 
     @Provides
+    fun provideNotesUserNavigatorUseCase(router: NotesRouter):
+            NotesUserNavigatorUseCase = NotesUserNavigatorUseCaseImpl(router)
+
+    @Provides
     fun provideGetNotesUseCase(repository: NotesRepository): GetNotesUseCase =
         GetNotesUseCaseImpl(repository)
 
@@ -36,10 +40,12 @@ class NotesModule {
     fun getViewModelNotes(
         getNotesUseCase: GetNotesUseCase,
         deleteNoteUseCase: DeleteNoteUseCase,
-        navigateToNoteAddUseCase: NotesNoteAddNavigatorUseCase
+        navigateToNoteAddUseCase: NotesNoteAddNavigatorUseCase,
+        navigateToUserUseCase: NotesUserNavigatorUseCase
     ): ViewModel = NotesViewModel(
         getNotesUseCase,
         deleteNoteUseCase,
-        navigateToNoteAddUseCase
+        navigateToNoteAddUseCase,
+        navigateToUserUseCase
     )
 }

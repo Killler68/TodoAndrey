@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_fragmentNotes_to_fragmentNoteAdd"
             app:destination="@id/fragmentNoteAdd" />
+        <action
+            android:id="@+id/action_fragmentNotes_to_fragmentUser"
+            app:destination="@id/fragmentUser" />
     </fragment>
     <fragment
         android:id="@+id/fragmentRegistration"
@@ -38,5 +41,17 @@
         <action
             android:id="@+id/action_fragmentRegistration_to_fragmentNotes"
             app:destination="@id/fragmentNotes" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentUser"
+        android:name="com.example.myapplication.user.FragmentUser"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_fragmentUser_to_fragmentNotes"
+            app:destination="@id/fragmentNotes" />
+        <action
+            android:id="@+id/action_fragmentUser_to_fragmentAuthorization"
+            app:destination="@id/fragmentAuthorization" />
     </fragment>
 </navigation>
