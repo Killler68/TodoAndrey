@@ -1,4 +1,4 @@
-package com.example.myapplication.common.database.tuples
+package com.example.myapplication.common.database.note.tuples
 
 data class CreateNoteTuple(
     val title: String,

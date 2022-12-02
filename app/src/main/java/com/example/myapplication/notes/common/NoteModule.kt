@@ -1,6 +1,6 @@
 package com.example.myapplication.notes.common
 
-import com.example.myapplication.common.database.NoteDao
+import com.example.myapplication.common.database.note.NoteDao
 import com.example.myapplication.notes.common.repository.NotesRepository
 import com.example.myapplication.notes.common.repository.NotesRepositoryImpl
 import dagger.Module

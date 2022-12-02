@@ -1,8 +1,8 @@
 package com.example.myapplication.notes.common.repository
 
-import com.example.myapplication.common.database.NoteDao
-import com.example.myapplication.common.database.tuples.CreateNoteTuple
-import com.example.myapplication.common.database.tuples.DeleteNoteTuple
+import com.example.myapplication.common.database.note.NoteDao
+import com.example.myapplication.common.database.note.tuples.CreateNoteTuple
+import com.example.myapplication.common.database.note.tuples.DeleteNoteTuple
 import com.example.myapplication.notes.common.model.Notes
 import com.example.myapplication.notes.common.model.toNote
 import kotlinx.coroutines.Dispatchers

@@ -1,12 +1,13 @@
-package com.example.myapplication.common.database
+package com.example.myapplication.common.database.note
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.myapplication.common.database.models.NoteData
-import com.example.myapplication.common.database.tuples.CreateNoteTuple
-import com.example.myapplication.common.database.tuples.DeleteNoteTuple
+import com.example.myapplication.common.database.note.models.NoteData
+import com.example.myapplication.common.database.note.NoteTable
+import com.example.myapplication.common.database.note.tuples.CreateNoteTuple
+import com.example.myapplication.common.database.note.tuples.DeleteNoteTuple
 
 @Dao
 interface NoteDao {

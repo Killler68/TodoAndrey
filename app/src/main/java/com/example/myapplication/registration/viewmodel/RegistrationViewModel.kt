@@ -1,18 +1,24 @@
 package com.example.myapplication.registration.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.myapplication.common.flow.createSharedFlow
 import com.example.myapplication.common.navigation.NavCommand
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.launch
 
 class RegistrationViewModel(
-    private val navigatorToNotes: RegistrationAuthorizationNavigatorUseCase
+    private val createUserUseCase: CreateUserUseCase
 ) : ViewModel() {
 
-    private val _navCommand: MutableLiveData<NavCommand> = MutableLiveData()
-    val navCommand: LiveData<NavCommand> get() = _navCommand
+    private val _navCommand: MutableSharedFlow<NavCommand> = createSharedFlow()
+    val navCommand: SharedFlow<NavCommand> get() = _navCommand.asSharedFlow()
 
-    fun navigateToNotes() {
-        _navCommand.postValue(navigatorToNotes())
+    fun createUser(name: String) {
+        viewModelScope.launch {
+            _navCommand.tryEmit(createUserUseCase(name))
+        }
     }
 }

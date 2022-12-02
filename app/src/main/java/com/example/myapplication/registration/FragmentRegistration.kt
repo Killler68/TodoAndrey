@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.myapplication.common.flow.launchWhenViewCreated
+import com.example.myapplication.common.flow.launchWhenViewStarted
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.navigation.NavCommand
 import com.example.myapplication.databinding.FragmentRegistrationBinding
 import com.example.myapplication.registration.viewmodel.RegistrationViewModel
+import timber.log.Timber
 
 class FragmentRegistration : Fragment() {
 
@@ -35,8 +38,9 @@ class FragmentRegistration : Fragment() {
 
 
     private fun setupObservables() {
-        viewModel.navCommand.observe(viewLifecycleOwner, ::onDataLoaded)
-
+        launchWhenViewCreated {
+            viewModel.navCommand.observe(::onDataLoaded)
+        }
     }
 
     private fun onDataLoaded(navCommand: NavCommand) {
@@ -45,7 +49,10 @@ class FragmentRegistration : Fragment() {
 
     private fun setupListeners() {
         binding.btnCreateUser.setOnClickListener {
-            viewModel.navigateToNotes()
+            if (binding.editNameRegistration.text.toString().isNotBlank())
+                viewModel.createUser(
+                    binding.editNameRegistration.text.toString()
+                )
         }
 
     }

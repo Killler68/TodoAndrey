@@ -1,6 +1,6 @@
 package com.example.myapplication.notes.common.model
 
-import com.example.myapplication.common.database.models.NoteData
+import com.example.myapplication.common.database.note.models.NoteData
 
 data class Notes(
     val id: Int,

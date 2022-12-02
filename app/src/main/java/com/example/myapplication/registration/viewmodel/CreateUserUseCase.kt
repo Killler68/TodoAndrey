@@ -2,7 +2,7 @@ package com.example.myapplication.registration.viewmodel
 
 import com.example.myapplication.common.navigation.NavCommand
 
-interface RegistrationAuthorizationNavigatorUseCase {
+interface CreateUserUseCase {
 
-    operator fun invoke(): NavCommand
+    suspend operator fun invoke(name: String): NavCommand
 }

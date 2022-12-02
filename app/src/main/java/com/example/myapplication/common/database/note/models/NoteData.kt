@@ -1,4 +1,4 @@
-package com.example.myapplication.common.database.models
+package com.example.myapplication.common.database.note.models
 
 data class NoteData(
     val id: Int,
