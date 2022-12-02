@@ -8,6 +8,7 @@ import com.example.myapplication.notes.common.NoteModule
 import com.example.myapplication.notes.note.NotesModule
 import com.example.myapplication.notes.noteadd.NoteAddModule
 import com.example.myapplication.registration.RegistrationModule
+import com.example.myapplication.user.UserScreenModule
 import dagger.Module
 
 
@@ -20,7 +21,8 @@ import dagger.Module
         NoteModule::class,
         DataBaseModule::class,
         RegistrationModule::class,
-        UserModule::class
+        UserModule::class,
+        UserScreenModule::class
     ]
 )
 class FeaturesModule
