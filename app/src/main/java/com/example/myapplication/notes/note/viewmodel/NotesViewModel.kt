@@ -60,8 +60,8 @@ class NotesViewModel(
         }
     }
 
-    fun navigateToNotesAdd() {
-        _navCommand.postValue(navigatorToNotesAdd())
+    fun navigateToNotesAdd(userId: Int) {
+        _navCommand.postValue(navigatorToNotesAdd(userId))
     }
 
     fun navigateToUser(userId: Int) {

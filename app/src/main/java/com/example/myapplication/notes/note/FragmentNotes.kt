@@ -73,7 +73,7 @@ class FragmentNotes : Fragment() {
 
     private fun setupListeners() {
         binding.addNotes.setOnClickListener {
-            viewModel.navigateToNotesAdd()
+            viewModel.navigateToNotesAdd(userId)
         }
         binding.imageUser.setOnClickListener {
             viewModel.navigateToUser(userId)
