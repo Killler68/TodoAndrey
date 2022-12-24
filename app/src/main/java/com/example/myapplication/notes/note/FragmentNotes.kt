@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.myapplication.common.flow.launchWhenViewCreated
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.navigation.NavCommand
+import com.example.myapplication.common.repository.User
+import com.example.myapplication.common.string.USER_ID_KEY
 import com.example.myapplication.databinding.FragmentRecyclerBinding
 import com.example.myapplication.notes.note.viewholder.NotesItem
 import com.example.myapplication.notes.note.viewmodel.NotesViewModel
@@ -27,6 +30,10 @@ class FragmentNotes : Fragment() {
 
     private val viewModel: NotesViewModel by viewModels { getViewModelFactory() }
 
+    private val userId by lazy {
+        requireArguments().getInt(USER_ID_KEY)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,9 +50,11 @@ class FragmentNotes : Fragment() {
         setupObservables()
         setupListeners()
         viewModel.loadNoteData()
+        viewModel.loadUser(userId)
     }
 
     private fun setupObservables() {
+        launchWhenViewCreated { viewModel.user.observe(::onDataLoadedUser) }
         viewModel.notes.observe(viewLifecycleOwner, ::onDataLoadedNote)
         viewModel.navCommand.observe(viewLifecycleOwner, ::onDataLoadedNavigate)
     }
@@ -58,12 +67,16 @@ class FragmentNotes : Fragment() {
         findNavController().navigate(navCommand.action, navCommand.command)
     }
 
+    private fun onDataLoadedUser(user: User) {
+        binding.textNameUserNote.text = user.name
+    }
+
     private fun setupListeners() {
         binding.addNotes.setOnClickListener {
-            viewModel.navigateToNotesAdd()
+            viewModel.navigateToNotesAdd(userId)
         }
         binding.imageUser.setOnClickListener {
-            viewModel.navigateToUser()
+            viewModel.navigateToUser(userId)
         }
     }
 

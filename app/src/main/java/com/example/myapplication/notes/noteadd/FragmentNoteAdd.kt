@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.navigation.NavCommand
+import com.example.myapplication.common.string.USER_ID_KEY
 import com.example.myapplication.databinding.FragmentNotesAddBinding
 import com.example.myapplication.notes.common.model.Notes
 import com.example.myapplication.notes.noteadd.viewmodel.NoteAddViewModel
@@ -20,6 +21,10 @@ class FragmentNoteAdd : DialogFragment() {
     private val binding get() = _binding!!
 
     private val viewModel: NoteAddViewModel by viewModels { getViewModelFactory() }
+
+    private val userId by lazy {
+        requireArguments().getInt(USER_ID_KEY)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +39,7 @@ class FragmentNoteAdd : DialogFragment() {
         createNote()
         setupObservables()
         setupListeners()
-
+        viewModel.loadUser(userId)
     }
 
     private fun createNote() {
@@ -45,7 +50,7 @@ class FragmentNoteAdd : DialogFragment() {
                 id = it.id
             )
             viewModel.createNotesData(note)
-            viewModel.navigateToNotes()
+            viewModel.navigateToNotes(userId)
         }
     }
 
@@ -58,7 +63,7 @@ class FragmentNoteAdd : DialogFragment() {
 
     private fun setupListeners() {
         binding.buttonBack.setOnClickListener {
-            viewModel.navigateToNotes()
+            viewModel.navigateToNotes(userId)
         }
     }
 

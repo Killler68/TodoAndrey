@@ -4,5 +4,5 @@ import com.example.myapplication.common.navigation.NavCommand
 
 interface NotesNoteAddNavigatorUseCase {
 
-    operator fun invoke(): NavCommand
+    operator fun invoke(userId: Int): NavCommand
 }

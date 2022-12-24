@@ -7,7 +7,7 @@ data class User(
     val name: String
 )
 
-val emptyList = User(
+val emptyUser = User(
     0, ""
 )
 

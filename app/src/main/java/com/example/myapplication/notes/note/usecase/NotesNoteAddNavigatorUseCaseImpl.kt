@@ -6,5 +6,5 @@ import com.example.myapplication.notes.note.viewmodel.NotesNoteAddNavigatorUseCa
 class NotesNoteAddNavigatorUseCaseImpl(private val router: NotesRouter) :
     NotesNoteAddNavigatorUseCase {
 
-    override fun invoke(): NavCommand = router.toNoteAdd()
+    override fun invoke(userId: Int): NavCommand = router.toNoteAdd(userId)
 }
