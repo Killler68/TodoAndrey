@@ -1,6 +1,7 @@
 package com.example.myapplication.notes.note
 
 import androidx.lifecycle.ViewModel
+import com.example.myapplication.common.repository.UserRepository
 import com.example.myapplication.notes.common.repository.NotesRepository
 import com.example.myapplication.notes.note.router.NotesRouterImpl
 import com.example.myapplication.notes.note.usecase.*
@@ -13,6 +14,10 @@ import dagger.multibindings.IntoMap
 
 @Module
 class NotesModule {
+
+    @Provides
+    fun provideGetUserUseCase(repository: UserRepository): GetUserUseCase =
+        GetUserUseCaseImpl(repository)
 
     @Provides
     fun provideNotesRouter(): NotesRouter = NotesRouterImpl()
@@ -40,11 +45,13 @@ class NotesModule {
     fun getViewModelNotes(
         getNotesUseCase: GetNotesUseCase,
         deleteNoteUseCase: DeleteNoteUseCase,
+        getUserUseCase: GetUserUseCase,
         navigateToNoteAddUseCase: NotesNoteAddNavigatorUseCase,
         navigateToUserUseCase: NotesUserNavigatorUseCase
     ): ViewModel = NotesViewModel(
         getNotesUseCase,
         deleteNoteUseCase,
+        getUserUseCase,
         navigateToNoteAddUseCase,
         navigateToUserUseCase
     )

@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.myapplication.common.flow.launchWhenViewStarted
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.navigation.NavCommand
+import com.example.myapplication.common.string.USER_ID_KEY
 import com.example.myapplication.databinding.FragmentUserBinding
 import com.example.myapplication.user.pager.adapter.FeaturesAdapter
 import com.example.myapplication.user.pager.model.FeaturesData
@@ -21,6 +23,10 @@ class FragmentUser : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: UserViewModel by viewModels { getViewModelFactory() }
+
+    private val userId by lazy {
+        requireArguments().getInt(USER_ID_KEY)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +46,13 @@ class FragmentUser : Fragment() {
     private fun setupObservables() {
         viewModel.navCommand.observe(viewLifecycleOwner, ::onDataLoadedNavigate)
         viewModel.features.observe(viewLifecycleOwner, ::setOnBoardingFeaturesItems)
+
+        launchWhenViewStarted {
+            viewModel.user.observe {
+                binding.textNameUser.text = it.name
+            }
+            viewModel.getUser(userId)
+        }
     }
 
     private fun onDataLoadedNavigate(navCommand: NavCommand) {

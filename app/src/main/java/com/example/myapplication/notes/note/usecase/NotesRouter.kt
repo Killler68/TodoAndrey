@@ -5,5 +5,5 @@ import com.example.myapplication.common.navigation.NavCommand
 interface NotesRouter {
 
     fun toNoteAdd(): NavCommand
-    fun toUser(): NavCommand
+    fun toUser(userId: Int): NavCommand
 }

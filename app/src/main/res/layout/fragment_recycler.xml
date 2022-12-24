@@ -3,17 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/goldblack">
 
     <ImageView
         android:id="@+id/image_user"
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:src="@mipmap/image_user"
         android:layout_marginTop="10dp"
+        android:src="@mipmap/image_user"
         app:layout_constraintEnd_toStartOf="@+id/text_note"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_name_user_note"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        tools:text="Name"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@+id/text_note"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_user"/>
 
     <TextView
         android:id="@+id/text_note"
@@ -38,7 +52,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_note" />
+        app:layout_constraintTop_toBottomOf="@id/text_name_user_note" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -58,7 +72,6 @@
             app:srcCompat="@android:drawable/ic_input_add"
             app:tint="@color/black" />
     </androidx.cardview.widget.CardView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
