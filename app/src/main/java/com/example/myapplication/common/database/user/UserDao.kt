@@ -17,8 +17,8 @@ interface UserDao {
     @Query("SELECT * FROM users WHERE id = :id")
     suspend fun getUserById(id: Int): UserData?
 
-    @Query("SELECT * FROM users WHERE name = :name")
-    suspend fun getUserByName(name: String): UserData?
+    @Query("SELECT * FROM users WHERE name = :name AND password = :password")
+    suspend fun getUserByNameAndPassword(name: String, password: String): UserData?
 
     @Insert(entity = UserTable::class)
     suspend fun createUser(user: CreateUserTuple): Long

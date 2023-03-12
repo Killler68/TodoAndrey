@@ -17,7 +17,7 @@ class GetUserByNameUseCaseImpl(
     override suspend fun invoke(name: String) {
         withContext(Dispatchers.IO) {
             try {
-                val getUserByName = repository.getUserByName(name)
+                val getUserByName = repository.getUserByNameAndPassword(name)
                 router.navigateTo(Screens.toUser(getUserByName))
             } catch (e: Exception) {
                 toast.show("Неверно введено имя")
