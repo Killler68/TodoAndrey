@@ -44,11 +44,13 @@ class RegistrationFragment : Fragment() {
 
     private fun createUser() {
         binding.btnCreateUser.setOnClickListener {
-            if (binding.editNameRegistration.text.toString().isNotBlank())
+            if (binding.editName.text.toString().isNotBlank() &&
+                binding.editPassword.text.toString().isNotBlank()
+            )
                 viewModel.createUser(
-                    binding.editNameRegistration.text.toString()
+                    binding.editName.text.toString(),
+                    binding.editPassword.text.toString()
                 )
         }
-
     }
 }

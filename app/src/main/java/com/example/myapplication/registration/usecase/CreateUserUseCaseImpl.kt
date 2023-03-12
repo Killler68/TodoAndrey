@@ -12,9 +12,9 @@ class CreateUserUseCaseImpl(
     private val router: Router
 ) : CreateUserUseCase {
 
-    override suspend fun invoke(name: String) =
+    override suspend fun invoke(name: String, password: String) =
         withContext(Dispatchers.Default) {
-            val user = repository.createUser(name)
+            val user = repository.createUser(name, password)
             router.navigateTo(Screens.toUser(user))
         }
 }

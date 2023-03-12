@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@id/registration" />
 
     <EditText
-        android:id="@+id/edit_name_registration"
+        android:id="@+id/edit_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/primary_horizontal_margin"

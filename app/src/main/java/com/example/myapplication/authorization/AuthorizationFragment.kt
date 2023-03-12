@@ -48,8 +48,13 @@ class AuthorizationFragment : Fragment() {
 
     private fun authorizationAccount() {
         binding.signIn.setOnClickListener {
-            if (binding.editLogin.text.toString().isNotBlank()) {
-                viewModel.getUseByName(binding.editLogin.text.toString())
+            if (binding.editLogin.text.toString().isNotBlank() &&
+                binding.editPassword.text.toString().isNotBlank()
+            ) {
+                viewModel.getUseByNameAndPassword(
+                    binding.editLogin.text.toString(),
+                    binding.editPassword.text.toString()
+                )
             }
         }
     }
