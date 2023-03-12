@@ -3,20 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="350dp"
     tools:context=".user.pager.FragmentFeatures">
 
     <TextView
         android:id="@+id/text_title_feature"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
         android:gravity="center"
-        android:text="Какая то особенность"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/image_feature"
+        android:text="@string/title"
+        android:textColor="?attr/primary_text"
+        android:textSize="@dimen/accent_size"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,27 +23,27 @@
         android:id="@+id/text_description_feature"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="Какая то особенность"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toStartOf="@+id/image_feature"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:gravity="start"
+        android:maxLines="2"
+        android:text="@string/description"
+        android:textColor="?attr/secondary_text"
+        android:textSize="@dimen/secondary_size"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_title_feature" />
 
     <ImageView
         android:id="@+id/image_feature"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="200dp"
-        android:scaleType="fitStart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:scaleType="fitCenter"
         android:src="@mipmap/image_note"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/text_description_feature" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
