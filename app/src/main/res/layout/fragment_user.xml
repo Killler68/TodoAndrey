@@ -4,42 +4,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/goldblack"
     tools:context=".user.FragmentUser">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/container_info"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:background="?attr/primary_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image_back_profile"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginHorizontal="@dimen/secondary_horizontal_margin"
+        android:layout_marginTop="@dimen/primary_top_margin"
+        android:src="@drawable/back"
+        app:layout_constraintStart_toStartOf="@+id/container_info"
+        app:layout_constraintTop_toTopOf="@+id/container_info"
+        app:tint="?attr/image" />
+
+    <ImageView
+        android:id="@+id/image_menu_chat"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginHorizontal="@dimen/secondary_horizontal_margin"
+        android:src="@drawable/options"
+        app:layout_constraintBottom_toBottomOf="@+id/image_back_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/image_back_profile"
+        app:tint="?attr/image" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_profile"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="@dimen/secondary_horizontal_margin"
+        android:layout_marginTop="@dimen/primary_top_margin"
+        android:layout_marginBottom="@dimen/primary_bottom_margin"
+        android:backgroundTint="?attr/background_note"
+        android:elevation="12dp"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:thicknessRatio="1.9"
+        app:cardCornerRadius="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/line"
+        app:layout_constraintStart_toStartOf="@+id/container_info"
+        app:layout_constraintTop_toBottomOf="@+id/image_back_profile">
+
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/profile"
+            app:tint="?attr/image" />
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/text_name_user"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="100dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="Имя пользователя"
-        android:textSize="30sp"
-        android:textColor="@color/white"
+        android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+        android:text="@string/name"
+        android:textColor="?attr/primary_text"
+        android:textSize="@dimen/primary_size"
+        app:layout_constraintBottom_toBottomOf="@+id/card_view_profile"
+        app:layout_constraintStart_toEndOf="@+id/card_view_profile"
+        app:layout_constraintTop_toTopOf="@+id/card_view_profile" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="?attr/line"
+        app:layout_constraintBottom_toBottomOf="@id/container_info"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pager_items"
         android:layout_width="0dp"
-        android:layout_height="330dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="350dp"
+        android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
         app:layout_constraintBottom_toTopOf="@+id/btn_tutorials"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_name_user" />
+        app:layout_constraintTop_toBottomOf="@+id/container_info" />
 
     <Button
         android:id="@+id/btn_tutorials"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="60dp"
-        android:backgroundTint="@color/dim_gray"
-        android:text="Инструкция"
-        app:cornerRadius="30dp"
+        android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+        android:layout_marginTop="@dimen/secondary_top_margin"
+        android:backgroundTint="?attr/primary"
+        android:text="@string/manual"
+        android:textColor="?attr/accent_text"
+        android:textSize="@dimen/secondary_size"
+        app:cornerRadius="@dimen/primary_corner_radius"
         app:layout_constraintBottom_toTopOf="@id/btn_delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -48,10 +116,13 @@
         android:id="@+id/btn_delete"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="60dp"
-        android:backgroundTint="@color/dim_gray"
-        android:text="Удалить пользователя"
-        app:cornerRadius="30dp"
+        android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+        android:layout_marginTop="@dimen/secondary_top_margin"
+        android:backgroundTint="?attr/primary"
+        android:text="@string/delete_user"
+        android:textColor="?attr/accent_text"
+        android:textSize="@dimen/secondary_size"
+        app:cornerRadius="@dimen/primary_corner_radius"
         app:layout_constraintBottom_toTopOf="@id/btn_settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -60,26 +131,16 @@
         android:id="@+id/btn_settings"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="60dp"
-        android:backgroundTint="@color/dim_gray"
-        android:text="Настройки"
-        app:cornerRadius="30dp"
-        app:layout_constraintBottom_toTopOf="@id/btn_exit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_exit"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="60dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/dim_gray"
-        android:text="Выход"
-        app:cornerRadius="30dp"
+        android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+        android:layout_marginTop="@dimen/secondary_top_margin"
+        android:layout_marginBottom="@dimen/secondary_bottom_margin"
+        android:backgroundTint="?attr/primary"
+        android:text="@string/exit"
+        android:textColor="?attr/accent_text"
+        android:textSize="@dimen/secondary_size"
+        app:cornerRadius="@dimen/primary_corner_radius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

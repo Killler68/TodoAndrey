@@ -18,4 +18,7 @@
     <string name="name">Name</string>
     <string name="edit_title">Введите заголовок</string>
     <string name="edit_description">Введите заметку</string>
+    <string name="exit">Выход</string>
+    <string name="delete_user">Удалить пользователя</string>
+    <string name="manual">Инструкция</string>
 </resources>
