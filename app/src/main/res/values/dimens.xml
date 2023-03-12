@@ -13,6 +13,7 @@
 
     <dimen name="primary_size">16sp</dimen>
     <dimen name="secondary_size">10sp</dimen>
+    <dimen name="accent_size">20sp</dimen>
 
     <dimen name="primary_corner_radius">15dp</dimen>
 </resources>

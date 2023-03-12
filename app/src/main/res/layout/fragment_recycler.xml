@@ -1,77 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/goldblack">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/container_info"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:backgroundTint="?attr/primary_background"
+        app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/image_user"
         android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp"
-        android:src="@mipmap/image_user"
-        app:layout_constraintEnd_toStartOf="@+id/text_note"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text_name_user_note"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        tools:text="Name"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        app:layout_constraintEnd_toStartOf="@+id/text_note"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_user"/>
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/primary_horizontal_margin"
+        android:src="@drawable/profile"
+        app:layout_constraintBottom_toBottomOf="@+id/container_info"
+        app:layout_constraintStart_toStartOf="@+id/container_info"
+        app:layout_constraintTop_toTopOf="@+id/container_info"
+        app:tint="?attr/image" />
 
     <TextView
         android:id="@+id/text_note"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="100dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="Введите заметку"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+        android:layout_marginEnd="@dimen/primary_horizontal_margin"
+        android:textColor="?attr/primary_text"
+        android:textSize="@dimen/primary_size"
+        app:layout_constraintBottom_toBottomOf="@+id/image_user"
+        app:layout_constraintEnd_toEndOf="@+id/container_info"
+        app:layout_constraintTop_toTopOf="@+id/image_user"
+        tools:text="Введите заметку" />
+
+    <TextView
+        android:id="@+id/text_name_user_note"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/secondary_horizontal_margin"
+        android:ellipsize="end"
+        android:gravity="start"
+        android:maxLines="1"
+        android:text="@string/name"
+        android:textColor="?attr/primary_text"
+        android:textSize="@dimen/accent_size"
+        app:layout_constraintBottom_toBottomOf="@+id/image_user"
+        app:layout_constraintEnd_toStartOf="@+id/text_note"
+        app:layout_constraintStart_toEndOf="@+id/image_user"
+        app:layout_constraintTop_toTopOf="@+id/image_user" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="?attr/line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/container_info" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_add_note"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="@dimen/secondary_horizontal_margin"
+        android:layout_marginTop="@dimen/primary_top_margin"
         android:overScrollMode="never"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_name_user_note" />
+        app:layout_constraintTop_toBottomOf="@+id/container_info" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         app:cardCornerRadius="50dp"
+        app:cardElevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
             android:id="@+id/add_notes"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@color/dim_gray"
-            android:scaleType="fitStart"
-            app:srcCompat="@android:drawable/ic_input_add"
-            app:tint="@color/black" />
-    </androidx.cardview.widget.CardView>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/note" />
 
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
