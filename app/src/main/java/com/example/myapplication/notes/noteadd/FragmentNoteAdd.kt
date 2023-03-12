@@ -9,6 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
+import com.example.myapplication.common.flow.launchWhenViewCreated
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.navigation.NavCommand
 import com.example.myapplication.common.string.USER_ID_KEY
@@ -58,7 +59,9 @@ class FragmentNoteAdd : DialogFragment() {
     }
 
     private fun setupObservables() {
-        viewModel.navCommand.observe(viewLifecycleOwner, ::onDataLoadedNavigate)
+        launchWhenViewCreated {
+            viewModel.navCommand.observe(::onDataLoadedNavigate)
+        }
     }
 
     private fun onDataLoadedNavigate(navCommand: NavCommand) =
