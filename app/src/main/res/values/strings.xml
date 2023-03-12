@@ -16,4 +16,6 @@
     <string name="edit_password">Введите пароль</string>
     <string name="done">Готово</string>
     <string name="name">Name</string>
+    <string name="edit_title">Введите заголовок</string>
+    <string name="edit_description">Введите заметку</string>
 </resources>
