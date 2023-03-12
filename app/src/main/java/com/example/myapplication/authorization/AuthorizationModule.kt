@@ -1,9 +1,13 @@
 package com.example.myapplication.authorization
 
 import androidx.lifecycle.ViewModel
+import com.example.myapplication.authorization.usecase.GetUserByNameUseCaseImpl
 import com.example.myapplication.authorization.usecase.RegistrationNavigatorUseCaseImpl
 import com.example.myapplication.authorization.viewmodel.AuthorizationViewModel
+import com.example.myapplication.authorization.viewmodel.GetUserByNameUseCase
 import com.example.myapplication.authorization.viewmodel.RegistrationNavigatorUseCase
+import com.example.myapplication.common.repository.UserRepository
+import com.example.myapplication.common.string.toast.ToastFactory
 import com.github.terrakok.cicerone.Router
 import dagger.Module
 import dagger.Provides
@@ -18,12 +22,25 @@ class AuthorizationModule {
         RegistrationNavigatorUseCaseImpl(router)
 
     @Provides
+    fun provideGetUserByName(
+        router: Router,
+        userRepository: UserRepository,
+        toastFactory: ToastFactory
+    ): GetUserByNameUseCase = GetUserByNameUseCaseImpl(
+        router,
+        userRepository,
+        toastFactory
+    )
+
+    @Provides
     @IntoMap
     @ClassKey(AuthorizationViewModel::class)
     fun provideAuthorizationViewModel(
-        navigatorToRegistrationUseCase: RegistrationNavigatorUseCase
+        navigatorToRegistrationUseCase: RegistrationNavigatorUseCase,
+        getUserByNameUseCase: GetUserByNameUseCase
     ): ViewModel =
         AuthorizationViewModel(
-            navigatorToRegistrationUseCase
+            navigatorToRegistrationUseCase,
+            getUserByNameUseCase
         )
 }
