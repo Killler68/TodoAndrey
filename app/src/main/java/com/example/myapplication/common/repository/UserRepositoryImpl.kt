@@ -16,6 +16,13 @@ class UserRepositoryImpl(private val userDao: UserDao) : UserRepository {
             user ?: throw Exception("User $id not found")
         }
 
+    override suspend fun getUserByName(name: String): User =
+        withContext(Dispatchers.IO) {
+            val userByName = userDao.getUserByName(name)?.toUser()
+            Timber.i("request user №$name: $userByName")
+            userByName ?: throw Exception("User $name not found")
+        }
+
 
     override suspend fun getUsers(): List<User> =
         withContext(Dispatchers.IO) {

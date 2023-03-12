@@ -33,11 +33,24 @@ class AuthorizationFragment : Fragment() {
     }
 
     private fun setupListeners() {
+        authorizationAccount()
+        onClick()
+    }
+
+    private fun onClick() {
         clickableText(
             "Нет учетной записи? Зарегистрироваться",
             "Зарегистрироваться",
             viewModel::navigateToNotes,
             binding.navigateRegistration
         )
+    }
+
+    private fun authorizationAccount() {
+        binding.signIn.setOnClickListener {
+            if (binding.editLogin.text.toString().isNotBlank()) {
+                viewModel.getUseByName(binding.editLogin.text.toString())
+            }
+        }
     }
 }
