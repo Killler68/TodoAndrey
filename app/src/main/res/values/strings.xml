@@ -21,4 +21,5 @@
     <string name="exit">Выход</string>
     <string name="delete_user">Удалить пользователя</string>
     <string name="manual">Инструкция</string>
+    <string name="start">Начать</string>
 </resources>
