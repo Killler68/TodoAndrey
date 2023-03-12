@@ -5,22 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.myapplication.R
+import androidx.fragment.app.viewModels
+import com.example.myapplication.common.fragment.getViewModelFactory
+import com.example.myapplication.databinding.FragmentStartBinding
+import com.example.myapplication.start.viewmodel.StartViewModel
 
 
 class StartFragment : Fragment() {
 
+    private val viewModel: StartViewModel by viewModels { getViewModelFactory() }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_start, container, false)
-    }
+    ): View = FragmentStartBinding.inflate(inflater, container, false).root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.checkLocale()
     }
-
 }
