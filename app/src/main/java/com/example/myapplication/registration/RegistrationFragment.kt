@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.myapplication.common.extensions.clickableText
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.databinding.FragmentRegistrationBinding
 import com.example.myapplication.registration.viewmodel.RegistrationViewModel
@@ -28,6 +29,16 @@ class RegistrationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         createUser()
+        setupListeners()
+    }
+
+    private fun setupListeners() {
+        clickableText(
+            "Уже есть учетная запись RuChat? Войти",
+            "Войти",
+            viewModel::navigateToAuthorization,
+            binding.navigateAuthorization
+        )
     }
 
 

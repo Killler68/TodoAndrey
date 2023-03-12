@@ -1,5 +1,6 @@
 package com.example.myapplication.common.navigation
 
+import com.example.myapplication.authorization.AuthorizationFragment
 import com.example.myapplication.common.repository.User
 import com.example.myapplication.notes.note.NotesFragment
 import com.example.myapplication.notes.noteadd.NoteAddFragment
@@ -13,4 +14,5 @@ object Screens {
     fun toNotes(userId: Int) = FragmentScreen { NotesFragment.newInstance(userId) }
     fun toNoteAdd(userId: Int) = FragmentScreen { NoteAddFragment.newInstance(userId) }
     fun toUser(user: User) = FragmentScreen { UserFragment.newInstance(user) }
+    fun toAuthorization() = FragmentScreen { AuthorizationFragment() }
 }
