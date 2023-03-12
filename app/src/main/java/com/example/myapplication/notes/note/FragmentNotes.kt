@@ -43,20 +43,22 @@ class FragmentNotes : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(binding.recyclerAddNote) {
-            adapter = fastAdapter
-            itemAnimator = null
-        }
+
         setupObservables()
         setupListeners()
-        viewModel.loadNoteData()
+        setupFastAdapter()
+        viewModel.loadNotes()
         viewModel.loadUser(userId)
     }
 
     private fun setupObservables() {
-        launchWhenViewCreated { viewModel.user.observe(::onDataLoadedUser) }
-        viewModel.notes.observe(viewLifecycleOwner, ::onDataLoadedNote)
-        viewModel.navCommand.observe(viewLifecycleOwner, ::onDataLoadedNavigate)
+        launchWhenViewCreated {
+            with(viewModel) {
+                user.observe(::onDataLoadedUser)
+                notes.observe(::onDataLoadedNote)
+                navCommand.observe(::onDataLoadedNavigate)
+            }
+        }
     }
 
     private fun onDataLoadedNote(notesData: List<NotesItem>) {
@@ -77,6 +79,13 @@ class FragmentNotes : Fragment() {
         }
         binding.imageUser.setOnClickListener {
             viewModel.navigateToUser(userId)
+        }
+    }
+
+    private fun setupFastAdapter() {
+        with(binding.recyclerAddNote) {
+            adapter = fastAdapter
+            itemAnimator = null
         }
     }
 

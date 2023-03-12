@@ -9,8 +9,7 @@ import com.mikepenz.fastadapter.binding.AbstractBindingItem
 
 class NotesItem(
     private val notes: Notes,
-    private val onClickDelete: (Int) -> Unit,
-//  private val onClickEditing: (NotesData) -> Unit
+    private val onClickDelete: (Int) -> Unit
 ) : AbstractBindingItem<FragmentItemBinding>() {
 
     override fun bindView(binding: FragmentItemBinding, payloads: List<Any>) {
@@ -21,9 +20,6 @@ class NotesItem(
         binding.removeNotes.setOnClickListener {
             onClickDelete(notes.id)
         }
-//        binding.editingNotes.setOnClickListener {
-//            onClickEditing(notesData)
-//        }
     }
 
     override fun createBinding(inflater: LayoutInflater, parent: ViewGroup?): FragmentItemBinding =
