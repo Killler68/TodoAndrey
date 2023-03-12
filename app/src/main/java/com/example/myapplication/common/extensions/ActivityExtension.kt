@@ -1,8 +1,10 @@
-package com.example.myapplication.common.activity
+package com.example.myapplication.common.extensions
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
+import com.example.myapplication.common.context.appComponent
 
 fun AppCompatActivity.navigateToFragmentActivity(fragment: Fragment) {
     supportFragmentManager.beginTransaction()
@@ -10,3 +12,6 @@ fun AppCompatActivity.navigateToFragmentActivity(fragment: Fragment) {
         .commit()
 
 }
+
+fun Activity.getViewModelFactory() =
+    applicationContext.appComponent.getViewModelFactory()

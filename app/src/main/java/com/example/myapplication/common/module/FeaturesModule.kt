@@ -1,8 +1,10 @@
 package com.example.myapplication.common.module
 
 import com.example.myapplication.authorization.AuthorizationModule
+import com.example.myapplication.common.activity.ActivityModule
 import com.example.myapplication.common.application.ApplicationModule
 import com.example.myapplication.common.database.DataBaseModule
+import com.example.myapplication.common.navigation.NavigationModule
 import com.example.myapplication.common.repository.UserModule
 import com.example.myapplication.notes.common.NoteModule
 import com.example.myapplication.notes.note.NotesModule
@@ -14,6 +16,8 @@ import dagger.Module
 
 @Module(
     includes = [
+        ActivityModule::class,
+        NavigationModule::class,
         NotesModule::class,
         ApplicationModule::class,
         AuthorizationModule::class,
