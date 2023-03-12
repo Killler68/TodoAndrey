@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="?attr/primary_background"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/primary_background">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/container_info"
@@ -20,24 +20,12 @@
         android:id="@+id/image_user"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginStart="@dimen/primary_horizontal_margin"
+        android:layout_marginStart="@dimen/secondary_horizontal_margin"
         android:src="@drawable/profile"
         app:layout_constraintBottom_toBottomOf="@+id/container_info"
         app:layout_constraintStart_toStartOf="@+id/container_info"
         app:layout_constraintTop_toTopOf="@+id/container_info"
         app:tint="?attr/image" />
-
-    <TextView
-        android:id="@+id/text_note"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/primary_horizontal_margin"
-        android:textColor="?attr/primary_text"
-        android:textSize="@dimen/primary_size"
-        app:layout_constraintBottom_toBottomOf="@+id/image_user"
-        app:layout_constraintEnd_toEndOf="@+id/container_info"
-        app:layout_constraintTop_toTopOf="@+id/image_user"
-        tools:text="Введите заметку" />
 
     <TextView
         android:id="@+id/text_name_user_note"
@@ -51,7 +39,7 @@
         android:textColor="?attr/primary_text"
         android:textSize="@dimen/accent_size"
         app:layout_constraintBottom_toBottomOf="@+id/image_user"
-        app:layout_constraintEnd_toStartOf="@+id/text_note"
+        app:layout_constraintEnd_toEndOf="@id/container_info"
         app:layout_constraintStart_toEndOf="@+id/image_user"
         app:layout_constraintTop_toTopOf="@+id/image_user" />
 
@@ -60,9 +48,9 @@
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="?attr/line"
+        app:layout_constraintBottom_toBottomOf="@+id/container_info"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/container_info" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_add_note"
@@ -73,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/container_info"
-        tools:listitem="@layout/fragment_item"/>
+        tools:listitem="@layout/fragment_item" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="60dp"
