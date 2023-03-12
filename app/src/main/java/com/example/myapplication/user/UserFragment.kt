@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -72,6 +73,14 @@ class UserFragment : Fragment() {
         val hotSalesOnBoardingAdapter = FeaturesAdapter(this)
         hotSalesOnBoardingAdapter.setItems(featuresData.map { it.id })
         binding.pagerFeatures.adapter = hotSalesOnBoardingAdapter
+    }
+
+    companion object {
+        fun newInstance(userId: Int): UserFragment {
+            val fragment = UserFragment()
+            fragment.arguments = bundleOf(USER_ID_KEY to userId)
+            return fragment
+        }
     }
 
     override fun onDestroyView() {

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -80,6 +81,14 @@ class NoteAddFragment : DialogFragment() {
     }
 
     override fun getTheme(): Int = R.style.RoundedCornersDialog
+
+    companion object {
+        fun newInstance(userId: Int): NoteAddFragment {
+            val fragment = NoteAddFragment()
+            fragment.arguments = bundleOf(USER_ID_KEY to userId)
+            return fragment
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
