@@ -34,7 +34,7 @@ class RegistrationFragment : Fragment() {
 
     private fun setupListeners() {
         clickableText(
-            "Уже есть учетная запись RuChat? Войти",
+            "Уже есть учетная запись? Войти",
             "Войти",
             viewModel::navigateToAuthorization,
             binding.navigateAuthorization

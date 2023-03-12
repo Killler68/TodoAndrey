@@ -1,11 +1,10 @@
 package com.example.myapplication.authorization
 
 import androidx.lifecycle.ViewModel
-import com.example.myapplication.authorization.router.AuthorizationRouterImpl
-import com.example.myapplication.authorization.usecase.AuthorizationNotesNavigatorUseCaseImpl
-import com.example.myapplication.authorization.usecase.AuthorizationRouter
-import com.example.myapplication.authorization.viewmodel.AuthorizationNotesNavigatorUseCase
+import com.example.myapplication.authorization.usecase.RegistrationNavigatorUseCaseImpl
 import com.example.myapplication.authorization.viewmodel.AuthorizationViewModel
+import com.example.myapplication.authorization.viewmodel.RegistrationNavigatorUseCase
+import com.github.terrakok.cicerone.Router
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.ClassKey
@@ -15,20 +14,16 @@ import dagger.multibindings.IntoMap
 class AuthorizationModule {
 
     @Provides
-    fun provideAuthorizationRouter(): AuthorizationRouter = AuthorizationRouterImpl()
-
-    @Provides
-    fun provideAuthorizationNotesNavigatorUseCase(router: AuthorizationRouter):
-            AuthorizationNotesNavigatorUseCase =
-        AuthorizationNotesNavigatorUseCaseImpl(router)
+    fun provideRegistrationNavigatorUseCase(router: Router): RegistrationNavigatorUseCase =
+        RegistrationNavigatorUseCaseImpl(router)
 
     @Provides
     @IntoMap
     @ClassKey(AuthorizationViewModel::class)
     fun provideAuthorizationViewModel(
-        navigateToNotesUseCase: AuthorizationNotesNavigatorUseCase
+        navigatorToRegistrationUseCase: RegistrationNavigatorUseCase
     ): ViewModel =
         AuthorizationViewModel(
-            navigateToNotesUseCase
+            navigatorToRegistrationUseCase
         )
 }
