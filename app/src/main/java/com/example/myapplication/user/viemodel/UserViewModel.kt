@@ -1,15 +1,14 @@
 package com.example.myapplication.user.viemodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.common.navigation.NavCommand
 import com.example.myapplication.common.repository.emptyUser
 import com.example.myapplication.user.pager.model.FeaturesData
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+
+private val emptyFeaturesData = FeaturesData(id = 0, title = "", description = "", image = 0)
 
 class UserViewModel(
     private val getFeature: FeatureUseCase,
@@ -21,15 +20,14 @@ class UserViewModel(
     private val _users = MutableStateFlow(emptyUser)
     val user get() = _users.asStateFlow()
 
-    private val _feature: MutableLiveData<FeaturesData> = MutableLiveData()
-    val feature: LiveData<FeaturesData> get() = _feature
+    private val _feature: MutableStateFlow<FeaturesData> = MutableStateFlow(emptyFeaturesData)
+    val feature: StateFlow<FeaturesData> get() = _feature.asStateFlow()
 
-    private val _features: MutableLiveData<List<FeaturesData>> = MutableLiveData()
-    val features: LiveData<List<FeaturesData>> get() = _features
+    private val _features: MutableStateFlow<List<FeaturesData>> = MutableStateFlow(emptyList())
+    val features: StateFlow<List<FeaturesData>> get() = _features.asStateFlow()
 
-    private val _navCommand: MutableLiveData<NavCommand> = MutableLiveData()
-    val navCommand: LiveData<NavCommand> = _navCommand
-
+    private val _navCommand: MutableSharedFlow<NavCommand> = MutableSharedFlow()
+    val navCommand: SharedFlow<NavCommand> = _navCommand.asSharedFlow()
 
     fun getUser(id: Int) {
         viewModelScope.launch {
@@ -37,15 +35,9 @@ class UserViewModel(
         }
     }
 
-    fun loadFeature(id: Int) {
-        _feature.postValue(getFeature(id))
-    }
+    fun loadFeature(id: Int) = _feature.tryEmit(getFeature(id))
 
-    fun loadFeatures() {
-        _features.postValue(getFeatures())
-    }
+    fun loadFeatures() = _features.tryEmit(getFeatures())
 
-    fun navigateToNotes() {
-        _navCommand.postValue(navigatorToNotes())
-    }
+    fun navigateToNotes() = _navCommand.tryEmit(navigatorToNotes())
 }

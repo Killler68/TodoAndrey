@@ -8,6 +8,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.example.myapplication.common.flow.launchWhenViewCreated
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.databinding.FragmentFeaturesBinding
 import com.example.myapplication.user.pager.model.FeaturesData
@@ -15,7 +16,7 @@ import com.example.myapplication.user.viemodel.UserViewModel
 
 const val FEATURES_ID_KEY = "FEATURES_ID_KEY"
 
-class FragmentFeatures : Fragment() {
+class FeaturesFragment : Fragment() {
 
     private var _binding: FragmentFeaturesBinding? = null
     private val binding get() = _binding!!
@@ -41,12 +42,14 @@ class FragmentFeatures : Fragment() {
     }
 
     private fun setupObservables() {
-        viewModel.feature.observe(viewLifecycleOwner, ::onDataLoaded)
+        launchWhenViewCreated {
+            viewModel.feature.observe(::onDataLoaded)
+        }
     }
 
     private fun onDataLoaded(featuresData: FeaturesData) {
-        binding.textTitleFeature.text = featuresData.title
-        binding.textDescriptionFeature.text = featuresData.description
+        binding.title.text = featuresData.title
+        binding.description.text = featuresData.description
 
         Glide
             .with(requireView())
@@ -55,8 +58,8 @@ class FragmentFeatures : Fragment() {
     }
 
     companion object {
-        fun create(id: Int): FragmentFeatures {
-            val fragment = FragmentFeatures()
+        fun create(id: Int): FeaturesFragment {
+            val fragment = FeaturesFragment()
             fragment.arguments = bundleOf(FEATURES_ID_KEY to id)
             return fragment
         }

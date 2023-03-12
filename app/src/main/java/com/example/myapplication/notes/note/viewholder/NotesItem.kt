@@ -3,31 +3,30 @@ package com.example.myapplication.notes.note.viewholder
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.myapplication.R
-import com.example.myapplication.databinding.FragmentItemBinding
+import com.example.myapplication.databinding.RecyclerItemNoteBinding
 import com.example.myapplication.notes.common.model.Notes
 import com.mikepenz.fastadapter.binding.AbstractBindingItem
 
 class NotesItem(
     private val notes: Notes,
-    private val onClickDelete: (Int) -> Unit,
-//  private val onClickEditing: (NotesData) -> Unit
-) : AbstractBindingItem<FragmentItemBinding>() {
+    private val onClickDelete: (Int) -> Unit
+) : AbstractBindingItem<RecyclerItemNoteBinding>() {
 
-    override fun bindView(binding: FragmentItemBinding, payloads: List<Any>) {
+    override fun bindView(binding: RecyclerItemNoteBinding, payloads: List<Any>) {
         super.bindView(binding, payloads)
 
-        binding.textTitle.text = notes.title
-        binding.textDescription.text = notes.description
+        binding.title.text = notes.title
+        binding.description.text = notes.description
         binding.removeNotes.setOnClickListener {
             onClickDelete(notes.id)
         }
-//        binding.editingNotes.setOnClickListener {
-//            onClickEditing(notesData)
-//        }
     }
 
-    override fun createBinding(inflater: LayoutInflater, parent: ViewGroup?): FragmentItemBinding =
-        FragmentItemBinding.inflate(inflater, parent, false)
+    override fun createBinding(
+        inflater: LayoutInflater,
+        parent: ViewGroup?
+    ): RecyclerItemNoteBinding =
+        RecyclerItemNoteBinding.inflate(inflater, parent, false)
 
     override val type: Int = R.id.background_card_view
 }

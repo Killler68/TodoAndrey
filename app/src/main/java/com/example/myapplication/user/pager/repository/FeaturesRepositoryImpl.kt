@@ -19,9 +19,9 @@ private val testFeatures = listOf(
     FeaturesData(
         0,
         "Заметка",
-        "Заметка - газетный жанр, краткое сообщение, в котором излагается какой-либо факт или ставится конкретный вопрос. ",
+        "Заметка - краткое сообщение, в котором излагается какой-либо факт или ставится конкретный вопрос. ",
         R.mipmap.image_note
     ),
-    FeaturesData(1, "Hi", "", R.mipmap.image_note),
-    FeaturesData(2, "Привет", "", R.mipmap.image_note),
+    FeaturesData(1, "Тест", "Тестовое описание", R.mipmap.image_note),
+    FeaturesData(2, "Тест 2", "Тестовое описание 2", R.mipmap.image_note),
 )

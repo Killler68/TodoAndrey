@@ -12,7 +12,7 @@
         android:background="?attr/background_note">
 
         <TextView
-            android:id="@+id/text_title"
+            android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/secondary_horizontal_margin"
@@ -26,7 +26,7 @@
             tools:ignore="RtlSymmetry" />
 
         <TextView
-            android:id="@+id/text_description"
+            android:id="@+id/description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/secondary_horizontal_margin"
@@ -36,7 +36,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/editing_notes"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_title" />
+            app:layout_constraintTop_toBottomOf="@+id/title" />
 
         <ImageView
             android:id="@+id/remove_notes"

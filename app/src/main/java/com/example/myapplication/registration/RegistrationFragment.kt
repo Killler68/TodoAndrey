@@ -8,14 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.common.flow.launchWhenViewCreated
-import com.example.myapplication.common.flow.launchWhenViewStarted
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.navigation.NavCommand
 import com.example.myapplication.databinding.FragmentRegistrationBinding
 import com.example.myapplication.registration.viewmodel.RegistrationViewModel
-import timber.log.Timber
 
-class FragmentRegistration : Fragment() {
+class RegistrationFragment : Fragment() {
 
     private var _binding: FragmentRegistrationBinding? = null
     private val binding get() = _binding!!

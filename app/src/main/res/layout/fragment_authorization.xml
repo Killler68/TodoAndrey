@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/primary_background"
-    tools:context=".authorization.FragmentAuthorization">
+    tools:context=".authorization.AuthorizationFragment">
 
     <TextView
-        android:id="@+id/text_start"
+        android:id="@+id/greetings"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
@@ -34,10 +34,10 @@
         android:textSize="@dimen/primary_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_start" />
+        app:layout_constraintTop_toBottomOf="@+id/greetings" />
 
     <EditText
-        android:id="@+id/enter_login"
+        android:id="@+id/edit_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
@@ -48,12 +48,12 @@
         android:textColor="?attr/primary_text"
         android:textColorHint="?attr/secondary_text"
         android:textSize="@dimen/primary_size"
-        app:layout_constraintBottom_toTopOf="@+id/enter_password"
+        app:layout_constraintBottom_toTopOf="@+id/edit_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/enter_password"
+        android:id="@+id/edit_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/primary_horizontal_margin"

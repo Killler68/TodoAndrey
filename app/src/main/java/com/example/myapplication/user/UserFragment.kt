@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.myapplication.common.flow.launchWhenViewStarted
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.navigation.NavCommand
+import com.example.myapplication.common.repository.User
 import com.example.myapplication.common.string.USER_ID_KEY
 import com.example.myapplication.databinding.FragmentUserBinding
 import com.example.myapplication.user.pager.adapter.FeaturesAdapter
@@ -17,7 +18,7 @@ import com.example.myapplication.user.pager.model.FeaturesData
 import com.example.myapplication.user.viemodel.UserViewModel
 
 
-class FragmentUser : Fragment() {
+class UserFragment : Fragment() {
 
     private var _binding: FragmentUserBinding? = null
     private val binding get() = _binding!!
@@ -41,18 +42,19 @@ class FragmentUser : Fragment() {
         setupObservables()
         setupListeners()
         viewModel.loadFeatures()
+        viewModel.getUser(userId)
     }
 
     private fun setupObservables() {
-        viewModel.navCommand.observe(viewLifecycleOwner, ::onDataLoadedNavigate)
-        viewModel.features.observe(viewLifecycleOwner, ::setOnBoardingFeaturesItems)
-
         launchWhenViewStarted {
-            viewModel.user.observe {
-                binding.textNameUser.text = it.name
-            }
-            viewModel.getUser(userId)
+            viewModel.user.observe(::onDataLoadedUser)
+            viewModel.features.observe(::setOnBoardingFeaturesItems)
+            viewModel.navCommand.observe(::onDataLoadedNavigate)
         }
+    }
+
+    private fun onDataLoadedUser(user: User) {
+        binding.nameUser.text = user.name
     }
 
     private fun onDataLoadedNavigate(navCommand: NavCommand) {
@@ -61,7 +63,7 @@ class FragmentUser : Fragment() {
     }
 
     private fun setupListeners() {
-        binding.pagerItems.setOnClickListener {
+        binding.pagerFeatures.setOnClickListener {
             viewModel.navigateToNotes()
         }
     }
@@ -69,7 +71,7 @@ class FragmentUser : Fragment() {
     private fun setOnBoardingFeaturesItems(featuresData: List<FeaturesData>) {
         val hotSalesOnBoardingAdapter = FeaturesAdapter(this)
         hotSalesOnBoardingAdapter.setItems(featuresData.map { it.id })
-        binding.pagerItems.adapter = hotSalesOnBoardingAdapter
+        binding.pagerFeatures.adapter = hotSalesOnBoardingAdapter
     }
 
     override fun onDestroyView() {

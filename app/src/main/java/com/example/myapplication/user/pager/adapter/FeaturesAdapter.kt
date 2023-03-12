@@ -2,7 +2,7 @@ package com.example.myapplication.user.pager.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.myapplication.user.pager.FragmentFeatures
+import com.example.myapplication.user.pager.FeaturesFragment
 
 class FeaturesAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
@@ -13,7 +13,7 @@ class FeaturesAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
     }
 
     override fun createFragment(position: Int): Fragment {
-        return FragmentFeatures.create(items[position])
+        return FeaturesFragment.create(items[position])
     }
 
     fun setItems(item: List<Int>) {
