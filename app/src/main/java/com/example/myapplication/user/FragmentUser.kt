@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.myapplication.common.flow.launchWhenViewStarted
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.navigation.NavCommand
+import com.example.myapplication.common.repository.User
 import com.example.myapplication.common.string.USER_ID_KEY
 import com.example.myapplication.databinding.FragmentUserBinding
 import com.example.myapplication.user.pager.adapter.FeaturesAdapter
@@ -41,18 +42,19 @@ class FragmentUser : Fragment() {
         setupObservables()
         setupListeners()
         viewModel.loadFeatures()
+        viewModel.getUser(userId)
     }
 
     private fun setupObservables() {
-        viewModel.navCommand.observe(viewLifecycleOwner, ::onDataLoadedNavigate)
-        viewModel.features.observe(viewLifecycleOwner, ::setOnBoardingFeaturesItems)
-
         launchWhenViewStarted {
-            viewModel.user.observe {
-                binding.textNameUser.text = it.name
-            }
-            viewModel.getUser(userId)
+            viewModel.user.observe(::onDataLoadedUser)
+            viewModel.features.observe(::setOnBoardingFeaturesItems)
+            viewModel.navCommand.observe(::onDataLoadedNavigate)
         }
+    }
+
+    private fun onDataLoadedUser(user: User) {
+        binding.textNameUser.text = user.name
     }
 
     private fun onDataLoadedNavigate(navCommand: NavCommand) {
