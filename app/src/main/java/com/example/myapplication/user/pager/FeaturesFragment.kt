@@ -48,8 +48,8 @@ class FragmentFeatures : Fragment() {
     }
 
     private fun onDataLoaded(featuresData: FeaturesData) {
-        binding.textTitleFeature.text = featuresData.title
-        binding.textDescriptionFeature.text = featuresData.description
+        binding.title.text = featuresData.title
+        binding.description.text = featuresData.description
 
         Glide
             .with(requireView())

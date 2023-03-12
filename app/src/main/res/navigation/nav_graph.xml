@@ -17,7 +17,7 @@
         android:id="@+id/fragmentNoteAdd"
         android:name="com.example.myapplication.notes.noteadd.NoteAddFragment"
         android:label="fragment_notes_add"
-        tools:layout="@layout/fragment_notes_add" >
+        tools:layout="@layout/fragment_dialog_note_add" >
         <action
             android:id="@+id/action_fragmentNoteAdd_to_fragmentNotes"
             app:destination="@id/fragmentNotes" />

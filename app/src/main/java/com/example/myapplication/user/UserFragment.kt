@@ -54,7 +54,7 @@ class UserFragment : Fragment() {
     }
 
     private fun onDataLoadedUser(user: User) {
-        binding.textNameUser.text = user.name
+        binding.nameUser.text = user.name
     }
 
     private fun onDataLoadedNavigate(navCommand: NavCommand) {
@@ -63,7 +63,7 @@ class UserFragment : Fragment() {
     }
 
     private fun setupListeners() {
-        binding.pagerItems.setOnClickListener {
+        binding.pagerFeatures.setOnClickListener {
             viewModel.navigateToNotes()
         }
     }
@@ -71,7 +71,7 @@ class UserFragment : Fragment() {
     private fun setOnBoardingFeaturesItems(featuresData: List<FeaturesData>) {
         val hotSalesOnBoardingAdapter = FeaturesAdapter(this)
         hotSalesOnBoardingAdapter.setItems(featuresData.map { it.id })
-        binding.pagerItems.adapter = hotSalesOnBoardingAdapter
+        binding.pagerFeatures.adapter = hotSalesOnBoardingAdapter
     }
 
     override fun onDestroyView() {

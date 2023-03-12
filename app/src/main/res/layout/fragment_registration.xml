@@ -29,7 +29,7 @@
         android:layout_marginTop="@dimen/primary_top_margin"
         android:gravity="center"
         android:lineSpacingExtra="5dp"
-        android:text="Уже есть учетная запись? Войти"
+        tools:text="Уже есть учетная запись? Войти"
         android:textColor="?attr/secondary_text"
         android:textSize="@dimen/primary_size"
         app:layout_constraintEnd_toEndOf="parent"

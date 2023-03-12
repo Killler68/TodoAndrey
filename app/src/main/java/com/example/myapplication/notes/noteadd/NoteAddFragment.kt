@@ -13,14 +13,14 @@ import com.example.myapplication.common.flow.launchWhenViewCreated
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.navigation.NavCommand
 import com.example.myapplication.common.string.USER_ID_KEY
-import com.example.myapplication.databinding.FragmentNotesAddBinding
+import com.example.myapplication.databinding.FragmentDialogNoteAddBinding
 import com.example.myapplication.notes.common.model.Notes
 import com.example.myapplication.notes.noteadd.viewmodel.NoteAddViewModel
 
 
 class NoteAddFragment : DialogFragment() {
 
-    private var _binding: FragmentNotesAddBinding? = null
+    private var _binding: FragmentDialogNoteAddBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: NoteAddViewModel by viewModels { getViewModelFactory() }
@@ -32,7 +32,7 @@ class NoteAddFragment : DialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = FragmentNotesAddBinding.inflate(inflater, container, false)
+    ): View = FragmentDialogNoteAddBinding.inflate(inflater, container, false)
         .also { _binding = it }
         .root
 
