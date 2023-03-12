@@ -10,7 +10,7 @@
         <attr name="primary_background" format="color" />
         <attr name="secondary_background" format="color" />
 
-        <attr name="background_chats" format="color" />
+        <attr name="background_note" format="color" />
 
         <attr name="line" format="color" />
 

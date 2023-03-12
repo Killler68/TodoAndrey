@@ -32,4 +32,7 @@
     <color name="secondary_dark_text">#808080</color>
 
     <color name="accent_text">#FFFFFFFF</color>
+
+    <color name="light_background_note">#FFFFFF</color>
+    <color name="dark_background_note">#100F0F</color>
 </resources>
