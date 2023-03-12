@@ -2,20 +2,21 @@ package com.example.myapplication.notes.note.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myapplication.common.flow.createSharedFlow
-import com.example.myapplication.common.navigation.NavCommand
 import com.example.myapplication.common.repository.User
 import com.example.myapplication.common.repository.emptyUser
+import com.example.myapplication.common.usecase.BackNavigatorUseCase
 import com.example.myapplication.notes.note.viewholder.NotesItem
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class NotesViewModel(
     private val getNotes: GetNotesUseCase,
     private val deleteNoteUseCase: DeleteNoteUseCase,
     private val getUser: GetUserUseCase,
-    private val navigatorToNotesAdd: NotesNoteAddNavigatorUseCase,
-    private val navigatorToUser: NotesUserNavigatorUseCase
+    private val backToUser: BackNavigatorUseCase,
+    private val navigatorToNoteAdd: NoteAddNavigatorUseCase
 ) : ViewModel() {
 
     private val _user: MutableStateFlow<User> = MutableStateFlow(emptyUser)
@@ -23,9 +24,6 @@ class NotesViewModel(
 
     private val _notes: MutableStateFlow<List<NotesItem>> = MutableStateFlow(emptyList())
     val notes: StateFlow<List<NotesItem>> get() = _notes.asStateFlow()
-
-    private val _navCommand: MutableSharedFlow<NavCommand> = createSharedFlow()
-    val navCommand: SharedFlow<NavCommand> get() = _navCommand.asSharedFlow()
 
     fun loadNotes() {
         viewModelScope.launch {
@@ -58,8 +56,7 @@ class NotesViewModel(
         }
     }
 
-    fun navigateToNotesAdd(userId: Int) = _navCommand.tryEmit(navigatorToNotesAdd(userId))
+    fun navigateToNoteAdd(userId: Int) = navigatorToNoteAdd(userId)
 
-    fun navigateToUser(userId: Int) = _navCommand.tryEmit(navigatorToUser(userId))
-
+    fun navigateToUser() = backToUser()
 }

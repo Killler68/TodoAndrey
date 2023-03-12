@@ -6,14 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.myapplication.authorization.viewmodel.AuthorizationViewModel
-import com.example.myapplication.common.flow.launchWhenViewCreated
+import com.example.myapplication.common.extensions.clickableText
 import com.example.myapplication.common.fragment.getViewModelFactory
-import com.example.myapplication.common.navigation.NavCommand
 import com.example.myapplication.databinding.FragmentAuthorizationBinding
-
-private const val INPUT_ERROR = "Неверные данные"
 
 class AuthorizationFragment : Fragment() {
 
@@ -33,19 +29,15 @@ class AuthorizationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupObservables()
         setupListeners()
     }
 
-    private fun setupObservables() {
-        launchWhenViewCreated {
-            viewModel.navCommand.observe(::onDataLoaded)
-        }
+    private fun setupListeners() {
+        clickableText(
+            "Нет учетной записи? Зарегистрироваться",
+            "Зарегистрироваться",
+            viewModel::navigateToNotes,
+            binding.navigateRegistration
+        )
     }
-
-    private fun onDataLoaded(navCommand: NavCommand) {
-        findNavController().navigate(navCommand.action, navCommand.command)
-    }
-
-    private fun setupListeners() {}
 }

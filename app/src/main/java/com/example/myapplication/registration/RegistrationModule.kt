@@ -2,11 +2,12 @@ package com.example.myapplication.registration
 
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.common.repository.UserRepository
-import com.example.myapplication.registration.router.RegistrationRouterImpl
+import com.example.myapplication.registration.usecase.AuthorizationNavigatorUseCaseImpl
 import com.example.myapplication.registration.usecase.CreateUserUseCaseImpl
-import com.example.myapplication.registration.usecase.RegistrationRouter
+import com.example.myapplication.registration.viewmodel.AuthorizationNavigatorUseCase
 import com.example.myapplication.registration.viewmodel.CreateUserUseCase
 import com.example.myapplication.registration.viewmodel.RegistrationViewModel
+import com.github.terrakok.cicerone.Router
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.ClassKey
@@ -17,12 +18,9 @@ import dagger.multibindings.IntoMap
 class RegistrationModule {
 
     @Provides
-    fun provideCreateUserRouter(): RegistrationRouter = RegistrationRouterImpl()
-
-    @Provides
     fun provideRegistrationUseCase(
         userRepository: UserRepository,
-        router: RegistrationRouter
+        router: Router
     ): CreateUserUseCase =
         CreateUserUseCaseImpl(
             userRepository,
@@ -30,12 +28,18 @@ class RegistrationModule {
         )
 
     @Provides
+    fun provideAuthorizationUseCase(router: Router): AuthorizationNavigatorUseCase =
+        AuthorizationNavigatorUseCaseImpl(router)
+
+    @Provides
     @IntoMap
     @ClassKey(RegistrationViewModel::class)
     fun provideRegistrationViewModel(
-        createUserUseCase: CreateUserUseCase
+        createUserUseCase: CreateUserUseCase,
+        navigatorToAuthorizationUseCase: AuthorizationNavigatorUseCase
     ): ViewModel =
         RegistrationViewModel(
-            createUserUseCase
+            createUserUseCase,
+            navigatorToAuthorizationUseCase
         )
 }

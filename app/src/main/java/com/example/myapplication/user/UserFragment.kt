@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.myapplication.common.flow.launchWhenViewStarted
 import com.example.myapplication.common.fragment.getViewModelFactory
-import com.example.myapplication.common.navigation.NavCommand
 import com.example.myapplication.common.repository.User
 import com.example.myapplication.common.string.USER_ID_KEY
 import com.example.myapplication.databinding.FragmentUserBinding
@@ -49,7 +48,6 @@ class UserFragment : Fragment() {
         launchWhenViewStarted {
             viewModel.user.observe(::onDataLoadedUser)
             viewModel.features.observe(::setOnBoardingFeaturesItems)
-            viewModel.navCommand.observe(::onDataLoadedNavigate)
         }
     }
 
@@ -57,14 +55,9 @@ class UserFragment : Fragment() {
         binding.nameUser.text = user.name
     }
 
-    private fun onDataLoadedNavigate(navCommand: NavCommand) {
-        findNavController().navigate(navCommand.action, navCommand.command)
-
-    }
-
     private fun setupListeners() {
-        binding.pagerFeatures.setOnClickListener {
-            viewModel.navigateToNotes()
+        binding.back.setOnClickListener {
+            viewModel.navigateToNotes(userId)
         }
     }
 
@@ -72,6 +65,14 @@ class UserFragment : Fragment() {
         val hotSalesOnBoardingAdapter = FeaturesAdapter(this)
         hotSalesOnBoardingAdapter.setItems(featuresData.map { it.id })
         binding.pagerFeatures.adapter = hotSalesOnBoardingAdapter
+    }
+
+    companion object {
+        fun newInstance(user: User): UserFragment {
+            val fragment = UserFragment()
+            fragment.arguments = bundleOf(USER_ID_KEY to user.id)
+            return fragment
+        }
     }
 
     override fun onDestroyView() {

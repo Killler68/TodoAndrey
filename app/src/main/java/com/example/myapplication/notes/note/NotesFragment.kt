@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.myapplication.common.flow.launchWhenViewCreated
 import com.example.myapplication.common.fragment.getViewModelFactory
-import com.example.myapplication.common.navigation.NavCommand
 import com.example.myapplication.common.repository.User
 import com.example.myapplication.common.string.USER_ID_KEY
 import com.example.myapplication.databinding.FragmentNotesBinding
@@ -56,7 +55,6 @@ class NotesFragment : Fragment() {
             with(viewModel) {
                 user.observe(::onDataLoadedUser)
                 notes.observe(::onDataLoadedNote)
-                navCommand.observe(::onDataLoadedNavigate)
             }
         }
     }
@@ -65,20 +63,16 @@ class NotesFragment : Fragment() {
         FastAdapterDiffUtil[notesItemAdapter] = notesData
     }
 
-    private fun onDataLoadedNavigate(navCommand: NavCommand) {
-        findNavController().navigate(navCommand.action, navCommand.command)
-    }
-
     private fun onDataLoadedUser(user: User) {
         binding.nameUser.text = user.name
     }
 
     private fun setupListeners() {
         binding.addNotes.setOnClickListener {
-            viewModel.navigateToNotesAdd(userId)
+            viewModel.navigateToNoteAdd(userId)
         }
         binding.imageUser.setOnClickListener {
-            viewModel.navigateToUser(userId)
+            viewModel.navigateToUser()
         }
     }
 
@@ -86,6 +80,14 @@ class NotesFragment : Fragment() {
         with(binding.recyclerAddNote) {
             adapter = fastAdapter
             itemAnimator = null
+        }
+    }
+
+    companion object {
+        fun newInstance(userId: Int): NotesFragment {
+            val fragment = NotesFragment()
+            fragment.arguments = bundleOf(USER_ID_KEY to userId)
+            return fragment
         }
     }
 
