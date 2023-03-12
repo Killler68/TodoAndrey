@@ -1,47 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/background_card_view"
     android:layout_width="match_parent"
-    android:layout_height="115dp"
-    android:layout_marginHorizontal="15dp"
-    android:layout_marginTop="10dp"
-    android:backgroundTint="@color/dim_gray"
-    app:cardCornerRadius="40dp">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/text_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="15dp"
-        android:hint="@string/title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="25sp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/background_note">
 
-    <TextView
-        android:id="@+id/text_description"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="50dp"
-        android:hint="@string/description"
-        android:textSize="15sp" />
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/secondary_horizontal_margin"
+            android:layout_marginTop="5dp"
+            android:hint="@string/title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="@dimen/primary_size"
+            app:layout_constraintEnd_toStartOf="@+id/remove_notes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlSymmetry" />
 
-    <ImageView
-        android:id="@+id/remove_notes"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="320dp"
-        android:layout_marginTop="35dp"
-        app:srcCompat="@android:drawable/ic_menu_delete" />
+        <TextView
+            android:id="@+id/text_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/secondary_horizontal_margin"
+            android:layout_marginBottom="5dp"
+            android:hint="@string/description"
+            android:textSize="@dimen/primary_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/editing_notes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_title" />
 
-    <ImageView
-        android:id="@+id/editing_notes"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="270dp"
-        android:layout_marginTop="40dp"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
+        <ImageView
+            android:id="@+id/remove_notes"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="@dimen/primary_top_margin"
+            android:layout_marginEnd="@dimen/secondary_horizontal_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+
+        <ImageView
+            android:id="@+id/editing_notes"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="@dimen/secondary_horizontal_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/remove_notes"
+            app:srcCompat="@android:drawable/ic_menu_edit" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="?attr/line"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

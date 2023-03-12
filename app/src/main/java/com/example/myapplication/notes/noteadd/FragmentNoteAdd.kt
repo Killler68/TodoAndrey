@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.myapplication.R
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.navigation.NavCommand
 import com.example.myapplication.common.string.USER_ID_KEY
@@ -39,6 +41,7 @@ class FragmentNoteAdd : DialogFragment() {
         createNote()
         setupObservables()
         setupListeners()
+        setupDialogWindowSize()
         viewModel.loadUser(userId)
     }
 
@@ -66,6 +69,14 @@ class FragmentNoteAdd : DialogFragment() {
             viewModel.navigateToNotes(userId)
         }
     }
+
+    private fun setupDialogWindowSize() {
+        val widthDialog = WindowManager.LayoutParams.MATCH_PARENT
+        val heightDialog = WindowManager.LayoutParams.WRAP_CONTENT
+        dialog?.window?.setLayout(widthDialog, heightDialog)
+    }
+
+    override fun getTheme(): Int = R.style.RoundedCornersDialog
 
     override fun onDestroyView() {
         super.onDestroyView()

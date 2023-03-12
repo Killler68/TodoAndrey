@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="primary_horizontal_margin">20dp</dimen>
+    <dimen name="secondary_horizontal_margin">10dp</dimen>
+
+    <dimen name="primary_top_margin">10dp</dimen>
+    <dimen name="secondary_top_margin">30dp</dimen>
+    <dimen name="accent_top_margin">15dp</dimen>
+
+    <dimen name="primary_bottom_margin">10dp</dimen>
+    <dimen name="secondary_bottom_margin">30dp</dimen>
+    <dimen name="accent_bottom_margin">20dp</dimen>
+
+    <dimen name="primary_size">16sp</dimen>
+    <dimen name="secondary_size">12sp</dimen>
+    <dimen name="accent_size">20sp</dimen>
+
+    <dimen name="primary_corner_radius">15dp</dimen>
+    <dimen name="secondary_corner_radius">15dp</dimen>
+</resources>
