@@ -6,6 +6,7 @@ import com.example.myapplication.common.application.ApplicationModule
 import com.example.myapplication.common.database.DataBaseModule
 import com.example.myapplication.common.navigation.NavigationModule
 import com.example.myapplication.common.repository.UserModule
+import com.example.myapplication.common.string.toast.ToastModule
 import com.example.myapplication.common.usecase.BackNavigatorModule
 import com.example.myapplication.notes.common.NoteModule
 import com.example.myapplication.notes.note.NotesModule
@@ -28,7 +29,8 @@ import dagger.Module
         RegistrationModule::class,
         UserModule::class,
         UserScreenModule::class,
-        BackNavigatorModule::class
+        BackNavigatorModule::class,
+        ToastModule::class
     ]
 )
 class FeaturesModule
