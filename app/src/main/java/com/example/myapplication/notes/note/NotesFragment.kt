@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -86,6 +87,14 @@ class NotesFragment : Fragment() {
         with(binding.recyclerAddNote) {
             adapter = fastAdapter
             itemAnimator = null
+        }
+    }
+
+    companion object {
+        fun newInstance(user: User): NotesFragment {
+            val fragment = NotesFragment()
+            fragment.arguments = bundleOf(USER_ID_KEY to user.id)
+            return fragment
         }
     }
 
