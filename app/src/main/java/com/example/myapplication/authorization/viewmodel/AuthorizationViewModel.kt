@@ -6,12 +6,12 @@ import kotlinx.coroutines.launch
 
 class AuthorizationViewModel(
     private val navigatorToRegistration: RegistrationNavigatorUseCase,
-    private val getUserByNameUseCase: GetUserByNameUseCase
+    private val getUserByNameAndPassword: GetUserByNameAndPasswordUseCase
 ) : ViewModel() {
 
-    fun getUseByName(name: String) {
+    fun getUseByNameAndPassword(name: String, password: String) {
         viewModelScope.launch {
-            getUserByNameUseCase(name)
+            getUserByNameAndPassword(name, password)
         }
     }
 

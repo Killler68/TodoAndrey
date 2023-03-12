@@ -16,9 +16,9 @@ class UserRepositoryImpl(private val userDao: UserDao) : UserRepository {
             user ?: throw Exception("User $id not found")
         }
 
-    override suspend fun getUserByName(name: String): User =
+    override suspend fun getUserByNameAndPassword(name: String, password: String): User =
         withContext(Dispatchers.IO) {
-            val userByName = userDao.getUserByName(name)?.toUser()
+            val userByName = userDao.getUserByNameAndPassword(name, password)?.toUser()
             Timber.i("request user №$name: $userByName")
             userByName ?: throw Exception("User $name not found")
         }
@@ -32,11 +32,12 @@ class UserRepositoryImpl(private val userDao: UserDao) : UserRepository {
         }
 
 
-    override suspend fun createUser(name: String): User =
+    override suspend fun createUser(name: String, password: String): User =
         withContext(Dispatchers.IO) {
             userDao.createUser(
                 CreateUserTuple(
-                    name = name
+                    name = name,
+                    password = password
                 )
             )
             val createdUser = userDao.getUsers().last().toUser()

@@ -1,10 +1,10 @@
 package com.example.myapplication.authorization
 
 import androidx.lifecycle.ViewModel
-import com.example.myapplication.authorization.usecase.GetUserByNameUseCaseImpl
+import com.example.myapplication.authorization.usecase.GetUserByNameAndPasswordUseCaseImpl
 import com.example.myapplication.authorization.usecase.RegistrationNavigatorUseCaseImpl
 import com.example.myapplication.authorization.viewmodel.AuthorizationViewModel
-import com.example.myapplication.authorization.viewmodel.GetUserByNameUseCase
+import com.example.myapplication.authorization.viewmodel.GetUserByNameAndPasswordUseCase
 import com.example.myapplication.authorization.viewmodel.RegistrationNavigatorUseCase
 import com.example.myapplication.common.repository.UserRepository
 import com.example.myapplication.common.string.toast.ToastFactory
@@ -22,11 +22,11 @@ class AuthorizationModule {
         RegistrationNavigatorUseCaseImpl(router)
 
     @Provides
-    fun provideGetUserByName(
+    fun provideGetUserByNameAndPassword(
         router: Router,
         userRepository: UserRepository,
         toastFactory: ToastFactory
-    ): GetUserByNameUseCase = GetUserByNameUseCaseImpl(
+    ): GetUserByNameAndPasswordUseCase = GetUserByNameAndPasswordUseCaseImpl(
         router,
         userRepository,
         toastFactory
@@ -37,10 +37,10 @@ class AuthorizationModule {
     @ClassKey(AuthorizationViewModel::class)
     fun provideAuthorizationViewModel(
         navigatorToRegistrationUseCase: RegistrationNavigatorUseCase,
-        getUserByNameUseCase: GetUserByNameUseCase
+        getUserByNameAndPasswordUseCase: GetUserByNameAndPasswordUseCase
     ): ViewModel =
         AuthorizationViewModel(
             navigatorToRegistrationUseCase,
-            getUserByNameUseCase
+            getUserByNameAndPasswordUseCase
         )
 }

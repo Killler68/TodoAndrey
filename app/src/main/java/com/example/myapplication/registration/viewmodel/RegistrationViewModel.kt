@@ -9,9 +9,9 @@ class RegistrationViewModel(
     private val navigatorToAuthorization: AuthorizationNavigatorUseCase
 ) : ViewModel() {
 
-    fun createUser(name: String) {
+    fun createUser(name: String, password: String) {
         viewModelScope.launch {
-            createUserUseCase(name)
+            createUserUseCase(name, password)
         }
     }
 
