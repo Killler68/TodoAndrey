@@ -8,11 +8,8 @@ import android.view.WindowManager
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
-import com.example.myapplication.common.flow.launchWhenViewCreated
 import com.example.myapplication.common.fragment.getViewModelFactory
-import com.example.myapplication.common.navigation.NavCommand
 import com.example.myapplication.common.string.USER_ID_KEY
 import com.example.myapplication.databinding.FragmentDialogNoteAddBinding
 import com.example.myapplication.notes.common.model.Notes
@@ -41,7 +38,6 @@ class NoteAddFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         createNote()
-        setupObservables()
         setupListeners()
         setupDialogWindowSize()
         viewModel.loadUser(userId)
@@ -55,22 +51,13 @@ class NoteAddFragment : DialogFragment() {
                 id = it.id
             )
             viewModel.createNotesData(note)
-            viewModel.navigateToNotes(userId)
+            viewModel.navigateToNotes()
         }
     }
-
-    private fun setupObservables() {
-        launchWhenViewCreated {
-            viewModel.navCommand.observe(::onDataLoadedNavigate)
-        }
-    }
-
-    private fun onDataLoadedNavigate(navCommand: NavCommand) =
-        findNavController().navigate(navCommand.action, navCommand.command)
 
     private fun setupListeners() {
         binding.buttonBack.setOnClickListener {
-            viewModel.navigateToNotes(userId)
+            viewModel.navigateToNotes()
         }
     }
 
