@@ -16,7 +16,7 @@ import com.example.myapplication.user.viemodel.UserViewModel
 
 const val FEATURES_ID_KEY = "FEATURES_ID_KEY"
 
-class FragmentFeatures : Fragment() {
+class FeaturesFragment : Fragment() {
 
     private var _binding: FragmentFeaturesBinding? = null
     private val binding get() = _binding!!
@@ -58,8 +58,8 @@ class FragmentFeatures : Fragment() {
     }
 
     companion object {
-        fun create(id: Int): FragmentFeatures {
-            val fragment = FragmentFeatures()
+        fun create(id: Int): FeaturesFragment {
+            val fragment = FeaturesFragment()
             fragment.arguments = bundleOf(FEATURES_ID_KEY to id)
             return fragment
         }

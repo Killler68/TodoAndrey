@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentRegistration"
-        android:name="com.example.myapplication.registration.FragmentRegistration"
+        android:name="com.example.myapplication.registration.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
