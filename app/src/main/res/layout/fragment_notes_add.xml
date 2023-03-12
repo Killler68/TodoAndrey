@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minWidth="700dp"
-    tools:context=".notes.noteadd.FragmentNoteAdd">
+    tools:context=".notes.noteadd.NoteAddFragment">
 
     <EditText
         android:id="@+id/edit_note_title"

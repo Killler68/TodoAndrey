@@ -15,7 +15,7 @@ import com.example.myapplication.databinding.FragmentAuthorizationBinding
 
 private const val INPUT_ERROR = "Неверные данные"
 
-class FragmentAuthorization : Fragment() {
+class AuthorizationFragment : Fragment() {
 
     private var _binding: FragmentAuthorizationBinding? = null
     private val binding get() = _binding!!

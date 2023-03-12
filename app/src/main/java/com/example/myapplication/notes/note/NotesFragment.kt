@@ -20,7 +20,7 @@ import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
 
 
-class FragmentNotes : Fragment() {
+class NotesFragment : Fragment() {
 
     private var _binding: FragmentRecyclerBinding? = null
     private val binding get() = _binding!!

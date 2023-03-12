@@ -18,7 +18,7 @@ import com.example.myapplication.user.pager.model.FeaturesData
 import com.example.myapplication.user.viemodel.UserViewModel
 
 
-class FragmentUser : Fragment() {
+class UserFragment : Fragment() {
 
     private var _binding: FragmentUserBinding? = null
     private val binding get() = _binding!!

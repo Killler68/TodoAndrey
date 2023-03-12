@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentAuthorization"
-        android:name="com.example.myapplication.authorization.FragmentAuthorization"
+        android:name="com.example.myapplication.authorization.AuthorizationFragment"
         android:label="FragmentAuthorization" >
         <action
             android:id="@+id/action_fragmentAuthorization_to_fragmentNotes"
@@ -15,7 +15,7 @@
     </fragment>
     <dialog
         android:id="@+id/fragmentNoteAdd"
-        android:name="com.example.myapplication.notes.noteadd.FragmentNoteAdd"
+        android:name="com.example.myapplication.notes.noteadd.NoteAddFragment"
         android:label="fragment_notes_add"
         tools:layout="@layout/fragment_notes_add" >
         <action
@@ -24,7 +24,7 @@
     </dialog>
     <fragment
         android:id="@+id/fragmentNotes"
-        android:name="com.example.myapplication.notes.note.FragmentNotes"
+        android:name="com.example.myapplication.notes.note.NotesFragment"
         android:label="FragmentNotes" >
         <action
             android:id="@+id/action_fragmentNotes_to_fragmentNoteAdd"
@@ -44,7 +44,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentUser"
-        android:name="com.example.myapplication.user.FragmentUser"
+        android:name="com.example.myapplication.user.UserFragment"
         android:label="fragment_user"
         tools:layout="@layout/fragment_user" >
         <action

@@ -18,7 +18,7 @@ import com.example.myapplication.notes.common.model.Notes
 import com.example.myapplication.notes.noteadd.viewmodel.NoteAddViewModel
 
 
-class FragmentNoteAdd : DialogFragment() {
+class NoteAddFragment : DialogFragment() {
 
     private var _binding: FragmentNotesAddBinding? = null
     private val binding get() = _binding!!
