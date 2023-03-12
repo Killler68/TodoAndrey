@@ -2,6 +2,7 @@ package com.example.myapplication.notes.note
 
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.common.repository.UserRepository
+import com.example.myapplication.common.usecase.BackNavigatorUseCase
 import com.example.myapplication.notes.common.repository.NotesRepository
 import com.example.myapplication.notes.note.usecase.*
 import com.example.myapplication.notes.note.viewmodel.*
@@ -18,10 +19,6 @@ class NotesModule {
     @Provides
     fun provideNoteAddNavigatorUseCase(router: Router): NoteAddNavigatorUseCase =
         NoteAddNavigatorUseCaseImpl(router)
-
-    @Provides
-    fun provideUserNavigatorUseCase(router: Router): UserNavigatorUseCase =
-        UserNavigatorUseCaseImpl(router)
 
     @Provides
     fun provideGetUserUseCase(repository: UserRepository): GetUserUseCase =
@@ -42,13 +39,13 @@ class NotesModule {
         getNotesUseCase: GetNotesUseCase,
         deleteNoteUseCase: DeleteNoteUseCase,
         getUserUseCase: GetUserUseCase,
-        navigatorToUserUseCase: UserNavigatorUseCase,
+        backToUserUseCase: BackNavigatorUseCase,
         navigatorToNoteAddUseCase: NoteAddNavigatorUseCase
     ): ViewModel = NotesViewModel(
         getNotesUseCase,
         deleteNoteUseCase,
         getUserUseCase,
-        navigatorToUserUseCase,
+        backToUserUseCase,
         navigatorToNoteAddUseCase
     )
 }

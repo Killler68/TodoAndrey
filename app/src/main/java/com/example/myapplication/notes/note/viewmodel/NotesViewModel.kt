@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.common.repository.User
 import com.example.myapplication.common.repository.emptyUser
+import com.example.myapplication.common.usecase.BackNavigatorUseCase
 import com.example.myapplication.notes.note.viewholder.NotesItem
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,7 +15,7 @@ class NotesViewModel(
     private val getNotes: GetNotesUseCase,
     private val deleteNoteUseCase: DeleteNoteUseCase,
     private val getUser: GetUserUseCase,
-    private val navigatorToUser: UserNavigatorUseCase,
+    private val backToUser: BackNavigatorUseCase,
     private val navigatorToNoteAdd: NoteAddNavigatorUseCase
 ) : ViewModel() {
 
@@ -57,5 +58,5 @@ class NotesViewModel(
 
     fun navigateToNoteAdd(userId: Int) = navigatorToNoteAdd(userId)
 
-    fun navigateToUser(userId: Int) = navigatorToUser(userId)
+    fun navigateToUser() = backToUser()
 }

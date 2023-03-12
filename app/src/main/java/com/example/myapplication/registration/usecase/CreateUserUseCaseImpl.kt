@@ -15,6 +15,6 @@ class CreateUserUseCaseImpl(
     override suspend fun invoke(name: String) =
         withContext(Dispatchers.Default) {
             val user = repository.createUser(name)
-            router.navigateTo(Screens.toNotes(user))
+            router.navigateTo(Screens.toUser(user))
         }
 }

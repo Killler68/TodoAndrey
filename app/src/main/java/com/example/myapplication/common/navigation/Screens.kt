@@ -10,7 +10,7 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 object Screens {
 
     fun toRegistration() = FragmentScreen { RegistrationFragment() }
-    fun toNotes(user: User) = FragmentScreen { NotesFragment.newInstance(user) }
+    fun toNotes(userId: Int) = FragmentScreen { NotesFragment.newInstance(userId) }
     fun toNoteAdd(userId: Int) = FragmentScreen { NoteAddFragment.newInstance(userId) }
-    fun toUser(userId: Int) = FragmentScreen { UserFragment.newInstance(userId) }
+    fun toUser(user: User) = FragmentScreen { UserFragment.newInstance(user) }
 }

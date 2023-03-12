@@ -72,7 +72,7 @@ class NotesFragment : Fragment() {
             viewModel.navigateToNoteAdd(userId)
         }
         binding.imageUser.setOnClickListener {
-            viewModel.navigateToUser(userId)
+            viewModel.navigateToUser()
         }
     }
 
@@ -84,9 +84,9 @@ class NotesFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(user: User): NotesFragment {
+        fun newInstance(userId: Int): NotesFragment {
             val fragment = NotesFragment()
-            fragment.arguments = bundleOf(USER_ID_KEY to user.id)
+            fragment.arguments = bundleOf(USER_ID_KEY to userId)
             return fragment
         }
     }
