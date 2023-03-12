@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="tutorial">
+
+        <attr name="primary" format="color" />
+        <attr name="secondary" format="color" />
+        <attr name="accent" format="color" />
+
+        <attr name="primary_background" format="color" />
+        <attr name="secondary_background" format="color" />
+
+        <attr name="background_chats" format="color" />
+
+        <attr name="line" format="color" />
+
+        <attr name="image" format="color" />
+
+        <attr name="header_preview" format="color" />
+        <attr name="header_container" format="color" />
+
+        <attr name="primary_text" format="color" />
+        <attr name="secondary_text" format="color" />
+        <attr name="accent_text" format="color" />
+
+    </declare-styleable>
+
+</resources>
