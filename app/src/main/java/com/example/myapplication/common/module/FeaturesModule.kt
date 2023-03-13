@@ -36,10 +36,10 @@ import dagger.Module
         BackNavigatorModule::class,
         ToastModule::class,
         RegistrationNavigatorModule::class,
-        WelcomeModule::class
         ToastModule::class,
-        LocalStorageModule::class,
-        StartModule::class
+        WelcomeModule::class,
+        StartModule::class,
+        LocalStorageModule::class
     ]
 )
 class FeaturesModule

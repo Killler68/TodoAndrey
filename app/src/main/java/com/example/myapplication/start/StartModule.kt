@@ -1,5 +1,6 @@
 package com.example.myapplication.start
 
+import androidx.lifecycle.ViewModel
 import com.example.myapplication.common.sharedpreferences.LocalStorage
 import com.example.myapplication.start.usecase.CheckLocaleUseCaseImpl
 import com.example.myapplication.start.viewmodel.CheckLocaleUseCase
@@ -15,15 +16,20 @@ class StartModule {
 
     @Provides
     fun provideCheckLocaleUseCase(
-        router: Router,
-        localStorage: LocalStorage
+        localStorage: LocalStorage,
+        router: Router
     ): CheckLocaleUseCase = CheckLocaleUseCaseImpl(
-        router,
-        localStorage
+        localStorage,
+        router
     )
 
     @Provides
     @IntoMap
     @ClassKey(StartViewModel::class)
-    fun provideStartViewModel(checkLocale: CheckLocaleUseCase) = StartViewModel(checkLocale)
+    fun provideStartViewModel(
+        checkLocaleUseCase: CheckLocaleUseCase
+    ): ViewModel =
+        StartViewModel(
+            checkLocaleUseCase
+        )
 }

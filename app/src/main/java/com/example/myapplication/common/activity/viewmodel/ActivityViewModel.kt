@@ -12,7 +12,7 @@ class ActivityViewModel(
 ) : ViewModel() {
 
 
-    fun toRegistration() = router.navigateTo(Screens.toRegistration())
+    fun toStart() = router.navigateTo(Screens.toStart())
 
     fun setNavigator(navigator: Navigator) = navigatorHolder.setNavigator(navigator)
 
