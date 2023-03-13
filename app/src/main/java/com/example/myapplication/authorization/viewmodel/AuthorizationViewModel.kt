@@ -2,6 +2,7 @@ package com.example.myapplication.authorization.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.myapplication.common.usecase.RegistrationNavigatorUseCase
 import kotlinx.coroutines.launch
 
 class AuthorizationViewModel(

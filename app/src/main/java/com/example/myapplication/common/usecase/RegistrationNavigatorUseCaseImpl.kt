@@ -1,6 +1,6 @@
-package com.example.myapplication.authorization.usecase
+package com.example.myapplication.common.usecase
 
-import com.example.myapplication.authorization.viewmodel.RegistrationNavigatorUseCase
+import com.example.myapplication.common.usecase.RegistrationNavigatorUseCase
 import com.example.myapplication.common.navigation.Screens
 import com.github.terrakok.cicerone.Router
 
