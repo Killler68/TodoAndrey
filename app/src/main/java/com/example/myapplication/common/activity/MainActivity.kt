@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        viewModel.toRegistration()
+        viewModel.toStart()
     }
 
     override fun onResume() {

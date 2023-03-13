@@ -6,6 +6,7 @@ import com.example.myapplication.common.application.ApplicationModule
 import com.example.myapplication.common.database.DataBaseModule
 import com.example.myapplication.common.navigation.NavigationModule
 import com.example.myapplication.common.repository.UserModule
+import com.example.myapplication.common.sharedpreferences.LocalStorageModule
 import com.example.myapplication.common.string.toast.ToastModule
 import com.example.myapplication.common.usecase.BackNavigatorModule
 import com.example.myapplication.common.usecase.RegistrationNavigatorModule
@@ -13,6 +14,7 @@ import com.example.myapplication.notes.common.NoteModule
 import com.example.myapplication.notes.note.NotesModule
 import com.example.myapplication.notes.noteadd.NoteAddModule
 import com.example.myapplication.registration.RegistrationModule
+import com.example.myapplication.start.StartModule
 import com.example.myapplication.user.UserScreenModule
 import com.example.myapplication.welcome.WelcomeModule
 import dagger.Module
@@ -34,7 +36,10 @@ import dagger.Module
         BackNavigatorModule::class,
         ToastModule::class,
         RegistrationNavigatorModule::class,
-        WelcomeModule::class
+        ToastModule::class,
+        WelcomeModule::class,
+        StartModule::class,
+        LocalStorageModule::class
     ]
 )
 class FeaturesModule
