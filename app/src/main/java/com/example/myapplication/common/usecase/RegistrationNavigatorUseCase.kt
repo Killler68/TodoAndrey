@@ -1,4 +1,4 @@
-package com.example.myapplication.authorization.viewmodel
+package com.example.myapplication.common.usecase
 
 interface RegistrationNavigatorUseCase {
 

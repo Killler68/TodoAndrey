@@ -8,11 +8,13 @@ import com.example.myapplication.common.navigation.NavigationModule
 import com.example.myapplication.common.repository.UserModule
 import com.example.myapplication.common.string.toast.ToastModule
 import com.example.myapplication.common.usecase.BackNavigatorModule
+import com.example.myapplication.common.usecase.RegistrationNavigatorModule
 import com.example.myapplication.notes.common.NoteModule
 import com.example.myapplication.notes.note.NotesModule
 import com.example.myapplication.notes.noteadd.NoteAddModule
 import com.example.myapplication.registration.RegistrationModule
 import com.example.myapplication.user.UserScreenModule
+import com.example.myapplication.welcome.WelcomeModule
 import dagger.Module
 
 
@@ -30,7 +32,9 @@ import dagger.Module
         UserModule::class,
         UserScreenModule::class,
         BackNavigatorModule::class,
-        ToastModule::class
+        ToastModule::class,
+        RegistrationNavigatorModule::class,
+        WelcomeModule::class
     ]
 )
 class FeaturesModule
