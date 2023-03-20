@@ -1,6 +1,6 @@
-package com.example.myapplication.user.pager.usecase
+package com.example.myapplication.featuresscreen.pager.usecase
 
-import com.example.myapplication.user.pager.viewmodel.FeaturesPagerNavigatorUseCase
+import com.example.myapplication.featuresscreen.pager.viewmodel.FeaturesPagerNavigatorUseCase
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import kotlinx.coroutines.Dispatchers

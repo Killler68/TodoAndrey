@@ -1,7 +1,7 @@
-package com.example.myapplication.user.pager.usecase
+package com.example.myapplication.featuresscreen.pager.usecase
 
 import com.example.myapplication.common.navigation.Screens
-import com.example.myapplication.user.pager.viewmodel.NotesNavigatorUseCase
+import com.example.myapplication.featuresscreen.pager.viewmodel.NotesNavigatorUseCase
 import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

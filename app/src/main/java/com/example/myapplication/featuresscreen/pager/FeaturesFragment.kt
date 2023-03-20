@@ -1,4 +1,4 @@
-package com.example.myapplication.user.pager
+package com.example.myapplication.featuresscreen.pager
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,8 +13,8 @@ import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.string.FEATURES_ID_KEY
 import com.example.myapplication.common.string.USER_ID_KEY
 import com.example.myapplication.databinding.FragmentFeaturesBinding
-import com.example.myapplication.user.pager.model.FeaturesData
-import com.example.myapplication.user.pager.viewmodel.FeaturesViewModel
+import com.example.myapplication.featuresscreen.pager.model.FeaturesData
+import com.example.myapplication.featuresscreen.pager.viewmodel.FeaturesViewModel
 
 
 class FeaturesFragment : Fragment() {

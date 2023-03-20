@@ -1,11 +1,11 @@
-package com.example.myapplication.user.viewmodel
+package com.example.myapplication.featuresscreen.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.common.repository.emptyUser
 import com.example.myapplication.common.usecase.AuthorizationNavigatorUseCase
 import com.example.myapplication.common.usecase.getuser.GetUserUseCase
-import com.example.myapplication.user.pager.model.FeaturesData
+import com.example.myapplication.featuresscreen.pager.model.FeaturesData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

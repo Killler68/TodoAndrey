@@ -1,7 +1,7 @@
-package com.example.myapplication.user.usecase
+package com.example.myapplication.featuresscreen.usecase
 
 import com.example.myapplication.common.navigation.Screens
-import com.example.myapplication.user.viewmodel.ProfileNavigatorUseCase
+import com.example.myapplication.featuresscreen.viewmodel.ProfileNavigatorUseCase
 import com.github.terrakok.cicerone.Router
 
 class ProfileNavigatorUseCaseImpl(

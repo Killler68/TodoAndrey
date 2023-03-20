@@ -1,6 +1,6 @@
-package com.example.myapplication.user.pager.usecase
+package com.example.myapplication.featuresscreen.pager.usecase
 
-import com.example.myapplication.user.pager.model.FeaturesData
+import com.example.myapplication.featuresscreen.pager.model.FeaturesData
 
 interface FeaturesRepository {
 

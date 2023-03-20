@@ -1,4 +1,4 @@
-package com.example.myapplication.user.viewmodel
+package com.example.myapplication.featuresscreen.viewmodel
 
 interface ProfileNavigatorUseCase {
 

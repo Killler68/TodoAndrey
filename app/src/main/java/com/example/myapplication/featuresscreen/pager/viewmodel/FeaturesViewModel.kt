@@ -1,9 +1,9 @@
-package com.example.myapplication.user.pager.viewmodel
+package com.example.myapplication.featuresscreen.pager.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myapplication.user.pager.model.FeaturesData
-import com.example.myapplication.user.pager.usecase.FeatureUseCase
+import com.example.myapplication.featuresscreen.pager.model.FeaturesData
+import com.example.myapplication.featuresscreen.pager.usecase.FeatureUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

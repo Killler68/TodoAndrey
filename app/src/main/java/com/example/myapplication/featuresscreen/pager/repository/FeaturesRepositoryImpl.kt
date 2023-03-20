@@ -1,11 +1,11 @@
-package com.example.myapplication.user.pager.repository
+package com.example.myapplication.featuresscreen.pager.repository
 
 import com.example.myapplication.R
 import com.example.myapplication.authorization.AuthorizationFragment
 import com.example.myapplication.notes.note.NotesFragment
 import com.example.myapplication.registration.RegistrationFragment
-import com.example.myapplication.user.pager.model.FeaturesData
-import com.example.myapplication.user.pager.usecase.FeaturesRepository
+import com.example.myapplication.featuresscreen.pager.model.FeaturesData
+import com.example.myapplication.featuresscreen.pager.usecase.FeaturesRepository
 
 class
 FeaturesRepositoryImpl : FeaturesRepository {

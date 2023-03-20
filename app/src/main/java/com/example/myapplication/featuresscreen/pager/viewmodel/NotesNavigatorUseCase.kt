@@ -1,4 +1,4 @@
-package com.example.myapplication.user.pager.viewmodel
+package com.example.myapplication.featuresscreen.pager.viewmodel
 
 interface NotesNavigatorUseCase {
 

@@ -1,4 +1,4 @@
-package com.example.myapplication.user.pager.model
+package com.example.myapplication.featuresscreen.pager.model
 
 import androidx.fragment.app.Fragment
 
