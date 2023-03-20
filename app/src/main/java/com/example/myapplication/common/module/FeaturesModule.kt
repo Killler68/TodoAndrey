@@ -12,13 +12,14 @@ import com.example.myapplication.common.usecase.AuthorizationNavigatorModule
 import com.example.myapplication.common.usecase.BackNavigatorModule
 import com.example.myapplication.common.usecase.RegistrationNavigatorModule
 import com.example.myapplication.common.usecase.getuser.GetUserModule
+import com.example.myapplication.featuresscreen.FeaturesScreenModule
 import com.example.myapplication.notes.common.NoteModule
 import com.example.myapplication.notes.note.NotesModule
 import com.example.myapplication.notes.noteadd.NoteAddModule
 import com.example.myapplication.profile.ProfileModule
 import com.example.myapplication.registration.RegistrationModule
+import com.example.myapplication.settings.SettingsModule
 import com.example.myapplication.start.StartModule
-import com.example.myapplication.featuresscreen.FeaturesScreenModule
 import com.example.myapplication.welcome.WelcomeModule
 import dagger.Module
 
@@ -46,6 +47,7 @@ import dagger.Module
         AuthorizationNavigatorModule::class,
         ProfileModule::class,
         GetUserModule::class,
+        SettingsModule::class,
     ]
 )
 class FeaturesModule

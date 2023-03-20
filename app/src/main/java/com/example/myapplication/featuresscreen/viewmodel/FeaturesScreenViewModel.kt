@@ -16,7 +16,8 @@ class FeaturesScreenViewModel(
     private val getUserUseCase: GetUserUseCase,
     private val deleteUser: DeleteUserUseCase,
     private val navigatorToAuthorization: AuthorizationNavigatorUseCase,
-    private val navigatorToProfile: ProfileNavigatorUseCase
+    private val navigatorToProfile: ProfileNavigatorUseCase,
+    private val navigatorToSettings: SettingsNavigatorUseCase
 ) : ViewModel() {
 
     private val _users = MutableStateFlow(emptyUser)
@@ -40,6 +41,8 @@ class FeaturesScreenViewModel(
     }
 
     fun navigateToProfile(userId: Int) = navigatorToProfile(userId)
+
+    fun navigateToSettings(userId: Int) = navigatorToSettings(userId)
 
     fun exit() = navigatorToAuthorization()
 }

@@ -8,6 +8,7 @@ import com.example.myapplication.profile.ProfileFragment
 import com.example.myapplication.registration.RegistrationFragment
 import com.example.myapplication.start.StartFragment
 import com.example.myapplication.featuresscreen.FeaturesScreenFragment
+import com.example.myapplication.settings.SettingsFragment
 import com.example.myapplication.welcome.WelcomeFragment
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
@@ -21,4 +22,5 @@ object Screens {
     fun toUser(user: User) = FragmentScreen { FeaturesScreenFragment.newInstance(user) }
     fun toAuthorization() = FragmentScreen { AuthorizationFragment() }
     fun toProfile(userId: Int) = FragmentScreen { ProfileFragment.newInstance(userId) }
+    fun toSettings(userId: Int) = FragmentScreen { SettingsFragment.newInstance(userId)}
 }
