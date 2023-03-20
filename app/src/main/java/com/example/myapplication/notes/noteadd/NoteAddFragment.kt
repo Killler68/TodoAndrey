@@ -46,9 +46,10 @@ class NoteAddFragment : DialogFragment() {
     private fun createNote() {
         binding.buttonAdd.setOnClickListener {
             val note = Notes(
+                0,
+                userId,
                 title = binding.editNoteTitle.text.toString(),
-                description = binding.editNoteDescription.text.toString(),
-                id = it.id
+                description = binding.editNoteDescription.text.toString()
             )
             viewModel.createNotesData(note)
             viewModel.navigateToNotes()

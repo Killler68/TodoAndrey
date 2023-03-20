@@ -1,5 +1,6 @@
 package com.example.myapplication.notes.noteadd.usecase
 
+import com.example.myapplication.common.database.note.tuples.CreateNoteTuple
 import com.example.myapplication.notes.common.model.Notes
 import com.example.myapplication.notes.common.repository.NotesRepository
 import com.example.myapplication.notes.noteadd.viewmodel.AddNoteUseCase
@@ -10,7 +11,15 @@ class AddNoteUseCaseImpl(private val repository: NotesRepository) : AddNoteUseCa
 
     override suspend fun invoke(notes: Notes) {
         withContext(Dispatchers.Default) {
-            repository.addNotes(notes)
+
+            repository.addNotes(
+                CreateNoteTuple(
+                    notes.userId,
+                    notes.title,
+                    notes.description
+                )
+            )
+//            repository.addNotes(notes)
         }
     }
 }

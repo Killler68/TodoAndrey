@@ -5,18 +5,17 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.myapplication.common.database.note.models.NoteData
-import com.example.myapplication.common.database.note.NoteTable
 import com.example.myapplication.common.database.note.tuples.CreateNoteTuple
 import com.example.myapplication.common.database.note.tuples.DeleteNoteTuple
 
 @Dao
 interface NoteDao {
 
-    @Query("SELECT * FROM notes")
-    suspend fun getNotes(): Array<NoteData>
+    @Query("SELECT * FROM notes WHERE userId = :userId")
+    suspend fun getNotes(userId: Int): Array<NoteData>?
 
     @Query("SELECT * FROM notes WHERE id =:id")
-    suspend fun getNoteById(id: Int): NoteData?
+    suspend fun getNoteById(id: Int): NoteTable?
 
     @Insert(entity = NoteTable::class)
     suspend fun createNote(note: CreateNoteTuple): Long

@@ -39,9 +39,8 @@ class UserFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupObservables()
-        setupListeners()
-        viewModel.loadFeatures()
         viewModel.getUser(userId)
+        viewModel.loadFeatures(userId)
     }
 
     private fun setupObservables() {
@@ -55,16 +54,8 @@ class UserFragment : Fragment() {
         binding.nameUser.text = user.name
     }
 
-    private fun setupListeners() {
-        binding.back.setOnClickListener {
-            viewModel.navigateToNotes(userId)
-        }
-    }
-
     private fun setOnBoardingFeaturesItems(featuresData: List<FeaturesData>) {
-        val hotSalesOnBoardingAdapter = FeaturesAdapter(this)
-        hotSalesOnBoardingAdapter.setItems(featuresData.map { it.id })
-        binding.pagerFeatures.adapter = hotSalesOnBoardingAdapter
+        binding.pagerFeatures.adapter = FeaturesAdapter(featuresData.map { it.id }, this)
     }
 
     companion object {

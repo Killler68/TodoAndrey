@@ -4,5 +4,5 @@ import com.example.myapplication.user.pager.model.FeaturesData
 
 interface FeaturesUseCase {
 
-    operator fun invoke(): List<FeaturesData>
+    operator fun invoke(userId: Int): List<FeaturesData>
 }

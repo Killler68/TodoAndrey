@@ -25,9 +25,9 @@ class NotesViewModel(
     private val _notes: MutableStateFlow<List<NotesItem>> = MutableStateFlow(emptyList())
     val notes: StateFlow<List<NotesItem>> get() = _notes.asStateFlow()
 
-    fun loadNotes() {
+    fun loadNotes(userId: Int) {
         viewModelScope.launch {
-            val notes = getNotes()
+            val notes = getNotes(userId)
             val itemNote = notes.map {
                 NotesItem(
                     it,
@@ -47,7 +47,7 @@ class NotesViewModel(
     private fun deleteNote(id: Int) {
         viewModelScope.launch {
             deleteNoteUseCase(id)
-            _notes.tryEmit(getNotes().map {
+            _notes.tryEmit(getNotes(id).map {
                 NotesItem(
                     it,
                     ::deleteNote

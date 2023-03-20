@@ -5,15 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.myapplication.common.flow.launchWhenViewCreated
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.repository.User
+import com.example.myapplication.common.string.FEATURES_ID_KEY
 import com.example.myapplication.common.string.USER_ID_KEY
 import com.example.myapplication.databinding.FragmentNotesBinding
 import com.example.myapplication.notes.note.viewholder.NotesItem
 import com.example.myapplication.notes.note.viewmodel.NotesViewModel
+import com.example.myapplication.notes.noteadd.NoteAddFragment
 import com.mikepenz.fastadapter.GenericFastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
@@ -46,7 +49,7 @@ class NotesFragment : Fragment() {
         setupObservables()
         setupListeners()
         setupFastAdapter()
-        viewModel.loadNotes()
+        viewModel.loadNotes(userId)
         viewModel.loadUser(userId)
     }
 
@@ -86,7 +89,10 @@ class NotesFragment : Fragment() {
     companion object {
         fun newInstance(userId: Int): NotesFragment {
             val fragment = NotesFragment()
-            fragment.arguments = bundleOf(USER_ID_KEY to userId)
+            fragment.arguments = bundleOf(
+                USER_ID_KEY to userId,
+//                FEATURES_ID_KEY to featureId
+            )
             return fragment
         }
     }
