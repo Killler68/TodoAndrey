@@ -63,6 +63,9 @@ class UserFragment : Fragment() {
         binding.btnDelete.setOnClickListener {
             viewModel.removeUser(userId)
         }
+        binding.btnExit.setOnClickListener {
+            viewModel.exit()
+        }
     }
 
     companion object {
