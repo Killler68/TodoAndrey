@@ -45,7 +45,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/container_preview"
         android:layout_width="0dp"
-        android:layout_height="280dp"
+        android:layout_height="300dp"
         android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
         android:layout_marginTop="@dimen/primary_top_margin"
         android:backgroundTint="@color/primary_light"
