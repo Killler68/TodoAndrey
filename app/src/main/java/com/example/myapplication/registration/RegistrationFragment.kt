@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.myapplication.common.extensions.clickableText
@@ -30,6 +31,7 @@ class RegistrationFragment : Fragment() {
 
         createUser()
         setupListeners()
+        onBackPressedFinishActivity()
     }
 
     private fun setupListeners() {
@@ -41,7 +43,6 @@ class RegistrationFragment : Fragment() {
         )
     }
 
-
     private fun createUser() {
         binding.btnCreateUser.setOnClickListener {
             if (binding.editName.text.toString().isNotBlank() &&
@@ -52,5 +53,20 @@ class RegistrationFragment : Fragment() {
                     binding.editPassword.text.toString()
                 )
         }
+    }
+
+    private fun onBackPressedFinishActivity() {
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().finishAffinity()
+                }
+            })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
