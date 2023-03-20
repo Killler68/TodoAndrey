@@ -62,6 +62,9 @@ class FeaturesScreenFragment : Fragment() {
     }
 
     private fun setupListeners() {
+        binding.menu.setOnClickListener {
+            viewModel.navigateToProfile(userId)
+        }
 //        binding.btnDelete.setOnClickListener {
 //            viewModel.removeUser(userId)
 //        }

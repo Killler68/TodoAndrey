@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.common.repository.emptyUser
 import com.example.myapplication.common.usecase.AuthorizationNavigatorUseCase
+import com.example.myapplication.common.usecase.getuser.GetUserUseCase
 import com.example.myapplication.user.pager.model.FeaturesData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -12,9 +13,10 @@ import kotlinx.coroutines.launch
 
 class FeaturesScreenViewModel(
     private val getFeatures: FeaturesUseCase,
-    private val getUserUseCase: GetUser,
+    private val getUserUseCase: GetUserUseCase,
     private val deleteUser: DeleteUserUseCase,
-    private val navigatorToAuthorization: AuthorizationNavigatorUseCase
+    private val navigatorToAuthorization: AuthorizationNavigatorUseCase,
+    private val navigatorToProfile: ProfileNavigatorUseCase
 ) : ViewModel() {
 
     private val _users = MutableStateFlow(emptyUser)
@@ -36,6 +38,8 @@ class FeaturesScreenViewModel(
             deleteUser(userId)
         }
     }
+
+    fun navigateToProfile(userId: Int) = navigatorToProfile(userId)
 
     fun exit() = navigatorToAuthorization()
 }

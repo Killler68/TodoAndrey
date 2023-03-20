@@ -1,8 +1,8 @@
-package com.example.myapplication.user.viewmodel
+package com.example.myapplication.common.usecase.getuser
 
 import com.example.myapplication.common.repository.User
 
-interface GetUser {
+interface GetUserUseCase {
 
     suspend operator fun invoke(id: Int): User
 }
