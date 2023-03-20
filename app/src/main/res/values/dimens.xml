@@ -2,6 +2,7 @@
 <resources>
     <dimen name="primary_horizontal_margin">20dp</dimen>
     <dimen name="secondary_horizontal_margin">10dp</dimen>
+    <dimen name="accent_horizontal_margin">15dp</dimen>
 
     <dimen name="primary_top_margin">10dp</dimen>
     <dimen name="secondary_top_margin">30dp</dimen>
