@@ -23,4 +23,6 @@
     <string name="manual">Инструкция</string>
     <string name="start">Начать</string>
     <string name="navigate_registration">Нет учетной записи? Зарегистрироваться</string>
+    <string name="settings">Настройки</string>
+    <string name="theme">Тема</string>
 </resources>
