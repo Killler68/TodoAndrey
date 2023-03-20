@@ -2,6 +2,7 @@ package com.example.myapplication.user
 
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.common.repository.UserRepository
+import com.example.myapplication.common.usecase.AuthorizationNavigatorUseCase
 import com.example.myapplication.user.pager.repository.FeaturesRepositoryImpl
 import com.example.myapplication.user.pager.usecase.*
 import com.example.myapplication.user.pager.viewmodel.FeaturesPagerNavigatorUseCase
@@ -75,11 +76,13 @@ class UserScreenModule {
     fun provideUserViewModel(
         featuresUseCase: FeaturesUseCase,
         getUserUseCase: GetUser,
-        deleteUserUseCase: DeleteUserUseCase
+        deleteUserUseCase: DeleteUserUseCase,
+        navigatorToAuthorizationUseCase: AuthorizationNavigatorUseCase
     ): ViewModel =
         UserViewModel(
             featuresUseCase,
             getUserUseCase,
-            deleteUserUseCase
+            deleteUserUseCase,
+            navigatorToAuthorizationUseCase
         )
 }

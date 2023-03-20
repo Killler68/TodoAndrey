@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -40,6 +41,7 @@ class UserFragment : Fragment() {
 
         setupObservables()
         setupListeners()
+        onBackPressedFinishActivity()
         viewModel.getUser(userId)
         viewModel.loadFeatures(userId)
     }
@@ -63,6 +65,19 @@ class UserFragment : Fragment() {
         binding.btnDelete.setOnClickListener {
             viewModel.removeUser(userId)
         }
+        binding.btnExit.setOnClickListener {
+            viewModel.exit()
+        }
+    }
+
+    private fun onBackPressedFinishActivity() {
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().finishAffinity()
+                }
+            })
     }
 
     companion object {

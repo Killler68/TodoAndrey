@@ -123,12 +123,12 @@
         android:textColor="?attr/accent_text"
         android:textSize="@dimen/secondary_size"
         app:cornerRadius="@dimen/primary_corner_radius"
-        app:layout_constraintBottom_toTopOf="@id/btn_settings"
+        app:layout_constraintBottom_toTopOf="@id/btn_exit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_settings"
+        android:id="@+id/btn_exit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/primary_horizontal_margin"

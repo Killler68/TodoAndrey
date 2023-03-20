@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.myapplication.authorization.viewmodel.AuthorizationViewModel
@@ -30,6 +31,7 @@ class AuthorizationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupListeners()
+        onBackPressedFinishActivity()
     }
 
     private fun setupListeners() {
@@ -57,5 +59,20 @@ class AuthorizationFragment : Fragment() {
                 )
             }
         }
+    }
+
+    private fun onBackPressedFinishActivity() {
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().finishAffinity()
+                }
+            })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
