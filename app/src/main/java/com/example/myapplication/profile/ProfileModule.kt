@@ -1,6 +1,7 @@
 package com.example.myapplication.profile
 
 import androidx.lifecycle.ViewModel
+import com.example.myapplication.common.usecase.BackNavigatorUseCase
 import com.example.myapplication.common.usecase.getuser.GetUserUseCase
 import com.example.myapplication.profile.viewmodel.ProfileViewModel
 import dagger.Module
@@ -15,8 +16,10 @@ class ProfileModule {
     @IntoMap
     @ClassKey(ProfileViewModel::class)
     fun provideProfileViewModel(
-        getUserUseCase: GetUserUseCase
+        getUserUseCase: GetUserUseCase,
+        backNavigatorUseCase: BackNavigatorUseCase
     ): ViewModel = ProfileViewModel(
-        getUserUseCase
+        getUserUseCase,
+        backNavigatorUseCase
     )
 }

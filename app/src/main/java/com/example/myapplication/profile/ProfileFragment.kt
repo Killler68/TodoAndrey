@@ -35,14 +35,21 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getUser(userId)
 
         setupObservables()
+        setupListeners()
+        viewModel.getUser(userId)
     }
 
     private fun setupObservables() {
         launchWhenViewCreated {
             viewModel.user.observe(::onDataLoadedUser)
+        }
+    }
+
+    private fun setupListeners() {
+        binding.back.setOnClickListener {
+            viewModel.back()
         }
     }
 
