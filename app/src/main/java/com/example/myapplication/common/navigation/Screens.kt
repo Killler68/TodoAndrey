@@ -4,6 +4,7 @@ import com.example.myapplication.authorization.AuthorizationFragment
 import com.example.myapplication.common.repository.User
 import com.example.myapplication.notes.note.NotesFragment
 import com.example.myapplication.notes.noteadd.NoteAddFragment
+import com.example.myapplication.profile.ProfileFragment
 import com.example.myapplication.registration.RegistrationFragment
 import com.example.myapplication.start.StartFragment
 import com.example.myapplication.user.FeaturesScreenFragment
@@ -19,4 +20,5 @@ object Screens {
     fun toNoteAdd(userId: Int) = FragmentScreen { NoteAddFragment.newInstance(userId) }
     fun toUser(user: User) = FragmentScreen { FeaturesScreenFragment.newInstance(user) }
     fun toAuthorization() = FragmentScreen { AuthorizationFragment() }
+    fun toProfile(userId: Int) = FragmentScreen { ProfileFragment.newInstance(userId) }
 }

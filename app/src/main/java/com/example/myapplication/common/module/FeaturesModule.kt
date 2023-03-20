@@ -11,9 +11,11 @@ import com.example.myapplication.common.string.toast.ToastModule
 import com.example.myapplication.common.usecase.AuthorizationNavigatorModule
 import com.example.myapplication.common.usecase.BackNavigatorModule
 import com.example.myapplication.common.usecase.RegistrationNavigatorModule
+import com.example.myapplication.common.usecase.getuser.GetUserModule
 import com.example.myapplication.notes.common.NoteModule
 import com.example.myapplication.notes.note.NotesModule
 import com.example.myapplication.notes.noteadd.NoteAddModule
+import com.example.myapplication.profile.ProfileModule
 import com.example.myapplication.registration.RegistrationModule
 import com.example.myapplication.start.StartModule
 import com.example.myapplication.user.FeaturesScreenModule
@@ -41,7 +43,9 @@ import dagger.Module
         WelcomeModule::class,
         StartModule::class,
         LocalStorageModule::class,
-        AuthorizationNavigatorModule::class
+        AuthorizationNavigatorModule::class,
+        ProfileModule::class,
+        GetUserModule::class,
     ]
 )
 class FeaturesModule

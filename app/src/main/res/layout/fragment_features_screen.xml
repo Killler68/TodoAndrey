@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/back"
+        android:id="@+id/menu"
         android:layout_width="0dp"
         android:layout_height="20dp"
         android:layout_marginHorizontal="@dimen/secondary_horizontal_margin"
@@ -36,10 +36,10 @@
         android:text="@string/name"
         android:textColor="?attr/primary_text"
         android:textSize="@dimen/primary_size"
-        app:layout_constraintBottom_toBottomOf="@+id/back"
+        app:layout_constraintBottom_toBottomOf="@+id/menu"
         app:layout_constraintEnd_toEndOf="@+id/container_info"
-        app:layout_constraintStart_toEndOf="@+id/back"
-        app:layout_constraintTop_toTopOf="@+id/back" />
+        app:layout_constraintStart_toEndOf="@+id/menu"
+        app:layout_constraintTop_toTopOf="@+id/menu" />
 
     <View
         android:id="@+id/line"
