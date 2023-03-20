@@ -44,9 +44,9 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentUser"
-        android:name="com.example.myapplication.user.UserFragment"
+        android:name="com.example.myapplication.user.FeaturesScreenFragment"
         android:label="fragment_user"
-        tools:layout="@layout/fragment_user" >
+        tools:layout="@layout/fragment_features_screen" >
         <action
             android:id="@+id/action_fragmentUser_to_fragmentNotes"
             app:destination="@id/fragmentNotes" />

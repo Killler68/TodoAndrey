@@ -19,7 +19,7 @@ import dagger.multibindings.IntoMap
 
 
 @Module
-class UserScreenModule {
+class FeaturesScreenModule {
 
     @Provides
     fun provideNotesNavigatorUseCase(router: Router): NotesNavigatorUseCase =
@@ -72,14 +72,14 @@ class UserScreenModule {
 
     @Provides
     @IntoMap
-    @ClassKey(UserViewModel::class)
-    fun provideUserViewModel(
+    @ClassKey(FeaturesScreenViewModel::class)
+    fun provideFeaturesScreenViewModel(
         featuresUseCase: FeaturesUseCase,
         getUserUseCase: GetUser,
         deleteUserUseCase: DeleteUserUseCase,
         navigatorToAuthorizationUseCase: AuthorizationNavigatorUseCase
     ): ViewModel =
-        UserViewModel(
+        FeaturesScreenViewModel(
             featuresUseCase,
             getUserUseCase,
             deleteUserUseCase,

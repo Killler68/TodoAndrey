@@ -16,7 +16,7 @@ import com.example.myapplication.notes.note.NotesModule
 import com.example.myapplication.notes.noteadd.NoteAddModule
 import com.example.myapplication.registration.RegistrationModule
 import com.example.myapplication.start.StartModule
-import com.example.myapplication.user.UserScreenModule
+import com.example.myapplication.user.FeaturesScreenModule
 import com.example.myapplication.welcome.WelcomeModule
 import dagger.Module
 
@@ -33,7 +33,7 @@ import dagger.Module
         DataBaseModule::class,
         RegistrationModule::class,
         UserModule::class,
-        UserScreenModule::class,
+        FeaturesScreenModule::class,
         BackNavigatorModule::class,
         ToastModule::class,
         RegistrationNavigatorModule::class,
