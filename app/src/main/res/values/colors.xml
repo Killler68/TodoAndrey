@@ -17,8 +17,11 @@
 
     <color name="primary_light_background">#FFFFFF</color>
     <color name="secondary_light_background">#CFCFCF</color>
+    <color name="accent_light_background">#F3F5F8</color>
+
     <color name="primary_dark_background">#100F0F</color>
     <color name="secondary_dark_background">#595959</color>
+    <color name="accent_dark_background">#F3F5F8</color>
 
     <color name="light_line">#CFCFCF</color>
     <color name="dark_line">#181616</color>

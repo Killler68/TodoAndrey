@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
         android:layout_marginTop="@dimen/primary_top_margin"
-        android:text="Сегодня, 20 мар. вт"
+        android:text="Сегодня, 20 мар. пн"
         android:textColor="?attr/accent_text"
         android:textSize="@dimen/primary_size"
         app:layout_constraintEnd_toEndOf="@+id/container_preview"
@@ -105,6 +105,18 @@
         app:layout_constraintStart_toStartOf="@+id/container_preview"
         app:layout_constraintTop_toBottomOf="@+id/temperature" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_weather_week"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+        android:layout_marginTop="@dimen/primary_top_margin"
+        android:overScrollMode="never"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container_preview"
+        tools:listitem="@layout/recycler_item_weather_week" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
