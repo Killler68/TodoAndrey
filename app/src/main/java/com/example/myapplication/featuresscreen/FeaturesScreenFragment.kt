@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.myapplication.common.flow.launchWhenViewStarted
@@ -13,6 +14,7 @@ import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.repository.User
 import com.example.myapplication.common.string.USER_ID_KEY
 import com.example.myapplication.databinding.FragmentFeaturesScreenBinding
+import com.example.myapplication.databinding.HeaderDrawerBinding
 import com.example.myapplication.featuresscreen.pager.adapter.FeaturesAdapter
 import com.example.myapplication.featuresscreen.pager.model.FeaturesData
 import com.example.myapplication.featuresscreen.viewmodel.FeaturesScreenViewModel
@@ -49,6 +51,7 @@ class FeaturesScreenFragment : Fragment() {
     private fun setupObservables() {
         launchWhenViewStarted {
             viewModel.user.observe(::onDataLoadedUser)
+            viewModel.user.observe(::setupDrawer)
             viewModel.features.observe(::setOnBoardingFeaturesItems)
         }
     }
@@ -63,7 +66,7 @@ class FeaturesScreenFragment : Fragment() {
 
     private fun setupListeners() {
         binding.menu.setOnClickListener {
-            viewModel.navigateToProfile(userId)
+
         }
 //        binding.btnDelete.setOnClickListener {
 //            viewModel.removeUser(userId)
@@ -72,6 +75,20 @@ class FeaturesScreenFragment : Fragment() {
 //            viewModel.exit()
 //        }
     }
+
+    private fun setupDrawer(user: User) {
+        val header = binding.navView.getHeaderView(0)
+        val bindDrawer = HeaderDrawerBinding.bind(header)
+        bindDrawer.nicknameHeader.text = user.name
+
+        bindDrawer.imageHeader.setOnClickListener {
+            viewModel.navigateToProfile(userId)
+        }
+        binding.menu.setOnClickListener {
+            binding.featuresScreenDrawer.openDrawer(GravityCompat.START)
+        }
+    }
+
 
     private fun onBackPressedFinishActivity() {
         requireActivity().onBackPressedDispatcher.addCallback(
