@@ -34,8 +34,8 @@ class RegistrationFragment : Fragment() {
 
     private fun setupListeners() {
         clickableText(
-            "Уже есть учетная запись? Войти",
-            "Войти",
+            "Уже есть учетная запись?\nВойти",
+            "\nВойти",
             viewModel::navigateToAuthorization,
             binding.navigateAuthorization
         )
