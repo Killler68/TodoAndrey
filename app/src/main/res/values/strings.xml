@@ -22,4 +22,5 @@
     <string name="delete_user">Удалить пользователя</string>
     <string name="manual">Инструкция</string>
     <string name="start">Начать</string>
+    <string name="navigate_registration">Нет учетной записи? Зарегистрироваться</string>
 </resources>

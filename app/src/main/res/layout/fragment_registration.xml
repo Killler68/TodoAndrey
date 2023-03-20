@@ -7,40 +7,50 @@
     android:background="?attr/primary_background"
     tools:context=".registration.RegistrationFragment">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/registration"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
-        android:layout_marginTop="120dp"
         android:gravity="center"
         android:text="@string/registration"
         android:textColor="?attr/primary_text"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <TextView
         android:id="@+id/navigate_authorization"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
-        android:layout_marginTop="@dimen/primary_top_margin"
+        android:layout_marginHorizontal="30dp"
         android:gravity="center"
         android:lineSpacingExtra="5dp"
-        tools:text="Уже есть учетная запись? Войти"
         android:textColor="?attr/secondary_text"
         android:textSize="@dimen/primary_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/registration" />
+        app:layout_constraintTop_toBottomOf="@id/registration"
+        tools:text="Уже есть учетная запись? Войти" />
 
     <EditText
         android:id="@+id/edit_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+        android:layout_marginTop="60dp"
         android:layout_marginBottom="@dimen/primary_bottom_margin"
         android:background="@drawable/style_edit_text"
         android:hint="@string/edit_name"
@@ -48,15 +58,16 @@
         android:textColor="?attr/primary_text"
         android:textColorHint="?attr/secondary_text"
         android:textSize="@dimen/primary_size"
-        app:layout_constraintBottom_toTopOf="@+id/edit_password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navigate_authorization" />
 
     <EditText
         android:id="@+id/edit_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+        android:layout_marginTop="@dimen/primary_top_margin"
         android:layout_marginBottom="@dimen/accent_bottom_margin"
         android:background="@drawable/style_edit_text"
         android:hint="@string/edit_password"
@@ -64,9 +75,9 @@
         android:textColor="?attr/primary_text"
         android:textColorHint="?attr/secondary_text"
         android:textSize="@dimen/primary_size"
-        app:layout_constraintBottom_toTopOf="@+id/btn_create_user"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_name" />
 
     <Button
         android:id="@+id/btn_create_user"
@@ -80,8 +91,8 @@
         android:textColor="?attr/accent_text"
         android:textSize="@dimen/primary_size"
         app:cornerRadius="@dimen/primary_corner_radius"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
