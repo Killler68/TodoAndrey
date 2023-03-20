@@ -1,4 +1,4 @@
-package com.example.myapplication.user.viemodel
+package com.example.myapplication.user.viewmodel
 
 import com.example.myapplication.user.pager.model.FeaturesData
 

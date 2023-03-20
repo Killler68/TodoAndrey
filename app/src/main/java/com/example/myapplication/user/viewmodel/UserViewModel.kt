@@ -1,4 +1,4 @@
-package com.example.myapplication.user.viemodel
+package com.example.myapplication.user.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,7 +11,8 @@ import kotlinx.coroutines.launch
 
 class UserViewModel(
     private val getFeatures: FeaturesUseCase,
-    private val getUserUseCase: GetUser
+    private val getUserUseCase: GetUser,
+    private val deleteUser: DeleteUserUseCase
 ) : ViewModel() {
 
     private val _users = MutableStateFlow(emptyUser)
@@ -25,6 +26,12 @@ class UserViewModel(
             _users.tryEmit(getUserUseCase(id))
         }
     }
+
     fun loadFeatures(userId: Int) = _features.tryEmit(getFeatures(userId))
 
+    fun removeUser(userId: Int) {
+        viewModelScope.launch {
+            deleteUser(userId)
+        }
+    }
 }

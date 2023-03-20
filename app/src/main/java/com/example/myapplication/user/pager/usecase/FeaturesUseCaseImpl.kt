@@ -1,7 +1,7 @@
 package com.example.myapplication.user.pager.usecase
 
 import com.example.myapplication.user.pager.model.FeaturesData
-import com.example.myapplication.user.viemodel.FeaturesUseCase
+import com.example.myapplication.user.viewmodel.FeaturesUseCase
 
 class FeaturesUseCaseImpl(private val repository: FeaturesRepository) : FeaturesUseCase {
 

@@ -14,7 +14,7 @@ import com.example.myapplication.common.string.USER_ID_KEY
 import com.example.myapplication.databinding.FragmentUserBinding
 import com.example.myapplication.user.pager.adapter.FeaturesAdapter
 import com.example.myapplication.user.pager.model.FeaturesData
-import com.example.myapplication.user.viemodel.UserViewModel
+import com.example.myapplication.user.viewmodel.UserViewModel
 
 
 class UserFragment : Fragment() {
@@ -39,6 +39,7 @@ class UserFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupObservables()
+        setupListeners()
         viewModel.getUser(userId)
         viewModel.loadFeatures(userId)
     }
@@ -56,6 +57,12 @@ class UserFragment : Fragment() {
 
     private fun setOnBoardingFeaturesItems(featuresData: List<FeaturesData>) {
         binding.pagerFeatures.adapter = FeaturesAdapter(featuresData.map { it.id }, this)
+    }
+
+    private fun setupListeners() {
+        binding.btnDelete.setOnClickListener {
+            viewModel.removeUser(userId)
+        }
     }
 
     companion object {
