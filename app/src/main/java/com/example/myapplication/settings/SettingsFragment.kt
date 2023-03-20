@@ -18,6 +18,11 @@ class SettingsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: SettingsViewModel by viewModels { getViewModelFactory() }
+
+    private val userId by lazy {
+        requireArguments().getInt(USER_ID_KEY)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,6 +39,9 @@ class SettingsFragment : Fragment() {
     private fun setupListeners() {
         binding.imageBackSettings.setOnClickListener {
             viewModel.back()
+        }
+        binding.deleteUser.setOnClickListener {
+            viewModel.removeUser(userId)
         }
     }
 

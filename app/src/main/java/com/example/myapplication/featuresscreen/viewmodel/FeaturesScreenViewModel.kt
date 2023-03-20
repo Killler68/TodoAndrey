@@ -6,6 +6,7 @@ import com.example.myapplication.common.repository.emptyUser
 import com.example.myapplication.common.usecase.AuthorizationNavigatorUseCase
 import com.example.myapplication.common.usecase.getuser.GetUserUseCase
 import com.example.myapplication.featuresscreen.pager.model.FeaturesData
+import com.example.myapplication.settings.viewmodel.DeleteUserUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -33,12 +34,6 @@ class FeaturesScreenViewModel(
     }
 
     fun loadFeatures(userId: Int) = _features.tryEmit(getFeatures(userId))
-
-    fun removeUser(userId: Int) {
-        viewModelScope.launch {
-            deleteUser(userId)
-        }
-    }
 
     fun navigateToProfile(userId: Int) = navigatorToProfile(userId)
 

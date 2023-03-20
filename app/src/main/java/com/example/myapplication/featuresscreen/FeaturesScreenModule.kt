@@ -9,10 +9,11 @@ import com.example.myapplication.featuresscreen.pager.usecase.*
 import com.example.myapplication.featuresscreen.pager.viewmodel.FeaturesPagerNavigatorUseCase
 import com.example.myapplication.featuresscreen.pager.viewmodel.FeaturesViewModel
 import com.example.myapplication.featuresscreen.pager.viewmodel.NotesNavigatorUseCase
-import com.example.myapplication.featuresscreen.usecase.DeleteUserUseCaseImpl
+import com.example.myapplication.settings.usecase.DeleteUserUseCaseImpl
 import com.example.myapplication.featuresscreen.usecase.ProfileNavigatorUseCaseImpl
 import com.example.myapplication.featuresscreen.usecase.SettingsNavigatorUseCaseImpl
 import com.example.myapplication.featuresscreen.viewmodel.*
+import com.example.myapplication.settings.viewmodel.DeleteUserUseCase
 import com.github.terrakok.cicerone.Router
 import dagger.Module
 import dagger.Provides
