@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".weather.WeatherFragment">
+
+
+    <ImageView
+        android:id="@+id/location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/primary_horizontal_margin"
+        android:layout_marginTop="@dimen/primary_top_margin"
+        android:src="@drawable/location"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Санкт-петербург"
+        android:textColor="?attr/primary_text"
+        android:textSize="@dimen/primary_size"
+        app:layout_constraintBottom_toBottomOf="@+id/location"
+        app:layout_constraintEnd_toStartOf="@+id/search_city"
+        app:layout_constraintStart_toEndOf="@+id/location"
+        app:layout_constraintTop_toTopOf="@+id/location" />
+
+    <ImageView
+        android:id="@+id/search_city"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/primary_top_margin"
+        android:layout_marginEnd="@dimen/primary_horizontal_margin"
+        android:src="@drawable/search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/container_preview"
+        android:layout_width="0dp"
+        android:layout_height="280dp"
+        android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+        android:layout_marginTop="@dimen/primary_top_margin"
+        android:backgroundTint="@color/primary_light"
+        app:cardCornerRadius="@dimen/secondary_corner_radius"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/location" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+        android:layout_marginTop="@dimen/primary_top_margin"
+        android:text="Сегодня, 20 мар. вт"
+        android:textColor="?attr/accent_text"
+        android:textSize="@dimen/primary_size"
+        app:layout_constraintEnd_toEndOf="@+id/container_preview"
+        app:layout_constraintStart_toStartOf="@+id/container_preview"
+        app:layout_constraintTop_toTopOf="@+id/container_preview" />
+
+    <ImageView
+        android:id="@+id/weather_preview"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+        android:layout_marginTop="@dimen/primary_top_margin"
+        android:scaleType="fitCenter"
+        android:src="@drawable/sun"
+        app:layout_constraintEnd_toEndOf="@id/container_preview"
+        app:layout_constraintStart_toStartOf="@+id/container_preview"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/primary_top_margin"
+        android:text="10°"
+        android:textColor="?attr/accent_text"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="@+id/container_preview"
+        app:layout_constraintStart_toStartOf="@+id/container_preview"
+        app:layout_constraintTop_toBottomOf="@+id/weather_preview" />
+
+    <TextView
+        android:id="@+id/description_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+        android:layout_marginTop="@dimen/primary_top_margin"
+        android:text="Солнечно"
+        android:textColor="?attr/accent_text"
+        android:textSize="@dimen/primary_size"
+        app:layout_constraintEnd_toEndOf="@+id/container_preview"
+        app:layout_constraintStart_toStartOf="@+id/container_preview"
+        app:layout_constraintTop_toBottomOf="@+id/temperature" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
