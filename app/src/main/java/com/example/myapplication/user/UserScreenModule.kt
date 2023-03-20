@@ -7,8 +7,9 @@ import com.example.myapplication.user.pager.usecase.*
 import com.example.myapplication.user.pager.viewmodel.FeaturesPagerNavigatorUseCase
 import com.example.myapplication.user.pager.viewmodel.FeaturesViewModel
 import com.example.myapplication.user.pager.viewmodel.NotesNavigatorUseCase
+import com.example.myapplication.user.usecase.DeleteUserUseCaseImpl
 import com.example.myapplication.user.usecase.GetUserImpl
-import com.example.myapplication.user.viemodel.*
+import com.example.myapplication.user.viewmodel.*
 import com.github.terrakok.cicerone.Router
 import dagger.Module
 import dagger.Provides
@@ -38,6 +39,16 @@ class UserScreenModule {
         FeatureUseCaseImpl(repository)
 
     @Provides
+    fun provideDeleteUserUseCase(
+        repository: UserRepository,
+        router: Router
+    ): DeleteUserUseCase =
+        DeleteUserUseCaseImpl(
+            repository,
+            router
+        )
+
+    @Provides
     fun provideFeaturesPagerNavigatorUseCase(
         router: Router,
         repository: FeaturesRepository
@@ -63,10 +74,12 @@ class UserScreenModule {
     @ClassKey(UserViewModel::class)
     fun provideUserViewModel(
         featuresUseCase: FeaturesUseCase,
-        getUserUseCase: GetUser
+        getUserUseCase: GetUser,
+        deleteUserUseCase: DeleteUserUseCase
     ): ViewModel =
         UserViewModel(
             featuresUseCase,
-            getUserUseCase
+            getUserUseCase,
+            deleteUserUseCase
         )
 }

@@ -2,7 +2,7 @@ package com.example.myapplication.user.usecase
 
 import com.example.myapplication.common.repository.User
 import com.example.myapplication.common.repository.UserRepository
-import com.example.myapplication.user.viemodel.GetUser
+import com.example.myapplication.user.viewmodel.GetUser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
