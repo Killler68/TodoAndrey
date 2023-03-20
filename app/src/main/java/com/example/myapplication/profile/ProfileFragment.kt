@@ -2,11 +2,14 @@ package com.example.myapplication.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.myapplication.R
 import com.example.myapplication.common.flow.launchWhenViewCreated
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.repository.User
@@ -51,11 +54,31 @@ class ProfileFragment : Fragment() {
         binding.back.setOnClickListener {
             viewModel.back()
         }
+        binding.menu.setOnClickListener {
+            showPopup(binding.menu)
+        }
     }
 
     private fun onDataLoadedUser(user: User) {
         binding.nickname.text = user.name
     }
+
+    private fun showPopup(view: View) {
+        val popup = PopupMenu(requireContext(), view)
+        val inflater: MenuInflater = popup.menuInflater
+        inflater.inflate(R.menu.menu_profile, popup.menu)
+        popup.show()
+        popup.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.refactor -> {}
+                R.id.exit -> {
+                    viewModel.exit()
+                }
+            }
+            true
+        }
+    }
+
 
     companion object {
         fun newInstance(userId: Int): ProfileFragment {
