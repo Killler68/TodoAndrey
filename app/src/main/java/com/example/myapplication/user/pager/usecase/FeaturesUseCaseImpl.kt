@@ -5,5 +5,5 @@ import com.example.myapplication.user.viemodel.FeaturesUseCase
 
 class FeaturesUseCaseImpl(private val repository: FeaturesRepository) : FeaturesUseCase {
 
-    override fun invoke(): List<FeaturesData> = repository.getFeatures()
+    override fun invoke(userId: Int): List<FeaturesData> = repository.getFeatures(userId)
 }

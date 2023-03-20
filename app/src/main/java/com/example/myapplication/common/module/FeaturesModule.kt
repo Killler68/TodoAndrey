@@ -16,6 +16,7 @@ import com.example.myapplication.notes.noteadd.NoteAddModule
 import com.example.myapplication.registration.RegistrationModule
 import com.example.myapplication.start.StartModule
 import com.example.myapplication.user.UserScreenModule
+import com.example.myapplication.user.pager.viewmodel.FeaturesViewModel
 import com.example.myapplication.welcome.WelcomeModule
 import dagger.Module
 
@@ -39,7 +40,7 @@ import dagger.Module
         ToastModule::class,
         WelcomeModule::class,
         StartModule::class,
-        LocalStorageModule::class
+        LocalStorageModule::class,
     ]
 )
 class FeaturesModule

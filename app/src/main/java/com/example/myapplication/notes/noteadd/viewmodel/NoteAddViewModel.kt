@@ -2,6 +2,8 @@ package com.example.myapplication.notes.noteadd.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.myapplication.common.database.note.models.NoteData
+import com.example.myapplication.common.database.note.tuples.CreateNoteTuple
 import com.example.myapplication.common.repository.User
 import com.example.myapplication.common.repository.emptyUser
 import com.example.myapplication.common.usecase.BackNavigatorUseCase

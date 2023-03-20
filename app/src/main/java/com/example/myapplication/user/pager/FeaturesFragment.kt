@@ -10,21 +10,26 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.myapplication.common.flow.launchWhenViewCreated
 import com.example.myapplication.common.fragment.getViewModelFactory
+import com.example.myapplication.common.string.FEATURES_ID_KEY
+import com.example.myapplication.common.string.USER_ID_KEY
 import com.example.myapplication.databinding.FragmentFeaturesBinding
 import com.example.myapplication.user.pager.model.FeaturesData
-import com.example.myapplication.user.viemodel.UserViewModel
+import com.example.myapplication.user.pager.viewmodel.FeaturesViewModel
 
-const val FEATURES_ID_KEY = "FEATURES_ID_KEY"
 
 class FeaturesFragment : Fragment() {
 
     private var _binding: FragmentFeaturesBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: UserViewModel by viewModels { getViewModelFactory() }
+    private val viewModel: FeaturesViewModel by viewModels { getViewModelFactory() }
+
+    private val userId by lazy {
+        requireArguments().getInt(USER_ID_KEY)
+    }
 
     private val featuresIdKey by lazy {
-        arguments?.getInt(FEATURES_ID_KEY)!!
+        requireArguments().getInt(FEATURES_ID_KEY)
     }
 
     override fun onCreateView(
@@ -38,13 +43,14 @@ class FeaturesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupObservables()
-        viewModel.loadFeature(featuresIdKey)
+        setupListeners()
     }
 
     private fun setupObservables() {
         launchWhenViewCreated {
             viewModel.feature.observe(::onDataLoaded)
         }
+        viewModel.loadFeature(userId, featuresIdKey)
     }
 
     private fun onDataLoaded(featuresData: FeaturesData) {
@@ -57,11 +63,22 @@ class FeaturesFragment : Fragment() {
             .into(binding.imageFeature)
     }
 
+    private fun setupListeners() {
+        binding.imageFeature.setOnClickListener {
+            viewModel.toFeature(userId, featuresIdKey)
+        }
+    }
+
     companion object {
         fun create(id: Int): FeaturesFragment {
             val fragment = FeaturesFragment()
             fragment.arguments = bundleOf(FEATURES_ID_KEY to id)
             return fragment
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

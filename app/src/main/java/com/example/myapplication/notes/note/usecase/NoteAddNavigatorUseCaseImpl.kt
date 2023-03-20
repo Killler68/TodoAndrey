@@ -9,4 +9,5 @@ class NoteAddNavigatorUseCaseImpl(
 ) : NoteAddNavigatorUseCase {
 
     override fun invoke(userId: Int) = router.navigateTo(Screens.toNoteAdd(userId))
+//    override fun invoke(userId: Int) = router.replaceScreen(Screens.toNoteAdd(userId))
 }

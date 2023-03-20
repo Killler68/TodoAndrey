@@ -16,5 +16,5 @@ class AuthorizationViewModel(
         }
     }
 
-    fun navigateToNotes() = navigatorToRegistration()
+    fun navigateToRegistration() = navigatorToRegistration()
 }

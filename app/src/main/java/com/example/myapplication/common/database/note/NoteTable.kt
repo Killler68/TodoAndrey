@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey
 )
 data class NoteTable(
     @PrimaryKey(autoGenerate = true) val id: Int,
+    val userId: Int,
     val title: String,
     val description: String
 )

@@ -41,7 +41,7 @@ class AuthorizationFragment : Fragment() {
         clickableText(
             "Нет учетной записи? Зарегистрироваться",
             "Зарегистрироваться",
-            viewModel::navigateToNotes,
+            viewModel::navigateToRegistration,
             binding.navigateRegistration
         )
     }

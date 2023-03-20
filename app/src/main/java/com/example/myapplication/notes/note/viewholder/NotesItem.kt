@@ -3,12 +3,12 @@ package com.example.myapplication.notes.note.viewholder
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.myapplication.R
+import com.example.myapplication.common.database.note.models.NoteData
 import com.example.myapplication.databinding.RecyclerItemNoteBinding
-import com.example.myapplication.notes.common.model.Notes
 import com.mikepenz.fastadapter.binding.AbstractBindingItem
 
 class NotesItem(
-    private val notes: Notes,
+    private val notes: NoteData,
     private val onClickDelete: (Int) -> Unit
 ) : AbstractBindingItem<RecyclerItemNoteBinding>() {
 

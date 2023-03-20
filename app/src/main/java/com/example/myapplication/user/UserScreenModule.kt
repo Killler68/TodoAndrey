@@ -3,11 +3,11 @@ package com.example.myapplication.user
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.common.repository.UserRepository
 import com.example.myapplication.user.pager.repository.FeaturesRepositoryImpl
-import com.example.myapplication.user.pager.usecase.FeatureUseCaseImpl
-import com.example.myapplication.user.pager.usecase.FeaturesRepository
-import com.example.myapplication.user.pager.usecase.FeaturesUseCaseImpl
+import com.example.myapplication.user.pager.usecase.*
+import com.example.myapplication.user.pager.viewmodel.FeaturesPagerNavigatorUseCase
+import com.example.myapplication.user.pager.viewmodel.FeaturesViewModel
+import com.example.myapplication.user.pager.viewmodel.NotesNavigatorUseCase
 import com.example.myapplication.user.usecase.GetUserImpl
-import com.example.myapplication.user.usecase.NotesNavigatorUseCaseImpl
 import com.example.myapplication.user.viemodel.*
 import com.github.terrakok.cicerone.Router
 import dagger.Module
@@ -38,18 +38,35 @@ class UserScreenModule {
         FeatureUseCaseImpl(repository)
 
     @Provides
+    fun provideFeaturesPagerNavigatorUseCase(
+        router: Router,
+        repository: FeaturesRepository
+    ): FeaturesPagerNavigatorUseCase =
+        FeaturesPagerNavigatorUseCaseImpl(
+            router,
+            repository
+        )
+
+    @Provides
+    @IntoMap
+    @ClassKey(FeaturesViewModel::class)
+    fun provideFeaturesViewModel(
+        getFeature: FeatureUseCase,
+        navigatorToFeatureUseCase: FeaturesPagerNavigatorUseCase
+    ): ViewModel = FeaturesViewModel(
+        getFeature,
+        navigatorToFeatureUseCase
+    )
+
+    @Provides
     @IntoMap
     @ClassKey(UserViewModel::class)
     fun provideUserViewModel(
-        featureUseCase: FeatureUseCase,
         featuresUseCase: FeaturesUseCase,
-        getUserUseCase: GetUser,
-        navigateToNotesUseCase: NotesNavigatorUseCase
+        getUserUseCase: GetUser
     ): ViewModel =
         UserViewModel(
-            featureUseCase,
             featuresUseCase,
-            getUserUseCase,
-            navigateToNotesUseCase
+            getUserUseCase
         )
 }

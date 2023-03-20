@@ -4,14 +4,15 @@ import com.example.myapplication.common.database.note.models.NoteData
 
 data class Notes(
     val id: Int,
+    val userId: Int,
     val title: String,
     val description: String,
 )
 
-val emptyList = Notes(
-    -1, "", ""
+val emptyList = NoteData(
+    -1,0, "", ""
 )
 
 fun NoteData.toNote() = Notes(
-    id, title, description
+    id, userId, title, description
 )
