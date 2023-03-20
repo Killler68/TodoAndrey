@@ -1,6 +1,7 @@
 package com.example.myapplication.profile
 
 import androidx.lifecycle.ViewModel
+import com.example.myapplication.common.usecase.AuthorizationNavigatorUseCase
 import com.example.myapplication.common.usecase.BackNavigatorUseCase
 import com.example.myapplication.common.usecase.getuser.GetUserUseCase
 import com.example.myapplication.profile.viewmodel.ProfileViewModel
@@ -17,9 +18,11 @@ class ProfileModule {
     @ClassKey(ProfileViewModel::class)
     fun provideProfileViewModel(
         getUserUseCase: GetUserUseCase,
-        backNavigatorUseCase: BackNavigatorUseCase
+        backNavigatorUseCase: BackNavigatorUseCase,
+        navigatorToAuthorizationUseCase: AuthorizationNavigatorUseCase
     ): ViewModel = ProfileViewModel(
         getUserUseCase,
-        backNavigatorUseCase
+        backNavigatorUseCase,
+        navigatorToAuthorizationUseCase,
     )
 }
