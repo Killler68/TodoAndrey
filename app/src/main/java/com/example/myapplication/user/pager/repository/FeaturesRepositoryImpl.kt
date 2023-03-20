@@ -22,7 +22,7 @@ private fun testFeatures(userId: Int) = listOf(
         1,
         "Заметка",
         "Заметка - краткое сообщение, в котором излагается какой-либо факт или ставится конкретный вопрос. ",
-        R.mipmap.image_note,
+        R.drawable.feature_note,
         NotesFragment.newInstance(userId)
     ),
     FeaturesData(2, "Тест", "Тестовое описание", R.mipmap.image_note, RegistrationFragment()),

@@ -12,18 +12,18 @@ import com.example.myapplication.common.flow.launchWhenViewStarted
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.repository.User
 import com.example.myapplication.common.string.USER_ID_KEY
-import com.example.myapplication.databinding.FragmentUserBinding
+import com.example.myapplication.databinding.FragmentFeaturesScreenBinding
 import com.example.myapplication.user.pager.adapter.FeaturesAdapter
 import com.example.myapplication.user.pager.model.FeaturesData
-import com.example.myapplication.user.viewmodel.UserViewModel
+import com.example.myapplication.user.viewmodel.FeaturesScreenViewModel
 
 
-class UserFragment : Fragment() {
+class FeaturesScreenFragment : Fragment() {
 
-    private var _binding: FragmentUserBinding? = null
+    private var _binding: FragmentFeaturesScreenBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: UserViewModel by viewModels { getViewModelFactory() }
+    private val viewModel: FeaturesScreenViewModel by viewModels { getViewModelFactory() }
 
     private val userId by lazy {
         requireArguments().getInt(USER_ID_KEY)
@@ -32,7 +32,7 @@ class UserFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = FragmentUserBinding.inflate(inflater, container, false)
+    ): View = FragmentFeaturesScreenBinding.inflate(inflater, container, false)
         .also { _binding = it }
         .root
 
@@ -62,12 +62,12 @@ class UserFragment : Fragment() {
     }
 
     private fun setupListeners() {
-        binding.btnDelete.setOnClickListener {
-            viewModel.removeUser(userId)
-        }
-        binding.btnExit.setOnClickListener {
-            viewModel.exit()
-        }
+//        binding.btnDelete.setOnClickListener {
+//            viewModel.removeUser(userId)
+//        }
+//        binding.btnExit.setOnClickListener {
+//            viewModel.exit()
+//        }
     }
 
     private fun onBackPressedFinishActivity() {
@@ -81,8 +81,8 @@ class UserFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(user: User): UserFragment {
-            val fragment = UserFragment()
+        fun newInstance(user: User): FeaturesScreenFragment {
+            val fragment = FeaturesScreenFragment()
             fragment.arguments = bundleOf(USER_ID_KEY to user.id)
             return fragment
         }

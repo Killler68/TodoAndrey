@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class UserViewModel(
+class FeaturesScreenViewModel(
     private val getFeatures: FeaturesUseCase,
     private val getUserUseCase: GetUser,
     private val deleteUser: DeleteUserUseCase,
