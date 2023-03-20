@@ -1,8 +1,8 @@
-package com.example.myapplication.featuresscreen.usecase
+package com.example.myapplication.settings.usecase
 
 import com.example.myapplication.common.navigation.Screens
 import com.example.myapplication.common.repository.UserRepository
-import com.example.myapplication.featuresscreen.viewmodel.DeleteUserUseCase
+import com.example.myapplication.settings.viewmodel.DeleteUserUseCase
 import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

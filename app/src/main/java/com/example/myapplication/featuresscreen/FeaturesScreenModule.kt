@@ -9,9 +9,11 @@ import com.example.myapplication.featuresscreen.pager.usecase.*
 import com.example.myapplication.featuresscreen.pager.viewmodel.FeaturesPagerNavigatorUseCase
 import com.example.myapplication.featuresscreen.pager.viewmodel.FeaturesViewModel
 import com.example.myapplication.featuresscreen.pager.viewmodel.NotesNavigatorUseCase
-import com.example.myapplication.featuresscreen.usecase.DeleteUserUseCaseImpl
+import com.example.myapplication.settings.usecase.DeleteUserUseCaseImpl
 import com.example.myapplication.featuresscreen.usecase.ProfileNavigatorUseCaseImpl
+import com.example.myapplication.featuresscreen.usecase.SettingsNavigatorUseCaseImpl
 import com.example.myapplication.featuresscreen.viewmodel.*
+import com.example.myapplication.settings.viewmodel.DeleteUserUseCase
 import com.github.terrakok.cicerone.Router
 import dagger.Module
 import dagger.Provides
@@ -40,6 +42,10 @@ class FeaturesScreenModule {
     @Provides
     fun provideProfileNavigatorUseCase(router: Router): ProfileNavigatorUseCase =
         ProfileNavigatorUseCaseImpl(router)
+
+    @Provides
+    fun provideSettingsNavigatorUseCase(router: Router): SettingsNavigatorUseCase =
+        SettingsNavigatorUseCaseImpl(router)
 
     @Provides
     fun provideDeleteUserUseCase(
@@ -80,13 +86,15 @@ class FeaturesScreenModule {
         getUserUseCase: GetUserUseCase,
         deleteUserUseCase: DeleteUserUseCase,
         navigatorToAuthorizationUseCase: AuthorizationNavigatorUseCase,
-        navigatorToProfile: ProfileNavigatorUseCase
+        navigatorToProfile: ProfileNavigatorUseCase,
+        navigatorToSettingsUseCase: SettingsNavigatorUseCase
     ): ViewModel =
         FeaturesScreenViewModel(
             featuresUseCase,
             getUserUseCase,
             deleteUserUseCase,
             navigatorToAuthorizationUseCase,
-            navigatorToProfile
+            navigatorToProfile,
+            navigatorToSettingsUseCase
         )
 }

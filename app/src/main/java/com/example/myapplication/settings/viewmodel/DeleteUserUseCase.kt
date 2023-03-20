@@ -1,4 +1,4 @@
-package com.example.myapplication.featuresscreen.viewmodel
+package com.example.myapplication.settings.viewmodel
 
 interface DeleteUserUseCase {
 

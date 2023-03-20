@@ -9,6 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.myapplication.R
 import com.example.myapplication.common.flow.launchWhenViewStarted
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.common.repository.User
@@ -65,16 +66,14 @@ class FeaturesScreenFragment : Fragment() {
     }
 
     private fun setupListeners() {
-        binding.menu.setOnClickListener {
-
+        binding.navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.settings_drawer -> viewModel.navigateToSettings(userId)
+            }
+            true
         }
-//        binding.btnDelete.setOnClickListener {
-//            viewModel.removeUser(userId)
-//        }
-//        binding.btnExit.setOnClickListener {
-//            viewModel.exit()
-//        }
     }
+
 
     private fun setupDrawer(user: User) {
         val header = binding.navView.getHeaderView(0)
