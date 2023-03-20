@@ -7,7 +7,7 @@ import com.example.myapplication.notes.noteadd.NoteAddFragment
 import com.example.myapplication.profile.ProfileFragment
 import com.example.myapplication.registration.RegistrationFragment
 import com.example.myapplication.start.StartFragment
-import com.example.myapplication.user.FeaturesScreenFragment
+import com.example.myapplication.featuresscreen.FeaturesScreenFragment
 import com.example.myapplication.welcome.WelcomeFragment
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 

@@ -18,7 +18,7 @@ import com.example.myapplication.notes.noteadd.NoteAddModule
 import com.example.myapplication.profile.ProfileModule
 import com.example.myapplication.registration.RegistrationModule
 import com.example.myapplication.start.StartModule
-import com.example.myapplication.user.FeaturesScreenModule
+import com.example.myapplication.featuresscreen.FeaturesScreenModule
 import com.example.myapplication.welcome.WelcomeModule
 import dagger.Module
 
