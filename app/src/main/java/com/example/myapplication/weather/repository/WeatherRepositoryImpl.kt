@@ -23,4 +23,18 @@ class WeatherRepositoryImpl(
                 )
             }
         }
+
+    override suspend fun getWeatherWeek(): List<WeatherWeek> =
+        withContext(Dispatchers.IO) {
+            val response = weatherApi.getWeather()
+            response.list.map {
+                WeatherWeek(
+                    it.dt,
+                    it.main.temp,
+                    it.main.temp_min,
+                    it.main.temp_max,
+                    it.weather.first().icon
+                )
+            }
+        }
 }

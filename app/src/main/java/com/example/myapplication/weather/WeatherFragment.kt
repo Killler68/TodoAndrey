@@ -12,8 +12,13 @@ import com.example.myapplication.common.extensions.dateFormatPreview
 import com.example.myapplication.common.flow.launchWhenViewCreated
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.databinding.FragmentWeatherBinding
+import com.example.myapplication.weather.model.WeatherData
 import com.example.myapplication.weather.model.WeatherPreviewData
+import com.example.myapplication.weather.viewholder.WeatherWeekItem
 import com.example.myapplication.weather.viewmodel.WeatherViewModel
+import com.mikepenz.fastadapter.GenericFastAdapter
+import com.mikepenz.fastadapter.adapters.ItemAdapter
+import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
 
 
 class WeatherFragment : Fragment() {
@@ -22,6 +27,9 @@ class WeatherFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: WeatherViewModel by viewModels { getViewModelFactory() }
+
+    private val weekItemAdapter = ItemAdapter<WeatherWeekItem>()
+    private val weekFastAdapter = GenericFastAdapter.with(listOf(weekItemAdapter))
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,13 +41,16 @@ class WeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObservables()
-        viewModel.loadWeatherPreview()
+        setupFastAdapter()
     }
 
     private fun setupObservables() {
         launchWhenViewCreated {
             viewModel.weatherPreview.observe(viewLifecycleOwner, ::onDataLoadedPreview)
+            viewModel.weatherWeek.observe(viewLifecycleOwner, ::onDataLoadedWeek)
         }
+        viewModel.loadWeatherPreview()
+        viewModel.loadWeatherWeek()
     }
 
     private fun onDataLoadedPreview(weatherPreviewData: List<WeatherPreviewData>?) {
@@ -55,6 +66,20 @@ class WeatherFragment : Fragment() {
             }
         }
     }
+
+    private fun onDataLoadedWeek(weatherWeek: List<WeatherData>?) {
+        if (weatherWeek != null) {
+            FastAdapterDiffUtil[weekItemAdapter] = weatherWeek.map { WeatherWeekItem(it) }
+        }
+    }
+
+    private fun setupFastAdapter() {
+        with(binding.recyclerWeatherWeek) {
+            adapter = weekFastAdapter
+            itemAnimator = null
+        }
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
