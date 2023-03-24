@@ -2,9 +2,11 @@ package com.example.myapplication.weather.viewholder
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.common.extensions.TIME_FORMAT
 import com.example.myapplication.common.extensions.dateFormatHours
+import com.example.myapplication.common.extensions.imageWeatherExtension
 import com.example.myapplication.databinding.RecyclerItemWeatherHourlyBinding
 import com.example.myapplication.weather.model.WeatherWeek
 import com.mikepenz.fastadapter.binding.AbstractBindingItem
@@ -21,6 +23,11 @@ class WeatherHourlyItem(
 
         binding.temperature.text =
             binding.root.resources.getString(R.string.temp, weatherHourly.temp.toInt().toString())
+
+        Glide
+            .with(binding.root)
+            .load(weatherHourly.icon.imageWeatherExtension())
+            .into(binding.weatherHourly)
     }
 
     override fun createBinding(

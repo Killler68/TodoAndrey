@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.common.extensions.TIME_FORMAT
 import com.example.myapplication.common.extensions.dateFormatPreview
+import com.example.myapplication.common.extensions.imageWeatherExtension
 import com.example.myapplication.common.flow.launchWhenViewCreated
 import com.example.myapplication.common.fragment.getViewModelFactory
 import com.example.myapplication.databinding.FragmentWeatherBinding
@@ -42,6 +44,7 @@ class WeatherFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupObservables()
         setupFastAdapter()
+        setupListeners()
     }
 
     private fun setupObservables() {
@@ -63,6 +66,11 @@ class WeatherFragment : Fragment() {
                     weatherPreviewData.first().temp.toInt().toString()
                 )
                 descriptionWeather.text = weatherPreviewData.first().description
+
+                Glide
+                    .with(requireView())
+                    .load(weatherPreviewData.first().icon.imageWeatherExtension())
+                    .into(binding.weatherPreview)
             }
         }
     }
@@ -70,6 +78,12 @@ class WeatherFragment : Fragment() {
     private fun onDataLoadedWeek(weatherWeek: List<WeatherData>?) {
         if (weatherWeek != null) {
             FastAdapterDiffUtil[weekItemAdapter] = weatherWeek.map { WeatherWeekItem(it) }
+        }
+    }
+
+    private fun setupListeners() {
+        binding.back.setOnClickListener {
+            viewModel.toBack()
         }
     }
 

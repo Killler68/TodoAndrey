@@ -2,9 +2,11 @@ package com.example.myapplication.weather.viewholder
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.common.extensions.TIME_FORMAT
 import com.example.myapplication.common.extensions.dateFormatDays
+import com.example.myapplication.common.extensions.imageWeatherExtension
 import com.example.myapplication.databinding.RecyclerItemWeatherWeekBinding
 import com.example.myapplication.weather.model.WeatherData
 import com.mikepenz.fastadapter.GenericFastAdapter
@@ -31,6 +33,10 @@ class WeatherWeekItem(
         binding.temperatureMin.text =
             binding.root.resources.getString(R.string.temp, weatherWeek.temp_min.toInt().toString())
 
+        Glide
+            .with(binding.root)
+            .load(weatherWeek.icon.imageWeatherExtension())
+            .into(binding.weatherWeek)
 
         onDataLoadedHourly()
         with(binding.recyclerWeatherHourly) {

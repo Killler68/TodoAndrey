@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.myapplication.common.usecase.BackNavigatorUseCase
 import com.example.myapplication.weather.model.WeatherData
 import com.example.myapplication.weather.model.WeatherPreviewData
 import com.example.myapplication.weather.model.WeatherWeek
@@ -11,7 +12,8 @@ import kotlinx.coroutines.launch
 
 class WeatherViewModel(
     private val getWeatherPreview: WeatherPreviewUseCase,
-    private val getWeatherWeek: WeatherWeekUseCase
+    private val getWeatherWeek: WeatherWeekUseCase,
+    private val navigatorToFeaturesScreen: BackNavigatorUseCase
 ) : ViewModel() {
 
     private val _weatherPreview: MutableLiveData<List<WeatherPreviewData>?> = MutableLiveData()
@@ -31,4 +33,6 @@ class WeatherViewModel(
             _weatherWeek.postValue(getWeatherWeek())
         }
     }
+
+    fun toBack() = navigatorToFeaturesScreen()
 }

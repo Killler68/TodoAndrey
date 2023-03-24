@@ -8,14 +8,14 @@
     tools:context=".weather.WeatherFragment">
 
     <ImageView
-        android:id="@+id/location"
+        android:id="@+id/back"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:layout_marginStart="@dimen/primary_horizontal_margin"
-        android:layout_marginTop="@dimen/primary_top_margin"
-        android:src="@drawable/location"
+        android:src="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/search_city"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/search_city" />
 
     <TextView
         android:id="@+id/city"
@@ -27,27 +27,39 @@
         android:text="Санкт-петербург"
         android:textColor="?attr/primary_text"
         android:textSize="@dimen/primary_size"
-        app:layout_constraintBottom_toBottomOf="@+id/location"
-        app:layout_constraintEnd_toStartOf="@+id/search_city"
-        app:layout_constraintStart_toEndOf="@+id/location"
-        app:layout_constraintTop_toTopOf="@+id/location" />
+        app:layout_constraintBottom_toBottomOf="@+id/search_city"
+        app:layout_constraintEnd_toStartOf="@+id/location"
+        app:layout_constraintStart_toEndOf="@+id/back"
+        app:layout_constraintTop_toTopOf="@+id/search_city" />
 
     <ImageView
         android:id="@+id/search_city"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginTop="@dimen/primary_top_margin"
         android:layout_marginEnd="@dimen/primary_horizontal_margin"
         android:src="@drawable/search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/location"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="@dimen/primary_horizontal_margin"
+        android:scaleType="fitCenter"
+        android:src="@drawable/location"
+        app:layout_constraintBottom_toBottomOf="@+id/search_city"
+        app:layout_constraintEnd_toStartOf="@+id/search_city"
+
+        app:layout_constraintTop_toTopOf="@+id/search_city" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/container_preview"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
-        android:layout_marginTop="@dimen/primary_top_margin"
+        android:layout_marginTop="@dimen/accent_top_margin"
         android:backgroundTint="@color/primary_light"
         app:cardCornerRadius="@dimen/secondary_corner_radius"
         app:cardElevation="0dp"

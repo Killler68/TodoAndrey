@@ -2,6 +2,7 @@ package com.example.myapplication.weather
 
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.common.api.WeatherApi
+import com.example.myapplication.common.usecase.BackNavigatorUseCase
 import com.example.myapplication.weather.repository.WeatherRepositoryImpl
 import com.example.myapplication.weather.usecase.WeatherPreviewUseCaseImpl
 import com.example.myapplication.weather.usecase.WeatherRepository
@@ -35,9 +36,11 @@ class WeatherModule {
     @ClassKey(WeatherViewModel::class)
     fun provideWeatherViewModel(
         getWeatherPreviewUseCase: WeatherPreviewUseCase,
-        getWeatherWeekUseCase: WeatherWeekUseCase
+        getWeatherWeekUseCase: WeatherWeekUseCase,
+        navigatorToBackUseCase: BackNavigatorUseCase
     ): ViewModel = WeatherViewModel(
         getWeatherPreviewUseCase,
-        getWeatherWeekUseCase
+        getWeatherWeekUseCase,
+        navigatorToBackUseCase
     )
 }
