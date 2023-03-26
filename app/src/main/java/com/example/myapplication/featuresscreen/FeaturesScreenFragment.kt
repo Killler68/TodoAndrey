@@ -62,7 +62,7 @@ class FeaturesScreenFragment : Fragment() {
     }
 
     private fun setOnBoardingFeaturesItems(featuresData: List<FeaturesData>) {
-        binding.pagerFeatures.adapter = FeaturesAdapter(featuresData.map { it.id }, this)
+        binding.pagerFeatures.adapter = FeaturesAdapter(featuresData.map { it.id }, userId,this)
     }
 
     private fun setupListeners() {

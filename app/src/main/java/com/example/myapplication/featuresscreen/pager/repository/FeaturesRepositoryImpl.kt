@@ -14,7 +14,7 @@ FeaturesRepositoryImpl : FeaturesRepository {
     override fun getFeatures(userId: Int): List<FeaturesData> = testFeatures(userId)
 
     override fun getFeature(userId: Int, featureId: Int): FeaturesData {
-        return testFeatures(featureId).find { it.id == featureId }!!
+        return testFeatures(userId).find { it.id == featureId }!!
     }
 }
 
