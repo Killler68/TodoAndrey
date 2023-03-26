@@ -89,10 +89,7 @@ class NotesFragment : Fragment() {
     companion object {
         fun newInstance(userId: Int): NotesFragment {
             val fragment = NotesFragment()
-            fragment.arguments = bundleOf(
-                USER_ID_KEY to userId,
-//                FEATURES_ID_KEY to featureId
-            )
+            fragment.arguments = bundleOf(USER_ID_KEY to userId)
             return fragment
         }
     }
