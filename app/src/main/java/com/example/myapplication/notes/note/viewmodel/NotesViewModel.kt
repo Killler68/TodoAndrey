@@ -28,13 +28,13 @@ class NotesViewModel(
     fun loadNotes(userId: Int) {
         viewModelScope.launch {
             val notes = getNotes(userId)
-            val itemNote = notes.map {
+            val itemNote = notes?.map {
                 NotesItem(
                     it,
                     ::deleteNote
                 )
             }
-            _notes.tryEmit(itemNote)
+            itemNote?.let { _notes.tryEmit(it) }
         }
     }
 
@@ -44,15 +44,17 @@ class NotesViewModel(
         }
     }
 
-    private fun deleteNote(id: Int) {
+    private fun deleteNote(userId: Int, id: Int) {
         viewModelScope.launch {
             deleteNoteUseCase(id)
-            _notes.tryEmit(getNotes(id).map {
-                NotesItem(
-                    it,
-                    ::deleteNote
-                )
-            })
+            getNotes(userId)?.let {
+                _notes.tryEmit(it.map {
+                    NotesItem(
+                        it,
+                        ::deleteNote
+                    )
+                })
+            }
         }
     }
 

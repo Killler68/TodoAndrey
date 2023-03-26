@@ -7,7 +7,7 @@ import com.example.myapplication.notes.common.model.Notes
 interface NotesRepository {
 
     suspend fun getNote(id: Int): NoteData
-    suspend fun getNotes(userId: Int): List<NoteData>
+    suspend fun getNotes(userId: Int): List<Notes>?
     suspend fun addNotes(noteData: CreateNoteTuple): Notes
     suspend fun deleteNote(id: Int)
 }

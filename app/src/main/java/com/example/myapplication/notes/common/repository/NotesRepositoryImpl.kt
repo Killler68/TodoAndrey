@@ -28,7 +28,7 @@ class NotesRepositoryImpl(
 //            notes ?: throw Exception("Notes $id not found")
         }
 
-    override suspend fun getNotes(userId: Int): List<NoteData> =
+    override suspend fun getNotes(userId: Int): List<Notes>? =
         withContext(Dispatchers.IO) {
             val notes = noteDao.getNotes(userId)
             Timber.i("notes: №${notes?.toList()}")
@@ -40,7 +40,7 @@ class NotesRepositoryImpl(
                     description = it.description
                 )
             } ?: throw Exception("Notes not found")
-//            noteDao.getNotes(userId).map { it.toNote() }.toList()
+            noteDao.getNotes(userId)?.map { it.toNote() }?.toList()
         }
 
     override suspend fun addNotes(noteData: CreateNoteTuple): Notes =
