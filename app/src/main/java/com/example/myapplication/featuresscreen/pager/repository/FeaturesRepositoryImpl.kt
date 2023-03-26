@@ -26,6 +26,6 @@ private fun testFeatures(userId: Int) = listOf(
         R.drawable.feature_note,
         NotesFragment.newInstance(userId)
     ),
-    FeaturesData(2, "Тест", "Тестовое описание", R.mipmap.image_note, WeatherFragment()),
+    FeaturesData(2, "Погода", "", R.drawable.cloud_sun, WeatherFragment()),
     FeaturesData(3, "Тест 2", "Тестовое описание 2", R.mipmap.image_note, AuthorizationFragment()),
 )
