@@ -70,9 +70,9 @@ class FeaturesFragment : Fragment() {
     }
 
     companion object {
-        fun create(id: Int): FeaturesFragment {
+        fun create(featuresId: Int, userId: Int): FeaturesFragment {
             val fragment = FeaturesFragment()
-            fragment.arguments = bundleOf(FEATURES_ID_KEY to id)
+            fragment.arguments = bundleOf(FEATURES_ID_KEY to featuresId, USER_ID_KEY to userId)
             return fragment
         }
     }

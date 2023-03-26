@@ -26,4 +26,5 @@
     <string name="settings">Настройки</string>
     <string name="theme">Тема</string>
     <string name="refactor">Редактирование</string>
+    <string name="temp">%s°</string>
 </resources>

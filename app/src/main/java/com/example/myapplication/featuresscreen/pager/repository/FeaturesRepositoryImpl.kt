@@ -6,6 +6,7 @@ import com.example.myapplication.notes.note.NotesFragment
 import com.example.myapplication.registration.RegistrationFragment
 import com.example.myapplication.featuresscreen.pager.model.FeaturesData
 import com.example.myapplication.featuresscreen.pager.usecase.FeaturesRepository
+import com.example.myapplication.weather.WeatherFragment
 
 class
 FeaturesRepositoryImpl : FeaturesRepository {
@@ -13,7 +14,7 @@ FeaturesRepositoryImpl : FeaturesRepository {
     override fun getFeatures(userId: Int): List<FeaturesData> = testFeatures(userId)
 
     override fun getFeature(userId: Int, featureId: Int): FeaturesData {
-        return testFeatures(featureId).find { it.id == featureId }!!
+        return testFeatures(userId).find { it.id == featureId }!!
     }
 }
 
@@ -25,6 +26,6 @@ private fun testFeatures(userId: Int) = listOf(
         R.drawable.feature_note,
         NotesFragment.newInstance(userId)
     ),
-    FeaturesData(2, "Тест", "Тестовое описание", R.mipmap.image_note, RegistrationFragment()),
+    FeaturesData(2, "Погода", "", R.drawable.cloud_sun, WeatherFragment()),
     FeaturesData(3, "Тест 2", "Тестовое описание 2", R.mipmap.image_note, AuthorizationFragment()),
 )

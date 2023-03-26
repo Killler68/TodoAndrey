@@ -6,11 +6,12 @@ import com.example.myapplication.featuresscreen.pager.FeaturesFragment
 
 class FeaturesAdapter(
     private val features: List<Int>,
+    private val userId: Int,
     fragment: Fragment
 ) : FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int = features.count()
 
     override fun createFragment(position: Int): Fragment =
-        FeaturesFragment.create(features[position])
+        FeaturesFragment.create(features[position], userId)
 }

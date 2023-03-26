@@ -10,6 +10,7 @@
 
         <item name="primary_background">@color/primary_light_background</item>
         <item name="secondary_background">@color/secondary_light_background</item>
+        <item name="accent_background">@color/accent_light_background</item>
 
         <item name="line">@color/light_line</item>
 
@@ -33,6 +34,7 @@
 
         <item name="primary_background">@color/primary_dark_background</item>
         <item name="secondary_background">@color/secondary_dark_background</item>
+        <item name="accent_background">@color/accent_dark_background</item>
 
         <item name="line">@color/dark_line</item>
 
