@@ -27,4 +27,13 @@
     <string name="theme">Тема</string>
     <string name="refactor">Редактирование</string>
     <string name="temp">%s°</string>
+    <string name="error">Ошибка\n Попробуем снова?</string>
+    <string name="attempt">Попробовать</string>
+
+    <string name="information">Информация об отеле</string>
+    <string name="located">Расположен:</string>
+    <string name="hotel_list">Список отелей</string>
+    <string name="distance">Расстояние:</string>
+    <string name="text_suites_availability">Свободные номера:</string>
+
 </resources>

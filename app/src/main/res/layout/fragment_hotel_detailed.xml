@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".hoteldetailed.HotelDetailedFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:constraint_referenced_ids="image_hotel_detailed,back,rating,information,name_hotel,located,address,text_distance,distance,text_suites_availability,suites_availability" />
+
+        <ImageView
+            android:id="@+id/image_hotel_detailed"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="@dimen/primary_start_margin"
+            android:layout_marginTop="@dimen/primary_top_margin"
+            android:scaleType="centerCrop"
+            android:src="@drawable/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/black" />
+
+        <RatingBar
+            android:id="@+id/rating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/primary_start_margin"
+            android:layout_marginTop="@dimen/primary_top_margin"
+            android:elevation="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_hotel_detailed" />
+
+        <TextView
+            android:id="@+id/name_hotel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+            android:layout_marginTop="@dimen/primary_top_margin"
+            android:textColor="@color/black"
+            android:textSize="@dimen/accent_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rating"
+            tools:text="Best Western President Hotel at Times Square" />
+
+        <TextView
+            android:id="@+id/information"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/primary_start_margin"
+            android:layout_marginTop="@dimen/secondary_top_margin"
+            android:gravity="center"
+            android:text="@string/information"
+            android:textColor="@color/black"
+            android:textSize="@dimen/accent_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name_hotel" />
+
+        <TextView
+            android:id="@+id/located"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/primary_start_margin"
+            android:layout_marginTop="@dimen/primary_top_margin"
+            android:text="@string/located"
+            android:textColor="@color/black"
+            android:textSize="@dimen/primary_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/information" />
+
+        <TextView
+            android:id="@+id/text_distance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/primary_start_margin"
+            android:layout_marginTop="@dimen/primary_top_margin"
+            android:text="@string/distance"
+            android:textColor="@color/black"
+            android:textSize="@dimen/primary_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/address" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+            android:layout_marginTop="@dimen/primary_top_margin"
+            android:textColor="?attr/primary_text"
+            android:textSize="@dimen/primary_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/located"
+            app:layout_constraintTop_toBottomOf="@+id/information"
+            tools:text="234 West 48th Street" />
+
+        <TextView
+            android:id="@+id/distance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+            android:textColor="?attr/secondary_text"
+            android:textSize="@dimen/primary_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/text_distance"
+            app:layout_constraintTop_toTopOf="@+id/text_distance"
+            tools:text="1000 м" />
+
+        <TextView
+            android:id="@+id/text_suites_availability"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/primary_start_margin"
+            android:layout_marginTop="@dimen/primary_top_margin"
+            android:text="@string/text_suites_availability"
+            android:textColor="@color/black"
+            android:textSize="@dimen/primary_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/distance" />
+
+        <TextView
+            android:id="@+id/suites_availability"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+            android:layout_marginBottom="@dimen/accent_bottom_margin"
+            android:textColor="?attr/secondary_text"
+            android:textSize="@dimen/primary_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/text_suites_availability"
+            app:layout_constraintTop_toTopOf="@+id/text_suites_availability"
+            tools:text="1:44:21:87:99:34" />
+
+        <include
+            android:id="@+id/included_error"
+            layout="@layout/status_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="150dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
