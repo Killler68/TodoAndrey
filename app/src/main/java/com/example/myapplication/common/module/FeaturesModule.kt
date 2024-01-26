@@ -1,5 +1,8 @@
 package com.example.myapplication.common.module
 
+import com.example.myapplication.hotels.remote.HotelsNetworkModule
+import com.example.myapplication.common.resources.ResourcesModule
+import com.example.myapplication.hotels.hotellist.HotelListModule
 import com.example.myapplication.authorization.AuthorizationModule
 import com.example.myapplication.common.activity.ActivityModule
 import com.example.myapplication.common.application.ApplicationModule
@@ -14,6 +17,7 @@ import com.example.myapplication.common.usecase.BackNavigatorModule
 import com.example.myapplication.common.usecase.RegistrationNavigatorModule
 import com.example.myapplication.common.usecase.getuser.GetUserModule
 import com.example.myapplication.featuresscreen.FeaturesScreenModule
+import com.example.myapplication.hotels.hoteldetailed.HotelDetailedModule
 import com.example.myapplication.notes.common.NoteModule
 import com.example.myapplication.notes.note.NotesModule
 import com.example.myapplication.notes.noteadd.NoteAddModule
@@ -52,6 +56,10 @@ import dagger.Module
         SettingsModule::class,
         NetworkModule::class,
         WeatherModule::class,
+        HotelListModule::class,
+        HotelDetailedModule::class,
+        HotelsNetworkModule::class,
+        ResourcesModule::class,
     ]
 )
 class FeaturesModule

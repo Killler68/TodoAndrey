@@ -38,4 +38,7 @@
 
     <color name="light_background_note">#FFFFFF</color>
     <color name="dark_background_note">#100F0F</color>
+
+    <color name="translucent_black">#73000000</color>
+
 </resources>

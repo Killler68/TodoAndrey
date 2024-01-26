@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/background_item_hotel_list"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_marginTop="@dimen/primary_top_margin"
+    app:cardCornerRadius="@dimen/primary_corner_radius"
+    app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_hotels"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/feature_note"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="@color/translucent_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RatingBar
+            android:id="@+id/rating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/primary_start_margin"
+            android:layout_marginTop="5dp"
+            android:elevation="1dp"
+            app:layout_constraintStart_toStartOf="@+id/container"
+            app:layout_constraintTop_toTopOf="@+id/container" />
+
+        <TextView
+            android:id="@+id/hotel_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Best Western President Hotel at Times Square"
+            android:textColor="@color/white"
+            android:textSize="@dimen/primary_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/container"
+            app:layout_constraintTop_toBottomOf="@+id/rating" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/primary_horizontal_margin"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="234 West 48th Street"
+            android:textColor="@color/white"
+            android:textSize="@dimen/secondary_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/container"
+            app:layout_constraintTop_toBottomOf="@id/hotel_name" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/primary_end_margin"
+            android:layout_marginBottom="@dimen/primary_bottom_margin"
+            android:backgroundTint="?attr/primary"
+            app:cardCornerRadius="@dimen/primary_corner_radius"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:id="@+id/container_room"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/primary_padding">
+
+                <TextView
+                    android:id="@+id/free_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/accent_horizontal_margin"
+                    android:layout_marginTop="@dimen/accent_top_margin"
+                    android:gravity="center"
+                    android:text="Осталось мест"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/secondary_size"
+                    app:layout_constraintEnd_toEndOf="@id/container_room"
+                    app:layout_constraintStart_toStartOf="@id/container_room"
+                    app:layout_constraintTop_toTopOf="@id/container_room" />
+
+                <TextView
+                    android:id="@+id/suites_availability"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="5"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/primary_size" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
