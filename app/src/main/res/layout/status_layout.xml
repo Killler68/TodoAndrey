@@ -41,7 +41,7 @@
         android:id="@+id/progress_bar"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:backgroundTint="@color/primary_background"
+        android:backgroundTint="?attr/primary"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

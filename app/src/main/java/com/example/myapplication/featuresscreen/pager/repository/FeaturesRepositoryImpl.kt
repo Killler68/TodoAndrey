@@ -6,6 +6,7 @@ import com.example.myapplication.notes.note.NotesFragment
 import com.example.myapplication.registration.RegistrationFragment
 import com.example.myapplication.featuresscreen.pager.model.FeaturesData
 import com.example.myapplication.featuresscreen.pager.usecase.FeaturesRepository
+import com.example.myapplication.hotels.hotellist.HotelListFragment
 import com.example.myapplication.weather.WeatherFragment
 
 class
@@ -27,5 +28,6 @@ private fun testFeatures(userId: Int) = listOf(
         NotesFragment.newInstance(userId)
     ),
     FeaturesData(2, "Погода", "", R.drawable.cloud_sun, WeatherFragment()),
+    FeaturesData(3, "Тест 2", "Тестовое описание 2", R.mipmap.image_note, HotelListFragment()),
     FeaturesData(3, "Тест 2", "Тестовое описание 2", R.mipmap.image_note, AuthorizationFragment()),
 )

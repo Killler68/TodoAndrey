@@ -29,11 +29,14 @@
     <string name="temp">%s°</string>
     <string name="error">Ошибка\n Попробуем снова?</string>
     <string name="attempt">Попробовать</string>
+    <string name="meter">%s м</string>
 
     <string name="information">Информация об отеле</string>
     <string name="located">Расположен:</string>
     <string name="hotel_list">Список отелей</string>
     <string name="distance">Расстояние:</string>
     <string name="text_suites_availability">Свободные номера:</string>
-
+    <string name="spinner_default">По умолчанию</string>
+    <string name="spinner_distance">По расстоянию от центра</string>
+    <string name="spinner_availability">"По количеству свободных номеров"</string>
 </resources>
