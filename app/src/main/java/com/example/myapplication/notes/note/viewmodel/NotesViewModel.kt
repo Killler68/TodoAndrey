@@ -16,7 +16,8 @@ class NotesViewModel(
     private val deleteNoteUseCase: DeleteNoteUseCase,
     private val getUser: GetUserUseCase,
     private val backToUser: BackNavigatorUseCase,
-    private val navigatorToNoteAdd: NoteAddNavigatorUseCase
+    private val navigatorToNoteAdd: NoteAddNavigatorUseCase,
+    private val navigatorToNoteEdit: NoteEditNavigatorUseCase
 ) : ViewModel() {
 
     private val _user: MutableStateFlow<User> = MutableStateFlow(emptyUser)
@@ -31,7 +32,8 @@ class NotesViewModel(
             val itemNote = notes?.map {
                 NotesItem(
                     it,
-                    ::deleteNote
+                    ::deleteNote,
+                    ::navigateToNoteEdit
                 )
             }
             itemNote?.let { _notes.tryEmit(it) }
@@ -51,7 +53,8 @@ class NotesViewModel(
                 _notes.tryEmit(it.map {
                     NotesItem(
                         it,
-                        ::deleteNote
+                        ::deleteNote,
+                        ::navigateToNoteEdit
                     )
                 })
             }
@@ -59,6 +62,6 @@ class NotesViewModel(
     }
 
     fun navigateToNoteAdd(userId: Int) = navigatorToNoteAdd(userId)
-
     fun navigateToUser() = backToUser()
+    private fun navigateToNoteEdit(userId: Int, noteId: Int) = navigatorToNoteEdit(userId, noteId)
 }

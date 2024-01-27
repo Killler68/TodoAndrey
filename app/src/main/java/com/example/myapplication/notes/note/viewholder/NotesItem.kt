@@ -10,7 +10,8 @@ import kotlin.reflect.KFunction2
 
 class NotesItem(
     private val notes: Notes,
-    private val onClickDelete: KFunction2<Int, Int, Unit>
+    private val onClickDelete: KFunction2<Int, Int, Unit>,
+    private val onClickEdit: KFunction2<Int, Int, Unit>
 ) : AbstractBindingItem<RecyclerItemNoteBinding>() {
 
     override fun bindView(binding: RecyclerItemNoteBinding, payloads: List<Any>) {
@@ -20,6 +21,9 @@ class NotesItem(
         binding.description.text = notes.description
         binding.removeNotes.setOnClickListener {
             onClickDelete(notes.userId, notes.id)
+        }
+        binding.editingNotes.setOnClickListener {
+            onClickEdit(notes.userId, notes.id)
         }
     }
 

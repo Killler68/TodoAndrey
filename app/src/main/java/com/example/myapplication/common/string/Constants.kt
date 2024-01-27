@@ -10,5 +10,7 @@ const val SPLIT = ":"
 
 const val DETAILED_KEY = "DETAILED_KEY"
 
+const val NOTE_ID_KEY = "NOTE_ID_KEY"
+
 const val HOTELS_URL = "https://raw.githubusercontent.com"
 const val HOTELS_URL_IMAGE = "https://github.com/iMofas/ios-android-test/raw/master/"
