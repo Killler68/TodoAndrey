@@ -6,6 +6,7 @@ import com.example.myapplication.common.usecase.BackNavigatorUseCase
 import com.example.myapplication.notes.common.repository.NotesRepository
 import com.example.myapplication.notes.note.usecase.*
 import com.example.myapplication.notes.note.viewmodel.*
+import com.example.myapplication.notes.noteedit.usecase.NoteEditNavigatorUseCaseImpl
 import com.github.terrakok.cicerone.Router
 import dagger.Module
 import dagger.Provides
@@ -33,6 +34,10 @@ class NotesModule {
         DeleteNoteUseCaseImpl(repository)
 
     @Provides
+    fun provideNoteEditUseCase(router: Router): NoteEditNavigatorUseCase =
+        NoteEditNavigatorUseCaseImpl(router)
+
+    @Provides
     @IntoMap
     @ClassKey(NotesViewModel::class)
     fun getViewModelNotes(
@@ -40,12 +45,14 @@ class NotesModule {
         deleteNoteUseCase: DeleteNoteUseCase,
         getUserUseCase: GetUserUseCase,
         backToUserUseCase: BackNavigatorUseCase,
-        navigatorToNoteAddUseCase: NoteAddNavigatorUseCase
+        navigatorToNoteAddUseCase: NoteAddNavigatorUseCase,
+        navigatorToNoteEditUseCase: NoteEditNavigatorUseCase
     ): ViewModel = NotesViewModel(
         getNotesUseCase,
         deleteNoteUseCase,
         getUserUseCase,
         backToUserUseCase,
-        navigatorToNoteAddUseCase
+        navigatorToNoteAddUseCase,
+        navigatorToNoteEditUseCase
     )
 }
